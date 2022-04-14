@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon.ico">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="ElasticSearch Rest API  Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。 Elasticsearch 基于搜索库 Lucene 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch Rest API">
+<meta property="og:url" content="https://dunwu.github.io/blog/2020/06/16/elasticsearch-rest-api/index.html">
+<meta property="og:site_name" content="Dunwu">
+<meta property="og:description" content="ElasticSearch Rest API  Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。 Elasticsearch 基于搜索库 Lucene 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-15T23:10:44.000Z">
+<meta property="article:modified_time" content="2022-04-14T08:45:53.610Z">
+<meta property="article:author" content="Zhang Peng">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="搜索引擎数据库">
+<meta property="article:tag" content="Elasticsearch">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dunwu.github.io/blog/2020/06/16/elasticsearch-rest-api/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Elasticsearch Rest API | Dunwu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Dunwu" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dunwu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">大道至简，知易行难</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">102</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">173</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dunwu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/06/16/elasticsearch-rest-api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Elasticsearch Rest API<a href="https://github.com/dunwu/blog/blob/master/source/_posts/%E6%95%B0%E6%8D%AE%E5%BA%93/07.%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/01.Elasticsearch/11.ElasticsearchRestApi.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索引擎数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elasticsearch/" itemprop="url" rel="index">
+                    <span itemprop="name">Elasticsearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/06/16/elasticsearch-rest-api/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/16/elasticsearch-rest-api/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="elasticsearch-rest-api"><a class="markdownIt-Anchor" href="#elasticsearch-rest-api"></a> ElasticSearch Rest API</h1>
+<blockquote>
+<p><strong><a href="https://github.com/elastic/elasticsearch" target="_blank" rel="noopener">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎</strong>，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
+<p><a href="https://github.com/elastic/elasticsearch" target="_blank" rel="noopener">Elasticsearch</a> 基于搜索库 <a href="https://github.com/apache/lucene-solr" target="_blank" rel="noopener">Lucene</a> 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API / Java API 接口（另外还有其他语言的 API 接口）。</p>
+<p><em>以下简称 ES</em>。</p>
+<p>REST API 最详尽的文档应该参考：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html" target="_blank" rel="noopener">ES 官方 REST API</a></p>
+</blockquote>
+<h2 id="1-elasticsearch-rest-api-语法格式"><a class="markdownIt-Anchor" href="#1-elasticsearch-rest-api-语法格式"></a> 1. ElasticSearch Rest API 语法格式</h2>
+<p>向 Elasticsearch 发出的请求的组成部分与其它普通的 HTTP 请求是一样的：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X&lt;VERB&gt; <span class="string">'&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;'</span> -d <span class="string">'&lt;BODY&gt;'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>VERB</code>：HTTP 方法，支持：<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>HEAD</code>, <code>DELETE</code></li>
+<li><code>PROTOCOL</code>：http 或者 https 协议（只有在 Elasticsearch 前面有 https 代理的时候可用）</li>
+<li><code>HOST</code>：Elasticsearch 集群中的任何一个节点的主机名，如果是在本地的节点，那么就叫 localhost</li>
+<li><code>PORT</code>：Elasticsearch HTTP 服务所在的端口，默认为 9200 PATH API 路径（例如_count 将返回集群中文档的数量），</li>
+<li><code>PATH</code>：可以包含多个组件，例如 <code>_cluster/stats</code> 或者 <code>_nodes/stats/jvm</code></li>
+<li><code>QUERY_STRING</code>：一些可选的查询请求参数，例如?pretty 参数将使请求返回更加美观易读的 JSON 数据</li>
+<li><code>BODY</code>：一个 JSON 格式的请求主体（如果请求需要的话）</li>
+</ul>
+<h2 id="2-索引-api"><a class="markdownIt-Anchor" href="#2-索引-api"></a> 2. 索引 API</h2>
+<blockquote>
+<p>参考资料：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html" target="_blank" rel="noopener">Elasticsearch 官方之 cat 索引 API</a></p>
+</blockquote>
+<h3 id="21-创建索引"><a class="markdownIt-Anchor" href="#21-创建索引"></a> 2.1. 创建索引</h3>
+<p>新建 Index，可以直接向 ES 服务器发出 <code>PUT</code> 请求。</p>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /my_index</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"settings"</span>: &#123; ... any settings ... &#125;,</span><br><span class="line">    <span class="string">"mappings"</span>: &#123;</span><br><span class="line">        <span class="string">"type_one"</span>: &#123; ... any mappings ... &#125;,</span><br><span class="line">        <span class="string">"type_two"</span>: &#123; ... any mappings ... &#125;,</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /user</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"settings"</span>: &#123;</span><br><span class="line">    <span class="string">"index"</span>: &#123;</span><br><span class="line">      <span class="string">"number_of_shards"</span>: 3,</span><br><span class="line">      <span class="string">"number_of_replicas"</span>: 2</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务器返回一个 JSON 对象，里面的 <code>acknowledged</code> 字段表示操作成功。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>,<span class="string">"shards_acknowledged"</span>:<span class="literal">true</span>,<span class="string">"index"</span>:<span class="string">"user"</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你想禁止自动创建索引，可以通过在 <code>config/elasticsearch.yml</code> 的每个节点下添加下面的配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">action.auto_create_index: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="22-删除索引"><a class="markdownIt-Anchor" href="#22-删除索引"></a> 2.2. 删除索引</h3>
+<p>然后，我们可以通过发送 <code>DELETE</code> 请求，删除这个 Index。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE /user</span><br></pre></td></tr></table></figure>
+<p>删除多个索引</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">DELETE /index_one,index_two</span><br><span class="line">DELETE /index_*</span><br></pre></td></tr></table></figure>
+<h3 id="23-查看索引"><a class="markdownIt-Anchor" href="#23-查看索引"></a> 2.3. 查看索引</h3>
+<p>可以通过 GET 请求查看索引信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看索引相关信息</span></span><br><span class="line">GET kibana_sample_data_ecommerce</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看索引的文档总数</span></span><br><span class="line">GET kibana_sample_data_ecommerce/_count</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看前10条文档，了解文档格式</span></span><br><span class="line">GET kibana_sample_data_ecommerce/_search</span><br><span class="line"></span><br><span class="line"><span class="comment"># _cat indices API</span></span><br><span class="line"><span class="comment"># 查看indices</span></span><br><span class="line">GET /_cat/indices/kibana*?v&amp;s=index</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看状态为绿的索引</span></span><br><span class="line">GET /_cat/indices?v&amp;health=green</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照文档个数排序</span></span><br><span class="line">GET /_cat/indices?v&amp;s=docs.count:desc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看具体的字段</span></span><br><span class="line">GET /_cat/indices/kibana*?pri&amp;v&amp;h=health,index,pri,rep,docs.count,mt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看索引占用的内存</span></span><br><span class="line">GET /_cat/indices?v&amp;h=i,tm&amp;s=tm:desc</span><br></pre></td></tr></table></figure>
+<h3 id="24-索引别名"><a class="markdownIt-Anchor" href="#24-索引别名"></a> 2.4. 索引别名</h3>
+<p>ES 的索引别名就是给一个索引或者多个索引起的另一个名字，典型的应用场景是针对索引使用的平滑切换。</p>
+<p>首先，创建索引 my_index，然后将别名 my_alias 指向它，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /my_index</span><br><span class="line">PUT /my_index/_alias/my_alias</span><br></pre></td></tr></table></figure>
+<p>也可以通过如下形式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"actions"</span>: [</span><br><span class="line">    &#123; <span class="string">"add"</span>: &#123; <span class="string">"index"</span>: <span class="string">"my_index"</span>, <span class="string">"alias"</span>: <span class="string">"my_alias"</span> &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以在一次请求中增加别名和移除别名混合使用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"actions"</span>: [</span><br><span class="line">    &#123; <span class="string">"remove"</span>: &#123; <span class="string">"index"</span>: <span class="string">"my_index"</span>, <span class="string">"alias"</span>: <span class="string">"my_alias"</span> &#125;&#125;</span><br><span class="line">    &#123; <span class="string">"add"</span>: &#123; <span class="string">"index"</span>: <span class="string">"my_index_v2"</span>, <span class="string">"alias"</span>: <span class="string">"my_alias"</span> &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意的是，如果别名与索引是一对一的，使用别名索引文档或者查询文档是可以的，但是如果别名和索引是一对多的，使用别名会发生错误，因为 ES 不知道把文档写入哪个索引中去或者从哪个索引中读取文档。</p>
+</blockquote>
+<p>ES 索引别名有个典型的应用场景是平滑切换，更多细节可以查看 <a href="https://www.knowledgedict.com/tutorial/elasticsearch-index-smooth-shift.html" target="_blank" rel="noopener">Elasticsearch（ES）索引零停机（无需重启）无缝平滑切换的方法</a>。</p>
+<h3 id="25-打开关闭索引"><a class="markdownIt-Anchor" href="#25-打开关闭索引"></a> 2.5. 打开/关闭索引</h3>
+<p>通过在 <code>POST</code> 中添加 <code>_close</code> 或 <code>_open</code> 可以打开、关闭索引。</p>
+<p>打开索引</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开索引</span></span><br><span class="line">POST kibana_sample_data_ecommerce/_open</span><br><span class="line"><span class="comment"># 关闭索引</span></span><br><span class="line">POST kibana_sample_data_ecommerce/_close</span><br></pre></td></tr></table></figure>
+<h2 id="3-文档"><a class="markdownIt-Anchor" href="#3-文档"></a> 3. 文档</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">############Create Document############</span></span><br><span class="line"><span class="comment">#create document. 自动生成 _id</span></span><br><span class="line">POST users/_doc</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"user"</span> : <span class="string">"Mike"</span>,</span><br><span class="line">    <span class="string">"post_date"</span> : <span class="string">"2019-04-15T14:12:12"</span>,</span><br><span class="line">    <span class="string">"message"</span> : <span class="string">"trying out Kibana"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#create document. 指定Id。如果id已经存在，报错</span></span><br><span class="line">PUT users/_doc/1?op_type=create</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"user"</span> : <span class="string">"Jack"</span>,</span><br><span class="line">    <span class="string">"post_date"</span> : <span class="string">"2019-05-15T14:12:12"</span>,</span><br><span class="line">    <span class="string">"message"</span> : <span class="string">"trying out Elasticsearch"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#create document. 指定 ID 如果已经存在，就报错</span></span><br><span class="line">PUT users/_create/1</span><br><span class="line">&#123;</span><br><span class="line">     <span class="string">"user"</span> : <span class="string">"Jack"</span>,</span><br><span class="line">    <span class="string">"post_date"</span> : <span class="string">"2019-05-15T14:12:12"</span>,</span><br><span class="line">    <span class="string">"message"</span> : <span class="string">"trying out Elasticsearch"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">### Get Document by ID</span></span><br><span class="line"><span class="comment">#Get the document by ID</span></span><br><span class="line">GET users/_doc/1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">###  Index &amp; Update</span></span><br><span class="line"><span class="comment">#Update 指定 ID  (先删除，在写入)</span></span><br><span class="line">GET users/_doc/1</span><br><span class="line"></span><br><span class="line">PUT users/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"user"</span> : <span class="string">"Mike"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#GET users/_doc/1</span></span><br><span class="line"><span class="comment">#在原文档上增加字段</span></span><br><span class="line">POST users/_update/1/</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"doc"</span>:&#123;</span><br><span class="line">        <span class="string">"post_date"</span> : <span class="string">"2019-05-15T14:12:12"</span>,</span><br><span class="line">        <span class="string">"message"</span> : <span class="string">"trying out Elasticsearch"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### Delete by Id</span></span><br><span class="line"><span class="comment"># 删除文档</span></span><br><span class="line">DELETE users/_doc/1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### Bulk 操作</span></span><br><span class="line"><span class="comment">#执行两次，查看每次的结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行第1次</span></span><br><span class="line">POST _bulk</span><br><span class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"1"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value1"</span> &#125;</span><br><span class="line">&#123; <span class="string">"delete"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"2"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"create"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test2"</span>, <span class="string">"_id"</span> : <span class="string">"3"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value3"</span> &#125;</span><br><span class="line">&#123; <span class="string">"update"</span> : &#123;<span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"_index"</span> : <span class="string">"test"</span>&#125; &#125;</span><br><span class="line">&#123; <span class="string">"doc"</span> : &#123;<span class="string">"field2"</span> : <span class="string">"value2"</span>&#125; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行第2次</span></span><br><span class="line">POST _bulk</span><br><span class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"1"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value1"</span> &#125;</span><br><span class="line">&#123; <span class="string">"delete"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"2"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"create"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test2"</span>, <span class="string">"_id"</span> : <span class="string">"3"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value3"</span> &#125;</span><br><span class="line">&#123; <span class="string">"update"</span> : &#123;<span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"_index"</span> : <span class="string">"test"</span>&#125; &#125;</span><br><span class="line">&#123; <span class="string">"doc"</span> : &#123;<span class="string">"field2"</span> : <span class="string">"value2"</span>&#125; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">### mget 操作</span></span><br><span class="line">GET /_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#URI中指定index</span></span><br><span class="line">GET /<span class="built_in">test</span>/_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GET /_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : [<span class="string">"field3"</span>, <span class="string">"field4"</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"3"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : &#123;</span><br><span class="line">                <span class="string">"include"</span>: [<span class="string">"user"</span>],</span><br><span class="line">                <span class="string">"exclude"</span>: [<span class="string">"user.location"</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">### msearch 操作</span></span><br><span class="line">POST kibana_sample_data_ecommerce/_msearch</span><br><span class="line">&#123;&#125;</span><br><span class="line">&#123;<span class="string">"query"</span> : &#123;<span class="string">"match_all"</span> : &#123;&#125;&#125;,<span class="string">"size"</span>:1&#125;</span><br><span class="line">&#123;<span class="string">"index"</span> : <span class="string">"kibana_sample_data_flights"</span>&#125;</span><br><span class="line">&#123;<span class="string">"query"</span> : &#123;<span class="string">"match_all"</span> : &#123;&#125;&#125;,<span class="string">"size"</span>:2&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### 清除测试数据</span></span><br><span class="line"><span class="comment">#清除数据</span></span><br><span class="line">DELETE users</span><br><span class="line">DELETE <span class="built_in">test</span></span><br><span class="line">DELETE test2</span><br></pre></td></tr></table></figure>
+<h3 id="31-创建文档"><a class="markdownIt-Anchor" href="#31-创建文档"></a> 3.1. 创建文档</h3>
+<h4 id="指定-id"><a class="markdownIt-Anchor" href="#指定-id"></a> 指定 ID</h4>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /_index/_type/_create/_id</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /user/_doc/_create/1</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"user"</span>: <span class="string">"张三"</span>,</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"工程师"</span>,</span><br><span class="line">  <span class="string">"desc"</span>: <span class="string">"数据库管理"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：指定 Id，如果 id 已经存在，则报错</p>
+</blockquote>
+<h4 id="自动生成-id"><a class="markdownIt-Anchor" href="#自动生成-id"></a> 自动生成 ID</h4>
+<p>新增记录的时候，也可以不指定 Id，这时要改成 POST 请求。</p>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /_index/_type</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /user/_doc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"user"</span>: <span class="string">"张三"</span>,</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"工程师"</span>,</span><br><span class="line">  <span class="string">"desc"</span>: <span class="string">"超级管理员"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="32-删除文档"><a class="markdownIt-Anchor" href="#32-删除文档"></a> 3.2. 删除文档</h3>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE /_index/_doc/_id</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE /user/_doc/1</span><br></pre></td></tr></table></figure>
+<h3 id="33-更新文档"><a class="markdownIt-Anchor" href="#33-更新文档"></a> 3.3. 更新文档</h3>
+<h4 id="先删除再写入"><a class="markdownIt-Anchor" href="#先删除再写入"></a> 先删除，再写入</h4>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /_index/_type/_id</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PUT /user/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"user"</span>: <span class="string">"李四"</span>,</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"工程师"</span>,</span><br><span class="line">  <span class="string">"desc"</span>: <span class="string">"超级管理员"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在原文档上增加字段"><a class="markdownIt-Anchor" href="#在原文档上增加字段"></a> 在原文档上增加字段</h4>
+<p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /_index/_update/_id</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /user/_update/1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"doc"</span>:&#123;</span><br><span class="line">        <span class="string">"age"</span> : <span class="string">"30"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="34-查询文档"><a class="markdownIt-Anchor" href="#34-查询文档"></a> 3.4. 查询文档</h3>
+<h4 id="指定-id-查询"><a class="markdownIt-Anchor" href="#指定-id-查询"></a> 指定 ID 查询</h4>
+<p>语法格式：</p>
+<figure class="highlight sqf"><table><tr><td class="code"><pre><span class="line">GET /<span class="variable">_index</span>/<span class="variable">_type</span>/<span class="variable">_id</span></span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /user/_doc/1</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"_index"</span>: <span class="string">"user"</span>,</span><br><span class="line">  <span class="attr">"_type"</span>: <span class="string">"_doc"</span>,</span><br><span class="line">  <span class="attr">"_id"</span>: <span class="string">"1"</span>,</span><br><span class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"_seq_no"</span>: <span class="number">536248</span>,</span><br><span class="line">  <span class="attr">"_primary_term"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"found"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"_source"</span>: &#123;</span><br><span class="line">    <span class="attr">"user"</span>: <span class="string">"张三"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"工程师"</span>,</span><br><span class="line">    <span class="attr">"desc"</span>: <span class="string">"数据库管理"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>返回的数据中，<code>found</code> 字段表示查询成功，<code>_source</code> 字段返回原始记录。</p>
+<p>如果 id 不正确，就查不到数据，<code>found</code> 字段就是 <code>false</code></p>
+<h4 id="查询所有记录"><a class="markdownIt-Anchor" href="#查询所有记录"></a> 查询所有记录</h4>
+<p>使用 <code>GET</code> 方法，直接请求 <code>/index/type/_search</code>，就会返回所有记录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl <span class="string">'localhost:9200/user/admin/_search?pretty'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"took"</span> : 1,</span><br><span class="line">  <span class="string">"timed_out"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"_shards"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : 3,</span><br><span class="line">    <span class="string">"successful"</span> : 3,</span><br><span class="line">    <span class="string">"skipped"</span> : 0,</span><br><span class="line">    <span class="string">"failed"</span> : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"hits"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : 2,</span><br><span class="line">    <span class="string">"max_score"</span> : 1.0,</span><br><span class="line">    <span class="string">"hits"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"user"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"admin"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"WWuoDG8BHwECs7SiYn93"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : 1.0,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"user"</span> : <span class="string">"李四"</span>,</span><br><span class="line">          <span class="string">"title"</span> : <span class="string">"工程师"</span>,</span><br><span class="line">          <span class="string">"desc"</span> : <span class="string">"系统管理"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"user"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"admin"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : 1.0,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"user"</span> : <span class="string">"张三"</span>,</span><br><span class="line">          <span class="string">"title"</span> : <span class="string">"工程师"</span>,</span><br><span class="line">          <span class="string">"desc"</span> : <span class="string">"超级管理员"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，返回结果的 <code>took</code>字段表示该操作的耗时（单位为毫秒），<code>timed_out</code>字段表示是否超时，<code>hits</code>字段表示命中的记录，里面子字段的含义如下。</p>
+<ul>
+<li><code>total</code>：返回记录数，本例是 2 条。</li>
+<li><code>max_score</code>：最高的匹配程度，本例是<code>1.0</code>。</li>
+<li><code>hits</code>：返回的记录组成的数组。</li>
+</ul>
+<p>返回的记录中，每条记录都有一个<code>_score</code>字段，表示匹配的程序，默认是按照这个字段降序排列。</p>
+<h3 id="35-全文搜索"><a class="markdownIt-Anchor" href="#35-全文搜索"></a> 3.5. 全文搜索</h3>
+<p>ES 的查询非常特别，使用自己的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl.html" target="_blank" rel="noopener">查询语法</a>，要求 GET 请求带有数据体。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -H <span class="string">'Content-Type: application/json'</span> <span class="string">'localhost:9200/user/admin/_search?pretty'</span>  -d <span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">"query" : &#123; "match" : &#123; "desc" : "管理" &#125;&#125;</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>上面代码使用 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-match-query.html" target="_blank" rel="noopener">Match 查询</a>，指定的匹配条件是<code>desc</code>字段里面包含&quot;软件&quot;这个词。返回结果如下。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"took"</span> : <span class="number">2</span>,</span><br><span class="line">  <span class="string">"timed_out"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"_shards"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : <span class="number">3</span>,</span><br><span class="line">    <span class="string">"successful"</span> : <span class="number">3</span>,</span><br><span class="line">    <span class="string">"skipped"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">"failed"</span> : <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"hits"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : <span class="number">2</span>,</span><br><span class="line">    <span class="string">"max_score"</span> : <span class="number">0.38200712</span>,</span><br><span class="line">    <span class="string">"hits"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"user"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"admin"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"WWuoDG8BHwECs7SiYn93"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : <span class="number">0.38200712</span>,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"user"</span> : <span class="string">"李四"</span>,</span><br><span class="line">          <span class="string">"title"</span> : <span class="string">"工程师"</span>,</span><br><span class="line">          <span class="string">"desc"</span> : <span class="string">"系统管理"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"user"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"admin"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : <span class="number">0.3487891</span>,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"user"</span> : <span class="string">"张三"</span>,</span><br><span class="line">          <span class="string">"title"</span> : <span class="string">"工程师"</span>,</span><br><span class="line">          <span class="string">"desc"</span> : <span class="string">"超级管理员"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Elastic 默认一次返回 10 条结果，可以通过<code>size</code>字段改变这个设置，还可以通过<code>from</code>字段，指定位移。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl <span class="string">'localhost:9200/user/admin/_search'</span>  -d <span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  "query" : &#123; "match" : &#123; "desc" : "管理" &#125;&#125;,</span></span><br><span class="line"><span class="string">  "from": 1,</span></span><br><span class="line"><span class="string">  "size": 1</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>上面代码指定，从位置 1 开始（默认是从位置 0 开始），只返回一条结果。</p>
+<h3 id="36-逻辑运算"><a class="markdownIt-Anchor" href="#36-逻辑运算"></a> 3.6. 逻辑运算</h3>
+<p>如果有多个搜索关键字， Elastic 认为它们是<code>or</code>关系。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl <span class="string">'localhost:9200/user/admin/_search'</span>  -d <span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">"query" : &#123; "match" : &#123; "desc" : "软件 系统" &#125;&#125;</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>上面代码搜索的是<code>软件 or 系统</code>。</p>
+<p>如果要执行多个关键词的<code>and</code>搜索，必须使用<a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-bool-query.html" target="_blank" rel="noopener">布尔查询</a>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -H <span class="string">'Content-Type: application/json'</span> <span class="string">'localhost:9200/user/admin/_search?pretty'</span>  -d <span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string"> "query": &#123;</span></span><br><span class="line"><span class="string">  "bool": &#123;</span></span><br><span class="line"><span class="string">   "must": [</span></span><br><span class="line"><span class="string">    &#123; "match": &#123; "desc": "管理" &#125; &#125;,</span></span><br><span class="line"><span class="string">    &#123; "match": &#123; "desc": "超级" &#125; &#125;</span></span><br><span class="line"><span class="string">   ]</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<h3 id="37-批量执行"><a class="markdownIt-Anchor" href="#37-批量执行"></a> 3.7. 批量执行</h3>
+<p>支持在一次 API 调用中，对不同的索引进行操作</p>
+<p>支持四种类型操作</p>
+<ul>
+<li>index</li>
+<li>create</li>
+<li>update</li>
+<li>delete</li>
+</ul>
+<p>操作中单条操作失败，并不会影响其他操作。</p>
+<p>返回结果包括了每一条操作执行的结果。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST _bulk</span><br><span class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"1"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value1"</span> &#125;</span><br><span class="line">&#123; <span class="string">"delete"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"2"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"create"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test2"</span>, <span class="string">"_id"</span> : <span class="string">"3"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value3"</span> &#125;</span><br><span class="line">&#123; <span class="string">"update"</span> : &#123;<span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"_index"</span> : <span class="string">"test"</span>&#125; &#125;</span><br><span class="line">&#123; <span class="string">"doc"</span> : &#123;<span class="string">"field2"</span> : <span class="string">"value2"</span>&#125; &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：上面的示例如果执行多次，执行结果都不一样。</p>
+</blockquote>
+<h3 id="38-批量读取"><a class="markdownIt-Anchor" href="#38-批量读取"></a> 3.8. 批量读取</h3>
+<p>读多个索引</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>读一个索引</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /<span class="built_in">test</span>/_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GET /_mget</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"docs"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"2"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : [<span class="string">"field3"</span>, <span class="string">"field4"</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"_index"</span> : <span class="string">"test"</span>,</span><br><span class="line">            <span class="string">"_id"</span> : <span class="string">"3"</span>,</span><br><span class="line">            <span class="string">"_source"</span> : &#123;</span><br><span class="line">                <span class="string">"include"</span>: [<span class="string">"user"</span>],</span><br><span class="line">                <span class="string">"exclude"</span>: [<span class="string">"user.location"</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="39-批量查询"><a class="markdownIt-Anchor" href="#39-批量查询"></a> 3.9. 批量查询</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST kibana_sample_data_ecommerce/_msearch</span><br><span class="line">&#123;&#125;</span><br><span class="line">&#123;<span class="string">"query"</span> : &#123;<span class="string">"match_all"</span> : &#123;&#125;&#125;,<span class="string">"size"</span>:1&#125;</span><br><span class="line">&#123;<span class="string">"index"</span> : <span class="string">"kibana_sample_data_flights"</span>&#125;</span><br><span class="line">&#123;<span class="string">"query"</span> : &#123;<span class="string">"match_all"</span> : &#123;&#125;&#125;,<span class="string">"size"</span>:2&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="310-uri-search-查询语义"><a class="markdownIt-Anchor" href="#310-uri-search-查询语义"></a> 3.10. URI Search 查询语义</h3>
+<p>Elasticsearch URI Search 遵循 QueryString 查询语义，其形式如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /movies/_search?q=2012&amp;df=title&amp;sort=year:desc&amp;from=0&amp;size=10&amp;timeout=1s</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>q</code></strong> 指定查询语句，使用 QueryString 语义</li>
+<li><strong><code>df</code></strong> 默认字段，不指定时</li>
+<li><strong><code>sort</code></strong> 排序：from 和 size 用于分页</li>
+<li><strong><code>profile</code></strong> 可以查看查询时如何被执行的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /movies/_search?q=title:2012&amp;sort=year:desc&amp;from=0&amp;size=10&amp;timeout=1s</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="term-和-phrase"><a class="markdownIt-Anchor" href="#term-和-phrase"></a> Term 和 Phrase</h4>
+<p>Beautiful Mind 等效于 Beautiful OR Mind</p>
+<p>“Beautiful Mind” 等效于 Beautiful AND Mind</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Term 查询</span></span><br><span class="line">GET /movies/_search?q=title:Beautiful Mind</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用引号，Phrase 查询</span></span><br><span class="line">GET /movies/_search?q=title:<span class="string">"Beautiful Mind"</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="分组与引号"><a class="markdownIt-Anchor" href="#分组与引号"></a> 分组与引号</h4>
+<p>title:(Beautiful AND Mind)</p>
+<p>title=“Beautiful Mind”</p>
+<h4 id="and-or-not-或者"><a class="markdownIt-Anchor" href="#and-or-not-或者"></a> AND、OR、NOT 或者 &amp;&amp;、||、!</h4>
+<blockquote>
+<p>注意：AND、OR、NOT 必须大写</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 布尔操作符</span></span><br><span class="line">GET /movies/_search?q=title:(Beautiful AND Mind)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GET /movies/_search?q=title:(Beautiful NOT Mind)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="范围查询"><a class="markdownIt-Anchor" href="#范围查询"></a> 范围查询</h4>
+<ul>
+<li><code>[]</code> 表示闭区间</li>
+<li><code>{}</code> 表示开区间</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 范围查询 ,区间写法</span></span><br><span class="line">GET /movies/_search?q=title:beautiful AND year:&#123;2010 TO 2018%7D</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GET /movies/_search?q=title:beautiful AND year:[* TO 2018]</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="算数符号"><a class="markdownIt-Anchor" href="#算数符号"></a> 算数符号</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 2010 年以后的记录</span></span><br><span class="line">GET /movies/_search?q=year:&gt;2010</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2010 年到 2018 年的记录</span></span><br><span class="line">GET /movies/_search?q=year:(&gt;2010 &amp;&amp; &lt;=2018)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2010 年到 2018 年的记录</span></span><br><span class="line">GET /movies/_search?q=year:(+&gt;2010 +&lt;=2018)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通配符查询"><a class="markdownIt-Anchor" href="#通配符查询"></a> 通配符查询</h4>
+<ul>
+<li><code>?</code> 代表 1 个字符</li>
+<li><code>*</code> 代表 0 或多个字符</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /movies/_search?q=title:mi?d</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GET /movies/_search?q=title:b*</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="正则表达式"><a class="markdownIt-Anchor" href="#正则表达式"></a> 正则表达式</h4>
+<p>title:[bt]oy</p>
+<h4 id="模糊匹配与近似查询"><a class="markdownIt-Anchor" href="#模糊匹配与近似查询"></a> 模糊匹配与近似查询</h4>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 相似度在 1 个字符以内</span></span><br><span class="line">GET /movies/_search?q=title:beautifl~1</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相似度在 2 个字符以内</span></span><br><span class="line">GET /movies/_search?q=title:<span class="string">"Lord Rings"</span>~2</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="311-request-body-dsl"><a class="markdownIt-Anchor" href="#311-request-body-dsl"></a> 3.11. Request Body &amp; DSL</h3>
+<p>Elasticsearch 除了 URI Search 查询方式，还支持将查询语句通过 Http Request Body 发起查询。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /kibana_sample_data_ecommerce/_search?ignore_unavailable=<span class="literal">true</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"profile"</span>:<span class="string">"true"</span>,</span><br><span class="line">	<span class="string">"query"</span>: &#123;</span><br><span class="line">	  <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="分页"><a class="markdownIt-Anchor" href="#分页"></a> 分页</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /kibana_sample_data_ecommerce/_search?ignore_unavailable=<span class="literal">true</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"profile"</span>: <span class="string">"true"</span>,</span><br><span class="line">  <span class="string">"from"</span>: 0,</span><br><span class="line">  <span class="string">"size"</span>: 10,</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="排序"><a class="markdownIt-Anchor" href="#排序"></a> 排序</h4>
+<p>最好在数字型或日期型字段上排序</p>
+<p>因为对于多值类型或分析过的字段排序，系统会选一个值，无法得知该值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /kibana_sample_data_ecommerce/_search?ignore_unavailable=<span class="literal">true</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"profile"</span>: <span class="string">"true"</span>,</span><br><span class="line">  <span class="string">"sort"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"order_date"</span>: <span class="string">"desc"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"from"</span>: 1,</span><br><span class="line">  <span class="string">"size"</span>: 10,</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="_source-过滤"><a class="markdownIt-Anchor" href="#_source-过滤"></a> _source 过滤</h4>
+<p>如果 <code>_source</code> 没有存储，那就只返回匹配的文档的元数据</p>
+<p><code>_source</code> 支持使用通配符，如：<code>_source[&quot;name*&quot;, &quot;desc*&quot;]</code></p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /kibana_sample_data_ecommerce/_search?ignore_unavailable=<span class="literal">true</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"profile"</span>: <span class="string">"true"</span>,</span><br><span class="line">  <span class="string">"_source"</span>: [</span><br><span class="line">    <span class="string">"order_date"</span>,</span><br><span class="line">    <span class="string">"category.keyword"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"from"</span>: 1,</span><br><span class="line">  <span class="string">"size"</span>: 10,</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="脚本字段"><a class="markdownIt-Anchor" href="#脚本字段"></a> 脚本字段</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /kibana_sample_data_ecommerce/_search?ignore_unavailable=<span class="literal">true</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"profile"</span>: <span class="string">"true"</span>,</span><br><span class="line">  <span class="string">"script_fields"</span>: &#123;</span><br><span class="line">    <span class="string">"new_field"</span>: &#123;</span><br><span class="line">      <span class="string">"script"</span>: &#123;</span><br><span class="line">        <span class="string">"lang"</span>: <span class="string">"painless"</span>,</span><br><span class="line">        <span class="string">"source"</span>:<span class="string">"doc['order_date'].value+' hello'"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"from"</span>: 1,</span><br><span class="line">  <span class="string">"size"</span>: 10,</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用查询表达式-match"><a class="markdownIt-Anchor" href="#使用查询表达式-match"></a> 使用查询表达式 - Match</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST movies/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match"</span>: &#123;</span><br><span class="line">      <span class="string">"title"</span>: <span class="string">"last christmas"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST movies/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match"</span>: &#123;</span><br><span class="line">      <span class="string">"title"</span>: &#123;</span><br><span class="line">        <span class="string">"query"</span>: <span class="string">"last christmas"</span>,</span><br><span class="line">        <span class="string">"operator"</span>: <span class="string">"and"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="短语搜索-match-phrase"><a class="markdownIt-Anchor" href="#短语搜索-match-phrase"></a> 短语搜索 - Match Phrase</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST movies/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"match_phrase"</span>: &#123;</span><br><span class="line">      <span class="string">"title"</span>:&#123;</span><br><span class="line">        <span class="string">"query"</span>: <span class="string">"last christmas"</span></span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-集群-api"><a class="markdownIt-Anchor" href="#4-集群-api"></a> 4. 集群 API</h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html" target="_blank" rel="noopener">Elasticsearch 官方之 Cluster API</a></p>
+</blockquote>
+<p>一些集群级别的 API 可能会在节点的子集上运行，这些节点可以用节点过滤器指定。例如，任务管理、节点统计和节点信息 API 都可以报告来自一组过滤节点而不是所有节点的结果。</p>
+<p>节点过滤器以逗号分隔的单个过滤器列表的形式编写，每个过滤器从所选子集中添加或删除节点。每个过滤器可以是以下之一：</p>
+<ul>
+<li><code>_all</code>：将所有节点添加到子集</li>
+<li><code>_local</code>：将本地节点添加到子集</li>
+<li><code>_master</code>：将当前主节点添加到子集</li>
+<li>根据节点 ID 或节点名将匹配节点添加到子集</li>
+<li>根据 IP 地址或主机名将匹配节点添加到子集</li>
+<li>使用通配符，将节点名、地址名或主机名匹配的节点添加到子集</li>
+<li><code>master:true</code>, <code>data:true</code>, <code>ingest:true</code>, <code>voting_only:true</code>, <code>ml:true</code> 或 <code>coordinating_only:true</code>, 分别意味着将所有主节点、所有数据节点、所有摄取节点、所有仅投票节点、所有机器学习节点和所有协调节点添加到子集中。</li>
+<li><code>master:false</code>, <code>data:false</code>, <code>ingest:false</code>, <code>voting_only:true</code>, <code>ml:false</code> 或 <code>coordinating_only:false</code>, 分别意味着将所有主节点、所有数据节点、所有摄取节点、所有仅投票节点、所有机器学习节点和所有协调节点排除在子集外。</li>
+<li>配对模式，使用 <code>*</code> 通配符，格式为 <code>attrname:attrvalue</code>，将所有具有自定义节点属性的节点添加到子集中，其名称和值与相应的模式匹配。自定义节点属性是通过 <code>node.attr.attrname: attrvalue</code> 形式在配置文件中设置的。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果没有给出过滤器，默认是查询所有节点</span></span><br><span class="line">GET /_nodes</span><br><span class="line"><span class="comment"># 查询所有节点</span></span><br><span class="line">GET /_nodes/_all</span><br><span class="line"><span class="comment"># 查询本地节点</span></span><br><span class="line">GET /_nodes/_local</span><br><span class="line"><span class="comment"># 查询主节点</span></span><br><span class="line">GET /_nodes/_master</span><br><span class="line"><span class="comment"># 根据名称查询节点（支持通配符）</span></span><br><span class="line">GET /_nodes/node_name_goes_here</span><br><span class="line">GET /_nodes/node_name_goes_*</span><br><span class="line"><span class="comment"># 根据地址查询节点（支持通配符）</span></span><br><span class="line">GET /_nodes/10.0.0.3,10.0.0.4</span><br><span class="line">GET /_nodes/10.0.0.*</span><br><span class="line"><span class="comment"># 根据规则查询节点</span></span><br><span class="line">GET /_nodes/_all,master:<span class="literal">false</span></span><br><span class="line">GET /_nodes/data:<span class="literal">true</span>,ingest:<span class="literal">true</span></span><br><span class="line">GET /_nodes/coordinating_only:<span class="literal">true</span></span><br><span class="line">GET /_nodes/master:<span class="literal">true</span>,voting_only:<span class="literal">false</span></span><br><span class="line"><span class="comment"># 根据自定义属性查询节点（如：查询配置文件中含 node.attr.rack:2 属性的节点）</span></span><br><span class="line">GET /_nodes/rack:2</span><br><span class="line">GET /_nodes/ra*:2</span><br><span class="line">GET /_nodes/ra*:2*</span><br></pre></td></tr></table></figure>
+<h3 id="41-集群健康-api"><a class="markdownIt-Anchor" href="#41-集群健康-api"></a> 4.1. 集群健康 API</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /_cluster/health</span><br><span class="line">GET /_cluster/health?level=shards</span><br><span class="line">GET /_cluster/health/kibana_sample_data_ecommerce,kibana_sample_data_flights</span><br><span class="line">GET /_cluster/health/kibana_sample_data_flights?level=shards</span><br></pre></td></tr></table></figure>
+<h3 id="42-集群状态-api"><a class="markdownIt-Anchor" href="#42-集群状态-api"></a> 4.2. 集群状态 API</h3>
+<p>集群状态 API 返回表示整个集群状态的元数据。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /_cluster/state</span><br></pre></td></tr></table></figure>
+<h2 id="5-节点-api"><a class="markdownIt-Anchor" href="#5-节点-api"></a> 5. 节点 API</h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html" target="_blank" rel="noopener">Elasticsearch 官方之 cat Nodes API</a>——返回有关集群节点的信息。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看默认的字段</span></span><br><span class="line">GET /_cat/nodes?v=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 查看指定的字段</span></span><br><span class="line">GET /_cat/nodes?v=<span class="literal">true</span>&amp;h=id,ip,port,v,m</span><br></pre></td></tr></table></figure>
+<h2 id="6-分片-api"><a class="markdownIt-Anchor" href="#6-分片-api"></a> 6. 分片 API</h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html" target="_blank" rel="noopener">Elasticsearch 官方之 cat Shards API</a>——shards 命令是哪些节点包含哪些分片的详细视图。它会告诉你它是主还是副本、文档数量、它在磁盘上占用的字节数以及它所在的节点。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看默认的字段</span></span><br><span class="line">GET /_cat/shards</span><br><span class="line"><span class="comment"># 根据名称查询分片（支持通配符）</span></span><br><span class="line">GET /_cat/shards/my-index-*</span><br><span class="line"><span class="comment"># 查看指定的字段</span></span><br><span class="line">GET /_cat/shards?h=index,shard,prirep,state,unassigned.reason</span><br></pre></td></tr></table></figure>
+<h2 id="7-监控-api"><a class="markdownIt-Anchor" href="#7-监控-api"></a> 7. 监控 API</h2>
+<p>Elasticsearch 中集群相关的健康、统计等相关的信息都是围绕着 <code>cat</code> API 进行的。</p>
+<p>通过 GET 请求发送 cat，下面列出了所有可用的 API：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /_cat</span><br><span class="line"></span><br><span class="line">=^.^=</span><br><span class="line">/_cat/allocation</span><br><span class="line">/_cat/shards</span><br><span class="line">/_cat/shards/&#123;index&#125;</span><br><span class="line">/_cat/master</span><br><span class="line">/_cat/nodes</span><br><span class="line">/_cat/tasks</span><br><span class="line">/_cat/indices</span><br><span class="line">/_cat/indices/&#123;index&#125;</span><br><span class="line">/_cat/segments</span><br><span class="line">/_cat/segments/&#123;index&#125;</span><br><span class="line">/_cat/count</span><br><span class="line">/_cat/count/&#123;index&#125;</span><br><span class="line">/_cat/recovery</span><br><span class="line">/_cat/recovery/&#123;index&#125;</span><br><span class="line">/_cat/health</span><br><span class="line">/_cat/pending_tasks</span><br><span class="line">/_cat/aliases</span><br><span class="line">/_cat/aliases/&#123;<span class="built_in">alias</span>&#125;</span><br><span class="line">/_cat/thread_pool</span><br><span class="line">/_cat/thread_pool/&#123;thread_pools&#125;</span><br><span class="line">/_cat/plugins</span><br><span class="line">/_cat/fielddata</span><br><span class="line">/_cat/fielddata/&#123;fields&#125;</span><br><span class="line">/_cat/nodeattrs</span><br><span class="line">/_cat/repositories</span><br><span class="line">/_cat/snapshots/&#123;repository&#125;</span><br><span class="line">/_cat/templates</span><br></pre></td></tr></table></figure>
+<h2 id="8-参考资料"><a class="markdownIt-Anchor" href="#8-参考资料"></a> 8. 参考资料</h2>
+<ul>
+<li><strong>官方</strong>
+<ul>
+<li><a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">Elasticsearch 官网</a></li>
+<li><a href="https://github.com/elastic/elasticsearch" target="_blank" rel="noopener">Elasticsearch Github</a></li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html" target="_blank" rel="noopener">Elasticsearch 官方文档</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zhang Peng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dunwu.github.io/blog/2020/06/16/elasticsearch-rest-api/" title="Elasticsearch Rest API">https://dunwu.github.io/blog/2020/06/16/elasticsearch-rest-api/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/blog/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 搜索引擎数据库</a>
+              <a href="/blog/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+              <a href="/blog/tags/API/" rel="tag"># API</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/blog/2020/06/16/elasticsearch-%E8%BF%90%E7%BB%B4/" rel="next" title="Elasticsearch 运维">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch 运维
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/blog/2020/06/16/elasticsearch-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="prev" title="Elasticsearch 快速入门">
+                  Elasticsearch 快速入门 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#elasticsearch-rest-api"><span class="nav-text"> ElasticSearch Rest API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-elasticsearch-rest-api-语法格式"><span class="nav-text"> 1. ElasticSearch Rest API 语法格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-索引-api"><span class="nav-text"> 2. 索引 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-创建索引"><span class="nav-text"> 2.1. 创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-删除索引"><span class="nav-text"> 2.2. 删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-查看索引"><span class="nav-text"> 2.3. 查看索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-索引别名"><span class="nav-text"> 2.4. 索引别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-打开关闭索引"><span class="nav-text"> 2.5. 打开&#x2F;关闭索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文档"><span class="nav-text"> 3. 文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-创建文档"><span class="nav-text"> 3.1. 创建文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指定-id"><span class="nav-text"> 指定 ID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动生成-id"><span class="nav-text"> 自动生成 ID</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-删除文档"><span class="nav-text"> 3.2. 删除文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-更新文档"><span class="nav-text"> 3.3. 更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先删除再写入"><span class="nav-text"> 先删除，再写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在原文档上增加字段"><span class="nav-text"> 在原文档上增加字段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-查询文档"><span class="nav-text"> 3.4. 查询文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指定-id-查询"><span class="nav-text"> 指定 ID 查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询所有记录"><span class="nav-text"> 查询所有记录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-全文搜索"><span class="nav-text"> 3.5. 全文搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36-逻辑运算"><span class="nav-text"> 3.6. 逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-批量执行"><span class="nav-text"> 3.7. 批量执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-批量读取"><span class="nav-text"> 3.8. 批量读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-批量查询"><span class="nav-text"> 3.9. 批量查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#310-uri-search-查询语义"><span class="nav-text"> 3.10. URI Search 查询语义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#term-和-phrase"><span class="nav-text"> Term 和 Phrase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组与引号"><span class="nav-text"> 分组与引号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#and-or-not-或者"><span class="nav-text"> AND、OR、NOT 或者 &amp;&amp;、||、!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范围查询"><span class="nav-text"> 范围查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算数符号"><span class="nav-text"> 算数符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符查询"><span class="nav-text"> 通配符查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式"><span class="nav-text"> 正则表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模糊匹配与近似查询"><span class="nav-text"> 模糊匹配与近似查询</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#311-request-body-dsl"><span class="nav-text"> 3.11. Request Body &amp; DSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分页"><span class="nav-text"> 分页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-text"> 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#_source-过滤"><span class="nav-text"> _source 过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本字段"><span class="nav-text"> 脚本字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用查询表达式-match"><span class="nav-text"> 使用查询表达式 - Match</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#短语搜索-match-phrase"><span class="nav-text"> 短语搜索 - Match Phrase</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-集群-api"><span class="nav-text"> 4. 集群 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#41-集群健康-api"><span class="nav-text"> 4.1. 集群健康 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-集群状态-api"><span class="nav-text"> 4.2. 集群状态 API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-节点-api"><span class="nav-text"> 5. 节点 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-分片-api"><span class="nav-text"> 6. 分片 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-监控-api"><span class="nav-text"> 7. 监控 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-参考资料"><span class="nav-text"> 8. 参考资料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Zhang Peng"
+    src="/blog/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zhang Peng</p>
+  <div class="site-description" itemprop="description">Dunwu's Blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dunwu" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;dunwu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:forbreak@163.com" title="E-Mail &amp;rarr; mailto:forbreak@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Peng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">976k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:48</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-ajay4qmfci.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://dunwu.github.io/blog/2020/06/16/elasticsearch-rest-api/",
+            identifier: "2020/06/16/elasticsearch-rest-api/",
+            title: "Elasticsearch Rest API"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-ajay4qmfci.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+</body>
+</html>

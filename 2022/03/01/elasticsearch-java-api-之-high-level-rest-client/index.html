@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon.ico">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="ElasticSearch Java API 之 High Level REST Client  Elasticsearch 官方的 High Level REST Client 在 7.1.5.0 版本废弃。所以本文中的 API 不推荐使用。   1. 快速开始  1.1. 引入依赖 在 pom.xml 中引入以下依赖： &lt;dependency&gt;    &lt;groupId&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch Java API 之 High Level REST Client">
+<meta property="og:url" content="https://dunwu.github.io/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/index.html">
+<meta property="og:site_name" content="Dunwu">
+<meta property="og:description" content="ElasticSearch Java API 之 High Level REST Client  Elasticsearch 官方的 High Level REST Client 在 7.1.5.0 版本废弃。所以本文中的 API 不推荐使用。   1. 快速开始  1.1. 引入依赖 在 pom.xml 中引入以下依赖： &lt;dependency&gt;    &lt;groupId&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T10:55:46.000Z">
+<meta property="article:modified_time" content="2022-04-14T08:45:53.610Z">
+<meta property="article:author" content="Zhang Peng">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="搜索引擎数据库">
+<meta property="article:tag" content="Elasticsearch">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dunwu.github.io/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ElasticSearch Java API 之 High Level REST Client | Dunwu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Dunwu" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dunwu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">大道至简，知易行难</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">102</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">173</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dunwu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          ElasticSearch Java API 之 High Level REST Client<a href="https://github.com/dunwu/blog/blob/master/source/_posts/%E6%95%B0%E6%8D%AE%E5%BA%93/07.%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/01.Elasticsearch/12.ElasticsearchHighLevelRestJavaApi.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-01 18:55:46" itemprop="dateCreated datePublished" datetime="2022-03-01T18:55:46+08:00">2022-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索引擎数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elasticsearch/" itemprop="url" rel="index">
+                    <span itemprop="name">Elasticsearch</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/01/elasticsearch-java-api-之-high-level-rest-client/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="elasticsearch-java-api-之-high-level-rest-client"><a class="markdownIt-Anchor" href="#elasticsearch-java-api-之-high-level-rest-client"></a> ElasticSearch Java API 之 High Level REST Client</h1>
+<blockquote>
+<p>Elasticsearch 官方的 High Level REST Client 在 7.1.5.0 版本废弃。所以本文中的 API 不推荐使用。</p>
+</blockquote>
+<h2 id="1-快速开始"><a class="markdownIt-Anchor" href="#1-快速开始"></a> 1. 快速开始</h2>
+<h3 id="11-引入依赖"><a class="markdownIt-Anchor" href="#11-引入依赖"></a> 1.1. 引入依赖</h3>
+<p>在 pom.xml 中引入以下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.17.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="12-创建连接和关闭"><a class="markdownIt-Anchor" href="#12-创建连接和关闭"></a> 1.2. 创建连接和关闭</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">RestHighLevelClient client = <span class="keyword">new</span> RestHighLevelClient(</span><br><span class="line">        RestClient.builder(</span><br><span class="line">                <span class="keyword">new</span> HttpHost(<span class="string">"localhost"</span>, <span class="number">9200</span>, <span class="string">"http"</span>),</span><br><span class="line">                <span class="keyword">new</span> HttpHost(<span class="string">"localhost"</span>, <span class="number">9201</span>, <span class="string">"http"</span>)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭</span></span><br><span class="line">client.close();</span><br></pre></td></tr></table></figure>
+<h2 id="2-索引-api"><a class="markdownIt-Anchor" href="#2-索引-api"></a> 2. 索引 API</h2>
+<h3 id="21-测试准备"><a class="markdownIt-Anchor" href="#21-测试准备"></a> 2.1. 测试准备</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INDEX = <span class="string">"mytest"</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INDEX_ALIAS = <span class="string">"mytest_alias"</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> User&#125; 的 mapping 结构（json形式）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MAPPING_JSON =</span><br><span class="line">  <span class="string">"&#123;\n"</span> + <span class="string">"  \"properties\": &#123;\n"</span> + <span class="string">"    \"_class\": &#123;\n"</span> + <span class="string">"      \"type\": \"keyword\",\n"</span></span><br><span class="line">  + <span class="string">"      \"index\": false,\n"</span> + <span class="string">"      \"doc_values\": false\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"description\": &#123;\n"</span></span><br><span class="line">  + <span class="string">"      \"type\": \"text\",\n"</span> + <span class="string">"      \"fielddata\": true\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"enabled\": &#123;\n"</span></span><br><span class="line">  + <span class="string">"      \"type\": \"boolean\"\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"name\": &#123;\n"</span> + <span class="string">"      \"type\": \"text\",\n"</span></span><br><span class="line">  + <span class="string">"      \"fielddata\": true\n"</span> + <span class="string">"    &#125;\n"</span> + <span class="string">"  &#125;\n"</span> + <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RestHighLevelClient client;</span><br></pre></td></tr></table></figure>
+<h3 id="22-创建索引"><a class="markdownIt-Anchor" href="#22-创建索引"></a> 2.2. 创建索引</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建索引</span></span><br><span class="line">CreateIndexRequest createIndexRequest = <span class="keyword">new</span> CreateIndexRequest(INDEX);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的 settings</span></span><br><span class="line">  createIndexRequest.settings(</span><br><span class="line">  Settings.builder().put(<span class="string">"index.number_of_shards"</span>, <span class="number">3</span>).put(<span class="string">"index.number_of_replicas"</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的 mapping</span></span><br><span class="line">  createIndexRequest.mapping(MAPPING_JSON, XContentType.JSON);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的别名</span></span><br><span class="line">  createIndexRequest.alias(<span class="keyword">new</span> Alias(INDEX_ALIAS));</span><br><span class="line"></span><br><span class="line">  AcknowledgedResponse createIndexResponse = client.indices().create(createIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">  Assertions.assertTrue(createIndexResponse.isAcknowledged());</span><br></pre></td></tr></table></figure>
+<h3 id="23-删除索引"><a class="markdownIt-Anchor" href="#23-删除索引"></a> 2.3. 删除索引</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 删除索引</span></span><br><span class="line">DeleteIndexRequest deleteIndexRequest = <span class="keyword">new</span> DeleteIndexRequest(INDEX);</span><br><span class="line">  AcknowledgedResponse deleteResponse = client.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">  Assertions.assertTrue(deleteResponse.isAcknowledged());</span><br></pre></td></tr></table></figure>
+<h3 id="24-判断索引是否存在"><a class="markdownIt-Anchor" href="#24-判断索引是否存在"></a> 2.4. 判断索引是否存在</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GetIndexRequest getIndexRequest = <span class="keyword">new</span> GetIndexRequest(INDEX);</span><br><span class="line">  Assertions.assertTrue(client.indices().exists(getIndexRequest, RequestOptions.DEFAULT));</span><br><span class="line">  GetIndexRequest getIndexAliasRequest = <span class="keyword">new</span> GetIndexRequest(INDEX_ALIAS);</span><br><span class="line">  Assertions.assertTrue(client.indices().exists(getIndexAliasRequest, RequestOptions.DEFAULT));</span><br></pre></td></tr></table></figure>
+<h2 id="3-文档-api"><a class="markdownIt-Anchor" href="#3-文档-api"></a> 3. 文档 API</h2>
+<h3 id="31-文档测试准备"><a class="markdownIt-Anchor" href="#31-文档测试准备"></a> 3.1. 文档测试准备</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INDEX = <span class="string">"mytest"</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INDEX_ALIAS = <span class="string">"mytest_alias"</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> User&#125; 的 mapping 结构（json形式）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MAPPING_JSON =</span><br><span class="line">  <span class="string">"&#123;\n"</span> + <span class="string">"  \"properties\": &#123;\n"</span> + <span class="string">"    \"_class\": &#123;\n"</span> + <span class="string">"      \"type\": \"keyword\",\n"</span></span><br><span class="line">  + <span class="string">"      \"index\": false,\n"</span> + <span class="string">"      \"doc_values\": false\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"description\": &#123;\n"</span></span><br><span class="line">  + <span class="string">"      \"type\": \"text\",\n"</span> + <span class="string">"      \"fielddata\": true\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"enabled\": &#123;\n"</span></span><br><span class="line">  + <span class="string">"      \"type\": \"boolean\"\n"</span> + <span class="string">"    &#125;,\n"</span> + <span class="string">"    \"name\": &#123;\n"</span> + <span class="string">"      \"type\": \"text\",\n"</span></span><br><span class="line">  + <span class="string">"      \"fielddata\": true\n"</span> + <span class="string">"    &#125;\n"</span> + <span class="string">"  &#125;\n"</span> + <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RestHighLevelClient client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeEach</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建索引</span></span><br><span class="line">  CreateIndexRequest createIndexRequest = <span class="keyword">new</span> CreateIndexRequest(INDEX);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的 settings</span></span><br><span class="line">  createIndexRequest.settings(</span><br><span class="line">  Settings.builder().put(<span class="string">"index.number_of_shards"</span>, <span class="number">3</span>).put(<span class="string">"index.number_of_replicas"</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的 mapping</span></span><br><span class="line">  createIndexRequest.mapping(MAPPING_JSON, XContentType.JSON);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置索引的别名</span></span><br><span class="line">  createIndexRequest.alias(<span class="keyword">new</span> Alias(INDEX_ALIAS));</span><br><span class="line"></span><br><span class="line">  AcknowledgedResponse response = client.indices().create(createIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">  Assertions.assertTrue(response.isAcknowledged());</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断索引是否存在</span></span><br><span class="line">  GetIndexRequest getIndexRequest = <span class="keyword">new</span> GetIndexRequest(INDEX_ALIAS);</span><br><span class="line">  Assertions.assertTrue(client.indices().exists(getIndexRequest, RequestOptions.DEFAULT));</span><br><span class="line">  GetIndexRequest getIndexAliasRequest = <span class="keyword">new</span> GetIndexRequest(INDEX_ALIAS);</span><br><span class="line">  Assertions.assertTrue(client.indices().exists(getIndexAliasRequest, RequestOptions.DEFAULT));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterEach</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">  <span class="comment">// 删除索引</span></span><br><span class="line">  DeleteIndexRequest request = <span class="keyword">new</span> DeleteIndexRequest(INDEX);</span><br><span class="line">  AcknowledgedResponse response = client.indices().delete(request, RequestOptions.DEFAULT);</span><br><span class="line">  Assertions.assertTrue(response.isAcknowledged());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="32-创建文档"><a class="markdownIt-Anchor" href="#32-创建文档"></a> 3.2. 创建文档</h3>
+<p>RestHighLevelClient Api 使用 <code>IndexRequest</code> 来构建创建文档的请求参数。</p>
+<p>【示例】创建 id 为 1 的文档</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">IndexRequest request = <span class="keyword">new</span> IndexRequest(<span class="string">"product"</span>);</span><br><span class="line">  request.id(<span class="string">"1"</span>);</span><br><span class="line">  Product product = <span class="keyword">new</span> Product();</span><br><span class="line">  product.setName(<span class="string">"机器人"</span>);</span><br><span class="line">  product.setDescription(<span class="string">"人工智能机器人"</span>);</span><br><span class="line">  product.setEnabled(<span class="keyword">true</span>);</span><br><span class="line">  String jsonString = JSONUtil.toJsonStr(product);</span><br><span class="line">  request.source(jsonString, XContentType.JSON);</span><br></pre></td></tr></table></figure>
+<p>同步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);</span><br></pre></td></tr></table></figure>
+<p>异步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 异步执行</span></span><br><span class="line">client.indexAsync(request, RequestOptions.DEFAULT, <span class="keyword">new</span> ActionListener&lt;IndexResponse&gt;() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(IndexResponse indexResponse)</span> </span>&#123;</span><br><span class="line">  System.out.println(indexResponse);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"执行失败"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="33-删除文档"><a class="markdownIt-Anchor" href="#33-删除文档"></a> 3.3. 删除文档</h3>
+<p>RestHighLevelClient Api 使用 <code>DeleteRequest</code> 来构建删除文档的请求参数。</p>
+<p>【示例】删除 id 为 1 的文档</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">DeleteRequest deleteRequest = <span class="keyword">new</span> DeleteRequest(INDEX_ALIAS, <span class="string">"1"</span>);</span><br></pre></td></tr></table></figure>
+<p>同步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);</span><br><span class="line">  System.out.println(deleteResponse);</span><br></pre></td></tr></table></figure>
+<p>异步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">client.deleteAsync(deleteRequest, RequestOptions.DEFAULT, <span class="keyword">new</span> ActionListener&lt;DeleteResponse&gt;() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(DeleteResponse deleteResponse)</span> </span>&#123;</span><br><span class="line">  System.out.println(deleteResponse);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"执行失败"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="34-更新文档"><a class="markdownIt-Anchor" href="#34-更新文档"></a> 3.4. 更新文档</h3>
+<p>RestHighLevelClient Api 使用 <code>UpdateRequest</code> 来构建更新文档的请求参数。</p>
+<p>【示例】更新 id 为 1 的文档</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">UpdateRequest updateRequest = <span class="keyword">new</span> UpdateRequest(INDEX_ALIAS, <span class="string">"1"</span>);</span><br><span class="line">  Product product3 = <span class="keyword">new</span> Product();</span><br><span class="line">  product3.setName(<span class="string">"扫地机器人"</span>);</span><br><span class="line">  product3.setDescription(<span class="string">"人工智能扫地机器人"</span>);</span><br><span class="line">  product3.setEnabled(<span class="keyword">true</span>);</span><br><span class="line">  String jsonString2 = JSONUtil.toJsonStr(product3);</span><br><span class="line">  updateRequest.doc(jsonString2, XContentType.JSON);</span><br></pre></td></tr></table></figure>
+<p>同步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">UpdateResponse updateResponse = client.update(updateRequest, RequestOptions.DEFAULT);</span><br><span class="line">  System.out.println(updateResponse);</span><br></pre></td></tr></table></figure>
+<p>异步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">client.updateAsync(updateRequest, RequestOptions.DEFAULT, <span class="keyword">new</span> ActionListener&lt;UpdateResponse&gt;() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(UpdateResponse updateResponse)</span> </span>&#123;</span><br><span class="line">  System.out.println(updateResponse);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"执行失败"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="35-查看文档"><a class="markdownIt-Anchor" href="#35-查看文档"></a> 3.5. 查看文档</h3>
+<p>RestHighLevelClient Api 使用 <code>GetRequest</code> 来构建查看文档的请求参数。</p>
+<p>【示例】查看 id 为 1 的文档</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GetRequest getRequest = <span class="keyword">new</span> GetRequest(INDEX_ALIAS, <span class="string">"1"</span>);</span><br></pre></td></tr></table></figure>
+<p>同步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);</span><br></pre></td></tr></table></figure>
+<p>异步执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">client.getAsync(getRequest, RequestOptions.DEFAULT, <span class="keyword">new</span> ActionListener&lt;GetResponse&gt;() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(GetResponse getResponse)</span> </span>&#123;</span><br><span class="line">  System.out.println(getResponse);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"执行失败"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="36-获取匹配条件的记录总数"><a class="markdownIt-Anchor" href="#36-获取匹配条件的记录总数"></a> 3.6. 获取匹配条件的记录总数</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"获取匹配条件的记录总数"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">count</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    SearchSourceBuilder sourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">    sourceBuilder.query(QueryBuilders.matchPhraseQuery(<span class="string">"customer_gender"</span>, <span class="string">"MALE"</span>));</span><br><span class="line">    sourceBuilder.trackTotalHits(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">    CountRequest countRequest = <span class="keyword">new</span> CountRequest(INDEX);</span><br><span class="line">    countRequest.source(sourceBuilder);</span><br><span class="line"></span><br><span class="line">    CountResponse countResponse = client.count(countRequest, RequestOptions.DEFAULT);</span><br><span class="line">    <span class="keyword">long</span> count = countResponse.getCount();</span><br><span class="line">    System.out.println(<span class="string">"命中记录数："</span> + count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="37-分页查询"><a class="markdownIt-Anchor" href="#37-分页查询"></a> 3.7. 分页查询</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource</span>(ints = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;)</span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"分页查询测试"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pageTest</span><span class="params">(<span class="keyword">int</span> page)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> offset = page * size;</span><br><span class="line">    SearchSourceBuilder sourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">    sourceBuilder.query(QueryBuilders.matchPhraseQuery(<span class="string">"customer_gender"</span>, <span class="string">"MALE"</span>));</span><br><span class="line">    sourceBuilder.from(offset);</span><br><span class="line">    sourceBuilder.size(size);</span><br><span class="line">    sourceBuilder.trackTotalHits(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">    SearchRequest searchRequest = <span class="keyword">new</span> SearchRequest(INDEX);</span><br><span class="line">    searchRequest.source(sourceBuilder);</span><br><span class="line">    SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);</span><br><span class="line">    SearchHit[] hits = response.getHits().getHits();</span><br><span class="line">    <span class="keyword">for</span> (SearchHit hit : hits) &#123;</span><br><span class="line">        KibanaSampleDataEcommerceBean bean =</span><br><span class="line">            BeanUtil.mapToBean(hit.getSourceAsMap(), KibanaSampleDataEcommerceBean<span class="class">.<span class="keyword">class</span>, <span class="title">true</span>,</span></span><br><span class="line"><span class="class">                               <span class="title">CopyOptions</span>.<span class="title">create</span>())</span>;</span><br><span class="line">        System.out.println(bean);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="38-条件查询"><a class="markdownIt-Anchor" href="#38-条件查询"></a> 3.8. 条件查询</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"条件查询"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">matchPhraseQuery</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    SearchRequest searchRequest = <span class="keyword">new</span> SearchRequest(INDEX);</span><br><span class="line">    SearchSourceBuilder sourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line"></span><br><span class="line">    BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();</span><br><span class="line">    boolQueryBuilder.must(QueryBuilders.matchPhraseQuery(<span class="string">"customer_last_name"</span>, <span class="string">"Jensen"</span>));</span><br><span class="line">    sourceBuilder.query(boolQueryBuilder);</span><br><span class="line">    sourceBuilder.trackTotalHits(<span class="keyword">true</span>);</span><br><span class="line">    searchRequest.source(sourceBuilder);</span><br><span class="line">    SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);</span><br><span class="line">    SearchHit[] hits = response.getHits().getHits();</span><br><span class="line">    <span class="keyword">for</span> (SearchHit hit : hits) &#123;</span><br><span class="line">        KibanaSampleDataEcommerceBean bean =</span><br><span class="line">            BeanUtil.mapToBean(hit.getSourceAsMap(), KibanaSampleDataEcommerceBean<span class="class">.<span class="keyword">class</span>, <span class="title">true</span>,</span></span><br><span class="line"><span class="class">                               <span class="title">CopyOptions</span>.<span class="title">create</span>())</span>;</span><br><span class="line">        System.out.println(bean);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-参考资料"><a class="markdownIt-Anchor" href="#4-参考资料"></a> 4. 参考资料</h2>
+<ul>
+<li><strong>官方</strong>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html" target="_blank" rel="noopener">Java High Level REST Client</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zhang Peng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dunwu.github.io/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/" title="ElasticSearch Java API 之 High Level REST Client">https://dunwu.github.io/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/blog/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 搜索引擎数据库</a>
+              <a href="/blog/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+              <a href="/blog/tags/API/" rel="tag"># API</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/blog/2022/02/22/elasticsearch-%E7%AE%80%E4%BB%8B/" rel="next" title="Elasticsearch 简介">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch 简介
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/blog/2022/03/01/elasticsearch-%E9%9B%86%E7%BE%A4%E5%92%8C%E5%88%86%E7%89%87/" rel="prev" title="Elasticsearch 集群和分片">
+                  Elasticsearch 集群和分片 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#elasticsearch-java-api-之-high-level-rest-client"><span class="nav-text"> ElasticSearch Java API 之 High Level REST Client</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-快速开始"><span class="nav-text"> 1. 快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-引入依赖"><span class="nav-text"> 1.1. 引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-创建连接和关闭"><span class="nav-text"> 1.2. 创建连接和关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-索引-api"><span class="nav-text"> 2. 索引 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-测试准备"><span class="nav-text"> 2.1. 测试准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-创建索引"><span class="nav-text"> 2.2. 创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-删除索引"><span class="nav-text"> 2.3. 删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-判断索引是否存在"><span class="nav-text"> 2.4. 判断索引是否存在</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文档-api"><span class="nav-text"> 3. 文档 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-文档测试准备"><span class="nav-text"> 3.1. 文档测试准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-创建文档"><span class="nav-text"> 3.2. 创建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-删除文档"><span class="nav-text"> 3.3. 删除文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-更新文档"><span class="nav-text"> 3.4. 更新文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-查看文档"><span class="nav-text"> 3.5. 查看文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36-获取匹配条件的记录总数"><span class="nav-text"> 3.6. 获取匹配条件的记录总数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-分页查询"><span class="nav-text"> 3.7. 分页查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-条件查询"><span class="nav-text"> 3.8. 条件查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-参考资料"><span class="nav-text"> 4. 参考资料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Zhang Peng"
+    src="/blog/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zhang Peng</p>
+  <div class="site-description" itemprop="description">Dunwu's Blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dunwu" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;dunwu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:forbreak@163.com" title="E-Mail &amp;rarr; mailto:forbreak@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Peng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">976k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:48</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-ajay4qmfci.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://dunwu.github.io/blog/2022/03/01/elasticsearch-java-api-%E4%B9%8B-high-level-rest-client/",
+            identifier: "2022/03/01/elasticsearch-java-api-之-high-level-rest-client/",
+            title: "ElasticSearch Java API 之 High Level REST Client"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-ajay4qmfci.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+</body>
+</html>

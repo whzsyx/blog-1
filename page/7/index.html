@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon.ico">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Dunwu&#39;s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dunwu">
+<meta property="og:url" content="https://dunwu.github.io/blog/page/7/index.html">
+<meta property="og:site_name" content="Dunwu">
+<meta property="og:description" content="Dunwu&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Zhang Peng">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dunwu.github.io/blog/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Dunwu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Dunwu" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dunwu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">大道至简，知易行难</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">102</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">173</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dunwu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/08/10/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/08/10/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E9%9D%A2%E8%AF%95/" class="post-title-link" itemprop="url">系统架构面试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 10:59:18" itemprop="dateCreated datePublished" datetime="2020-08-10T10:59:18+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">架构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/08/10/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E9%9D%A2%E8%AF%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/10/系统架构面试/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>983</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="系统架构面试"><a class="markdownIt-Anchor" href="#系统架构面试"></a> 系统架构面试</h1>
+<h2 id="1-如何设计一个秒杀系统"><a class="markdownIt-Anchor" href="#1-如何设计一个秒杀系统"></a> 1. 如何设计一个秒杀系统？</h2>
+<h3 id="11-秒杀系统的挑战"><a class="markdownIt-Anchor" href="#11-秒杀系统的挑战"></a> 1.1. 秒杀系统的挑战</h3>
+<p>秒杀的核心问题就是<strong>极高并发处理</strong>，由于系统要在瞬时承受平时数十倍甚至上百倍的流量，这往往超出系统上限，因此处理秒杀的<strong>核心思路是限流和缓存</strong>。</p>
+<h3 id="12-秒杀系统的解决思路"><a class="markdownIt-Anchor" href="#12-秒杀系统的解决思路"></a> 1.2. 秒杀系统的解决思路</h3>
+<ul>
+<li>系统上有拦截流量：尽可能在上游拦截和限制请求，限制流入后端的量，保证后端系统正常。 因为无论多少人参与秒杀，实际成交往往是有限的，而且远小于参加秒杀的人数，因此可以通过前端系统进行拦截，限制最终流入系统的请求数量，来保证系统正常进行。</li>
+<li>充分利用缓存：这是一个典型的读多写少的应用场景（一趟火车其实只有 2000 张票，200w 个人来买，最多 2000 个人下单成功，其他人都是查询库存，写比例只有 0.1%，读比例占 99.9%），非常适合使用缓存。</li>
+</ul>
+<h3 id="13-秒杀系统的解决方案"><a class="markdownIt-Anchor" href="#13-秒杀系统的解决方案"></a> 1.3. 秒杀系统的解决方案</h3>
+<p>秒杀系统具体方案如下：</p>
+<p><strong>（1）浏览器、客户端拦截重复请求</strong></p>
+<ul>
+<li>用户点击查询或购买按钮后，禁用按钮，避免用户重复提交请求。</li>
+<li>JS 代码中限制用户在限定时间内只允许提交一次请求</li>
+</ul>
+<p>基于此，大部分流量已被拦截。</p>
+<p><strong>（2）应用层拦截请求</strong></p>
+<p>浏览器、客户端拦截重复请求只能应付通过浏览器访问的用户。如果有人通过程序发送 http 请求，则无法拦截。针对这种情况的方案是：</p>
+<p>以页面缓存的方式，针对短时间内的同一个访问源（如同一个 IP、同一个 Session、同一个用户 ID 多次发送 HTTP 请求）或同样的查询请求（如大量请求都是查询某类商品的库存），都返回相同的展示页面。</p>
+<p>如此限流，又有大部分的流量被拦截</p>
+<p>（3）服务层请求拦截与数据缓存</p>
+<p>加入有黑客，控制了 10w 台肉鸡（并且假设买票不需要实名认证），前面的的限制都不起作用了。这时应该怎么办？</p>
+<ul>
+<li>
+<p>读请求（查库存） - 对于读请求，直接使用缓存即可，一般缓存服务器单机处理每秒 10w 个请求应该没什么问题。</p>
+</li>
+<li>
+<p>写请求（下单） - 由于服务层清楚的知道库存数量，所以完全可以根据库存数量进行限流。具体来说，就是把所有下单请求都丢该消息队列中，每次只取有限的写请求去数据层处理。当这些写请求处理完，更新一下缓存中的库存数，再去取下一批写请求，如果库存数不够，则消息队列的写请求全部返回&quot;已售罄&quot;的结果。</p>
+</li>
+</ul>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/54895548/answer/146924420" target="_blank" rel="noopener">如何设计秒杀系统？ - 阿里云云栖社区的回答 - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/54895548/answer/259218876" target="_blank" rel="noopener">如何设计秒杀系统？ - 网易云的回答 - 知乎</a></li>
+</ul>
+</blockquote>
+<h2 id="2-参考资料"><a class="markdownIt-Anchor" href="#2-参考资料"></a> 2. 参考资料</h2>
+<ul>
+<li><a href="https://www.zhihu.com/question/54895548/answer/146924420" target="_blank" rel="noopener">如何设计秒杀系统？ - 阿里云云栖社区的回答 - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/54895548/answer/259218876" target="_blank" rel="noopener">如何设计秒杀系统？ - 网易云的回答 - 知乎</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/08/10/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/08/10/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">领域驱动设计</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 10:59:18" itemprop="dateCreated datePublished" datetime="2020-08-10T10:59:18+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">架构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/08/10/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/10/领域驱动设计/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="领域驱动设计"><a class="markdownIt-Anchor" href="#领域驱动设计"></a> 领域驱动设计</h1>
+<h2 id="1-ddd-简介"><a class="markdownIt-Anchor" href="#1-ddd-简介"></a> 1. DDD 简介</h2>
+<h3 id="11-软件架构模式的演进"><a class="markdownIt-Anchor" href="#11-软件架构模式的演进"></a> 1.1. 软件架构模式的演进</h3>
+<p>**第一阶段是单机架构：**采用面向过程的设计方法，系统包括客户端 UI 层和数据库两层，采用 C/S 架构模式，整个系统围绕数据库驱动设计和开发，并且总是从设计数据库和字段开始。</p>
+<p>**第二阶段是集中式架构：**采用面向对象的设计方法，系统包括业务接入层、业务逻辑层和数据库层，采用经典的三层架构，也有部分应用采用传统的 SOA 架构。这种架构容易使系统变得臃肿，可扩展性和弹性伸缩性差。</p>
+<p>**第三阶段是分布式微服务架构：**随着微服务架构理念的提出，集中式架构正向分布式微服务架构演进。微服务架构可以很好地实现应用之间的解耦，解决单体应用扩展性和弹性伸缩能力不足的问题。</p>
+<p>在单机和集中式架构时代，系统分析、设计和开发往往是独立、分阶段割裂进行的。</p>
+<h3 id="12-什么是-ddd"><a class="markdownIt-Anchor" href="#12-什么是-ddd"></a> 1.2. 什么是 DDD</h3>
+<p>DDD 是一种处理高度复杂领域的<strong>设计思想</strong>，它试图分离技术实现的复杂性，并<strong>围绕业务概念构建领域模型来控制业务的复杂性</strong>，以解决软件难以理解，难以演进的问题。DDD 不是架构，而是一种架构设计方法论，它通过边界划分将复杂业务领域简单化，帮我们设计出清晰的领域和应用边界，可以很容易地实现架构演进。DDD 分为两个思维层面：</p>
+<ul>
+<li>战略设计主要从业务视角出发，建立业务领域模型，划分领域边界，建立通用语言的上下文边界，上下文边界可以作为微服务设计的参考边界。</li>
+<li>战术设计则从技术视角出发，侧重于领域模型的技术实现，完成软件开发和落地，包括：聚合根、实体、值对象、领域服务、应用服务和资源库等代码逻辑的设计和实现。</li>
+</ul>
+<h3 id="13-ddd-与微服务的关系"><a class="markdownIt-Anchor" href="#13-ddd-与微服务的关系"></a> 1.3. DDD 与微服务的关系</h3>
+<p><strong>DDD 是一种架构设计方法，微服务是一种架构风格</strong>。两者都是为了拆解业务复杂度：合理划分领域边界，持续调整现有架构，优化现有代码，以保持架构和代码的生命力，也就是我们常说的演进式架构。</p>
+<p>DDD 主要关注：<strong>从业务领域视角划分领域边界</strong>，构建通用语言进行高效沟通，通过业务抽象，建立领域模型，维持业务和代码的逻辑一致性。</p>
+<p>微服务主要关注：<strong>运行时的进程间通信、容错和故障隔离</strong>，实现去中心化数据管理和去中心化服务治理，关注微服务的独立开发、测试、构建和部署。</p>
+<h2 id="2-ddd-核心概念"><a class="markdownIt-Anchor" href="#2-ddd-核心概念"></a> 2. DDD 核心概念</h2>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200719231154.png" alt="img" /></p>
+<h3 id="21-域"><a class="markdownIt-Anchor" href="#21-域"></a> 2.1. 域</h3>
+<ul>
+<li><strong>领域</strong>：领域具体指一种特定的<strong>范围</strong>。领域是用来限定业务边界的，那么就会有大小之分，领域越大，业务范围就越大，反之则相反。</li>
+<li><strong>子域</strong>：领域可以进一步划分为子领域。我们把划分出来的多个子领域称为子域，每个子域对应一个更小的问题域或更小的业务范围。</li>
+<li><strong>核心域</strong>：决定产品和公司核心竞争力的子域是核心域。</li>
+<li><strong>通用域</strong>：同时被多个子域使用的通用功能子域是通用域。</li>
+<li><strong>支撑域</strong>：还有一种功能子域是必需的，但既非核心域也非通用域，它就是支撑域。</li>
+</ul>
+<blockquote>
+<p><strong>领域的核心思想就是将问题域逐级细分，来降低业务理解和系统实现的复杂度</strong>。通过领域细分，逐步缩小微服务需要解决的问题域，构建合适的领域模型，而领域模型映射成系统就是微服务了。</p>
+<p>核心域、支撑域和通用域的主要目标是：通过领域划分，区分不同子域在公司内的不同功能属性和重要性，从而公司可对不同子域采取不同的资源投入和建设策略，其关注度也会不一样。</p>
+</blockquote>
+<h3 id="22-通用语言和上下文边界"><a class="markdownIt-Anchor" href="#22-通用语言和上下文边界"></a> 2.2. 通用语言和上下文边界</h3>
+<p><strong>通用语言</strong>：通过团队交流达成共识性的，能够简单、清晰、准确描述业务涵义和规则的语言。</p>
+<p><strong>上下文边界</strong>：限界就是领域的边界，而上下文则是语义环境。通过领域的上下文边界，我们就可以在统一的领域边界内用统一的语言进行交流。综合一下，上下文边界的定义就是：用来封装通用语言和领域对象，提供上下文环境，保证在领域之内的一些术语、业务相关对象等（通用语言）有一个确切的含义，没有二义性。这个边界定义了模型的适用范围，使团队所有成员能够明确地知道什么应该在模型中实现，什么不应该在模型中实现。</p>
+<h3 id="23-实体和值对象"><a class="markdownIt-Anchor" href="#23-实体和值对象"></a> 2.3. 实体和值对象</h3>
+<p>实体是多个属性、操作或行为的载体。在事件风暴中，我们可以根据命令、操作或者事件，找出产生这些行为的业务实体对象，进而按照一定的业务规则将依存度高和业务关联紧密的多个实体对象和值对象进行聚类，形成聚合。你可以这么理解，实体和值对象是组成领域模型的基础单元。</p>
+<p>本质上，实体是看得到、摸得着的实实在在的业务对象，实体具有业务属性、业务行为和业务逻辑。而值对象只是若干个属性的集合，只有数据初始化操作和有限的不涉及修改数据的行为，基本不包含业务逻辑。值对象的属性集虽然在物理上独立出来了，但在逻辑上它仍然是实体属性的一部分，用于描述实体的特征。</p>
+<h3 id="24-聚合和聚合跟"><a class="markdownIt-Anchor" href="#24-聚合和聚合跟"></a> 2.4. 聚合和聚合跟</h3>
+<p>领域模型内的实体和值对象就好比个体，而能让实体和值对象协同工作的组织就是聚合，它用来确保这些领域对象在实现共同的业务逻辑时，能保证数据的一致性。</p>
+<p>聚合就是由业务和逻辑紧密关联的实体和值对象组合而成的，聚合是数据修改和持久化的基本单元，每一个聚合对应一个仓储，实现数据的持久化。聚合有一个聚合根和上下文边界，这个边界根据业务单一职责和高内聚原则，定义了聚合内部应该包含哪些实体和值对象，而聚合之间的边界是松耦合的。</p>
+<p>聚合根的主要目的是为了避免由于复杂数据模型缺少统一的业务规则控制，而导致聚合、实体之间数据不一致性的问题。如果把聚合比作组织，那聚合根就是这个组织的负责人。聚合根也称为根实体，它不仅是实体，还是聚合的管理者。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200719152031.png" alt="img" /></p>
+<h4 id="241-聚合设计步骤"><a class="markdownIt-Anchor" href="#241-聚合设计步骤"></a> 2.4.1. 聚合设计步骤</h4>
+<ul>
+<li>第 1 步：采用事件风暴，根据业务行为，梳理出所有的实体和值对象。</li>
+<li>第 2 步：从众多实体中选出适合作为对象管理者的根实体，也就是聚合根。判断一个实体<br />
+是否是聚合根，你可以结合以下场景分析：是否有独立的生命周期？是否有全局唯一 ID？<br />
+是否可以创建或修改其它对象？是否有专门的模块来管这个实体。</li>
+<li>第 3 步：根据业务单一职责和高内聚原则，找出与聚合根关联的所有紧密依赖的实体和值<br />
+对象。</li>
+<li>第 4 步：在聚合内根据聚合根、实体和值对象的依赖关系，画出对象的引用和依赖模型。</li>
+<li>第 5 步：多个聚合根据业务语义和上下文一起划分到同一个限界上下文内。</li>
+</ul>
+<h4 id="242-聚合设计原则"><a class="markdownIt-Anchor" href="#242-聚合设计原则"></a> 2.4.2. 聚合设计原则</h4>
+<ul>
+<li>在一致性边界内建模真正的不变条件。</li>
+<li>设计小聚合。</li>
+<li>通过唯一标识引用其它聚合。</li>
+<li>在边界之外使用最终一致性。</li>
+<li>通过应用层实现跨聚合的服务调用。</li>
+</ul>
+<h2 id="3-架构模型"><a class="markdownIt-Anchor" href="#3-架构模型"></a> 3. 架构模型</h2>
+<h3 id="31-ddd-架构"><a class="markdownIt-Anchor" href="#31-ddd-架构"></a> 3.1. DDD 架构</h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200719223353.png" alt="img" /></p>
+<p>三层架构向 DDD 分层架构演进，主要发生在业务逻辑层和数据访问层。</p>
+<p>DDD 分层架构包含用户接口层、应用层、领域层和基础层。通过这些层次划分，我们可以明确微服务各层的职能，划定各领域对象的边界，确定各领域对象的协作方式。</p>
+<h3 id="32-整洁架构"><a class="markdownIt-Anchor" href="#32-整洁架构"></a> 3.2. 整洁架构</h3>
+<p>在整洁架构里，同心圆代表应用软件的不同部分，从里到外依次是领域模型、领域服务、应用服务和最外围的容易变化的内容，比如用户界面和基础设施。</p>
+<p>整洁架构最主要的原则是依赖原则，它定义了各层的依赖关系，越往里依赖越低，代码级别越高，越是核心能力。外圆代码依赖只能指向内圆，内圆不需要知道外圆的任何情况。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200719223906.png" alt="img" /></p>
+<h3 id="33-六边形架构"><a class="markdownIt-Anchor" href="#33-六边形架构"></a> 3.3. 六边形架构</h3>
+<p>六边形架构的核心理念是：应用是通过端口与外部进行交互的。我想这也是微服务架构下 API 网关盛行的主要原因吧。</p>
+<p>也就是说，在下图的六边形架构中，红圈内的核心业务逻辑（应用程序和领域模型）与外部资源（包括 APP、Web 应用以及数据库资源等）完全隔离，仅通过适配器进行交互。它解决了业务逻辑与用户界面的代码交错问题，很好地实现了前后端分离。六边形架构各层的依赖关系与整洁架构一样，都是由外向内依赖。</p>
+<p>六边形架构将系统分为内六边形和外六边形两层，这两层的职能划分如下：</p>
+<p>红圈内的六边形实现应用的核心业务逻辑；</p>
+<p>外六边形完成外部应用、驱动和基础资源等的交互和访问，对前端应用以 API 主动适配的方式提供服务，对基础资源以依赖倒置被动适配的方式实现资源访问。</p>
+<h3 id="34-三种架构对比"><a class="markdownIt-Anchor" href="#34-三种架构对比"></a> 3.4. 三种架构对比</h3>
+<p>这三种架构模型的设计思想正是微服务架构高内聚低耦合原则的完美体现。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200719224313.png" alt="img" /></p>
+<h4 id="341-架构模型和中台-微服务的联系"><a class="markdownIt-Anchor" href="#341-架构模型和中台-微服务的联系"></a> 3.4.1. 架构模型和中台、微服务的联系</h4>
+<p>中台本质上是领域的子域，它可能是核心域，也可能是通用域或支撑域。通常大家认为阿里的中台对应 DDD 的通用域，将通用的公共能力沉淀为中台，对外提供通用共享服务。</p>
+<p>DDD、中台、微服务这三者之间似乎没什么关联，实际上它们的关系是非常紧密的，组合在一起可以作为<br />
+一个理论体系用于你的中台和微服务设计。</p>
+<h4 id="342-中台建设要聚焦领域模型"><a class="markdownIt-Anchor" href="#342-中台建设要聚焦领域模型"></a> 3.4.2. 中台建设要聚焦领域模型</h4>
+<p>中台需要站在全企业的高度考虑能力的共享和复用。</p>
+<p>中台设计时，我们需要建立中台内所有限界上下文的领域模型，DDD 建模过程中会考虑架构演进和功能的重新组合。领域模型建立的过程会对业务和应用进行清晰的逻辑和物理边界（微服务）划分。领域模型的结果会影响到后续的系统模型、架构模型和代码模型，最终影响到微服务的拆分和项目落地。</p>
+<h4 id="343-微服务要有合理的架构分层"><a class="markdownIt-Anchor" href="#343-微服务要有合理的架构分层"></a> 3.4.3. 微服务要有合理的架构分层</h4>
+<p>微服务设计要有分层的设计思想，让各层各司其职，建立松耦合的层间关系。</p>
+<p>不要把与领域无关的逻辑放在领域层实现，保证领域层的纯洁和领域逻辑的稳定，避免污染领域模型。也不要把领域模型的业务逻辑放在应用层，这样会导致应用层过于庞大，最终领域模型会失焦。</p>
+<h4 id="344-应用和资源的解耦与适配"><a class="markdownIt-Anchor" href="#344-应用和资源的解耦与适配"></a> 3.4.4. 应用和资源的解耦与适配</h4>
+<p>传统以数据为中心的设计模式，应用会对数据库、缓存、文件系统等基础资源产生严重依赖。</p>
+<p>正是由于它们之间的这种强依赖的关系，我们一旦更换基础资源就会对应用产生很大的影响，因此需要为应用和资源解耦。</p>
+<h2 id="4-中台战略"><a class="markdownIt-Anchor" href="#4-中台战略"></a> 4. 中台战略</h2>
+<h3 id="41-平台不是中台"><a class="markdownIt-Anchor" href="#41-平台不是中台"></a> 4.1. 平台不是中台</h3>
+<p>中台源于平台，但它的战略高度要比平台高很多。</p>
+<p><strong>平台只是将部分通用的公共能力独立为共享平台</strong>。虽然可以通过 API 或者数据对外提供公共共享服务，解决系统重复建设的问题，但这类平台并没有和企业内的其它平台或应用，实现页面、业务流程和数据从前端到后端的全面融合，并且<strong>没有将核心业务服务链路作为一个整体方案考虑，各平台仍然是分离且独立的</strong>。</p>
+<p>简单的理解就是把传统的前后台体系中的后台进行了细分。阿里巴巴提出了<strong>大中台小前台</strong>的战略。就是强化业务和技术中台，把前端的应用变得更小更灵活。当中台越强大，能力就越强，越能更好的快速响应前台的业务需求。打个比喻，就是土壤越肥沃，越适合生长不同的生物，打造好的生态系统。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716194609.png" alt="img" /></p>
+<h3 id="42-什么是中台"><a class="markdownIt-Anchor" href="#42-什么是中台"></a> 4.2. 什么是中台</h3>
+<p>中台是一个基础的理念和架构，我们要把所有的基础服务用中台的思路建设，进行联通，共同支持上端的业务。业务中台更多的是支持在线业务，数据中台提供了基础数据处理能力和很多的数据产品给所有业务方去用。业务中台、数据中台、算法中台等等一起提供对上层业务的支撑。</p>
+<p>中台的关键词：<strong>共享、联通、融合和创新</strong>。联通是前台以及中台之间的联通，融合是前台流程和数据的融合，并以共享的方式支持前端一线业务的发展和创新。其中最关键的是快速响应能力和企业级的无缝联通和融合能力，尤其是对于跨业经营的超大型企业来说至关重要。</p>
+<h3 id="43-数字化转型中台"><a class="markdownIt-Anchor" href="#43-数字化转型中台"></a> 4.3. 数字化转型中台</h3>
+<h3 id="44-前中后台协同"><a class="markdownIt-Anchor" href="#44-前中后台协同"></a> 4.4. 前中后台协同</h3>
+<h4 id="441-前台"><a class="markdownIt-Anchor" href="#441-前台"></a> 4.4.1. 前台</h4>
+<p>在前台设计中我们可以借鉴微前端的设计思想，在企业内不仅实现前端解耦和复用，还可以根据核心链路和业务流程，通过对微前端页面的动态组合和流程编排，实现前台业务的融合。</p>
+<p>前端页面可以很自然地融合到不同的终端和渠道应用核心业务链路中，实现前端页面、流程和功能复用。</p>
+<h4 id="442-中台"><a class="markdownIt-Anchor" href="#442-中台"></a> 4.4.2. 中台</h4>
+<p>业务中台的建设可采用领域驱动设计方法，通过领域建模，将可复用的公共能力从各个单体剥离，沉淀并组合，采用微服务架构模式，建设成为可共享的通用能力中台。</p>
+<p>同样的，我们可以将核心能力用微服务架构模式，建设成为可面向不同渠道和场景的可复用的核心能力中台。 业务中台向前台、第三方和其它中台提供 API 服务，实现通用能力和核心能力的复用。</p>
+<p>数据中台的主要目标是打通数据孤岛，实现业务融合和创新，包括三大主要职能：</p>
+<ul>
+<li>一是完成企业全域数据的采集与存储，实现各不同业务类别中台数据的汇总和集中管理。</li>
+<li>二是按照标准的数据规范或数据模型，将数据按照不同主题域或场景进行加工和处理，形成面向不同主题和场景的数据应用，比如客户视图、代理人视图、渠道视图、机构视图等不同数据体系。</li>
+<li>三是建立业务需求驱动的数据体系，基于各个维度的数据，深度萃取数据价值，支持业务和商业模式的创新。</li>
+</ul>
+<p>相应的，数据中台的建设就可分为三步走：</p>
+<ul>
+<li>第一步实现各中台业务数据的汇集，解决数据孤岛和初级数据共享问题。</li>
+<li>第二步实现企业级实时或非实时全维度数据的深度融合、加工和共享。</li>
+<li>第三步萃取数据价值，支持业务创新，加速从数据转换为业务价值的过程。</li>
+</ul>
+<h4 id="443-后台"><a class="markdownIt-Anchor" href="#443-后台"></a> 4.4.3. 后台</h4>
+<p>前台主要面向客户以及终端销售者，实现营销推广以及交易转化；中台主要面向运营人员，完成运营支撑；后台主要面向后台管理人员，实现流程审核、内部管理以及后勤支撑，比如采购、人力、财务和 OA 等系统。</p>
+<h3 id="45-ddd-中台和微服务的协作"><a class="markdownIt-Anchor" href="#45-ddd-中台和微服务的协作"></a> 4.5. DDD、中台和微服务的协作</h3>
+<p>传统企业可以将需要共享的公共能力进行领域建模，建设可共享的通用中台。除此之外，传统企业还会将核心能力进行领域建模，建设面向不同渠道的可复用的核心中台。</p>
+<h3 id="46-如何构建中台"><a class="markdownIt-Anchor" href="#46-如何构建中台"></a> 4.6. 如何构建中台</h3>
+<h4 id="461-自顶向下策略"><a class="markdownIt-Anchor" href="#461-自顶向下策略"></a> 4.6.1. 自顶向下策略</h4>
+<p>自顶向下的策略适用于全新的应用系统建设，或旧系统推倒重建的情况。这种策略是先做顶层设计，从最高领域逐级分解为中台，分别建立领域模型，根据业务属性分为通用中台或核心中台。领域建模过程主要基于业务现状，暂时不考虑系统现状。</p>
+<h4 id="462-自顶向下策略"><a class="markdownIt-Anchor" href="#462-自顶向下策略"></a> 4.6.2. 自顶向下策略</h4>
+<p>自底向上策略适用于遗留系统业务模型的演进式重构。这种策略是基于业务和系统现状完成领域建模。首先分别完成系统所在业务域的领域建模；然后对齐业务域，找出具有同类或相似业务功能的领域模型，对比分析领域模型的差异，重组领域对象，重构领域模型。这个过程会沉淀公共和复用的业务能力，会将分散的业务模型整合。</p>
+<h4 id="463-构建步骤"><a class="markdownIt-Anchor" href="#463-构建步骤"></a> 4.6.3. 构建步骤</h4>
+<p>第一步：锁定系统所在业务域，构建领域模型。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200720063540.png" alt="img" /></p>
+<p>第二步：对齐业务域，构建中台业务模型。</p>
+<p>第三步：中台归类，根据领域模型设计微服务。</p>
+<h2 id="5-边界"><a class="markdownIt-Anchor" href="#5-边界"></a> 5. 边界</h2>
+<p>逻辑边界：微服务内聚合之间的边界是逻辑边界。它是一个虚拟的边界，强调业务的内聚，可根据需要变成物理边界，也就是说聚合也可以独立为微服务。</p>
+<p>物理边界：微服务之间的边界是物理边界。它强调微服务部署和运行的隔离，关注微服务的服务调用、容错和运行等。</p>
+<p>代码边界：不同层或者聚合之间代码目录的边界是代码边界。它强调的是代码之间的隔离，方便架构演进时代码的重组。</p>
+<p>通过以上边界，我们可以让业务能力高内聚、代码松耦合，且清晰的边界，可以快速实现微服务代码的拆分和组合，轻松实现微服务架构演进。但有一点一定要格外注意，边界清晰的微服务，不是大单体向小单体的演进。</p>
+<h2 id="6-参考资料"><a class="markdownIt-Anchor" href="#6-参考资料"></a> 6. 参考资料</h2>
+<ul>
+<li><a href="https://time.geekbang.org/column/intro/100037301" target="_blank" rel="noopener">DDD 实战课</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/08/10/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/08/10/readme/" class="post-title-link" itemprop="url">README</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 10:59:18" itemprop="dateCreated datePublished" datetime="2020-08-10T10:59:18+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/UML/" itemprop="url" rel="index">
+                    <span itemprop="name">UML</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/08/10/readme/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/10/readme/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>289</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="uml-教程"><a class="markdownIt-Anchor" href="#uml-教程"></a> UML 教程</h1>
+<blockquote>
+<p>统一建模语言（英语 - Unified Modeling Language，缩写 UML）是非专利的第三代建模和规约语言。UML 是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML 展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
+</blockquote>
+<h2 id="内容"><a class="markdownIt-Anchor" href="#内容"></a> 📖 内容</h2>
+<ul>
+<li><a href="01.UML%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.md">UML 快速入门</a></li>
+<li><a href="02.UML%E7%BB%93%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9B%BE.md">UML 结构建模图</a></li>
+<li><a href="03.UML%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1%E5%9B%BE.md">UML 行为建模图</a></li>
+</ul>
+<h2 id="资料"><a class="markdownIt-Anchor" href="#资料"></a> 📚 资料</h2>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">Wiki-UML</a></li>
+<li><a href="https://sparxsystems.cn/resources/uml2_tutorial/index.html" target="_blank" rel="noopener">Sparx UML 教程</a></li>
+<li><a href="https://www.omg.org/spec/UML" target="_blank" rel="noopener">OMG UML</a></li>
+<li><a href="https://www.tutorialspoint.com/uml/index.htm" target="_blank" rel="noopener">UML Tutorial</a></li>
+<li><a href="https://www.w3cschool.cn/uml_tutorial/" target="_blank" rel="noopener">W3Cschool UML 教程</a></li>
+<li><a href="https://blog.csdn.net/soft_zzti/article/details/79811923" target="_blank" rel="noopener">UML 学习入门就这一篇文章</a></li>
+</ul>
+<h2 id="传送"><a class="markdownIt-Anchor" href="#传送"></a> 🚪 传送</h2>
+<p>◾ 🏠 <a href="https://github.com/dunwu/design" target="_blank" rel="noopener">DESIGN 首页</a> ◾ 🎯 <a href="https://github.com/dunwu/blog" target="_blank" rel="noopener">我的博客</a> ◾</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/08/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/08/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 10:59:18" itemprop="dateCreated datePublished" datetime="2020-08-10T10:59:18+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/08/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/10/设计模式/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>580</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式"><a class="markdownIt-Anchor" href="#设计模式"></a> 设计模式</h1>
+<blockquote>
+<p><strong>设计模式</strong>是软件设计中常见问题的典型解决方案。</p>
+</blockquote>
+<h2 id="内容"><a class="markdownIt-Anchor" href="#内容"></a> 📖 内容</h2>
+<p><a href="25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%88%99.md">面向对象原则</a></p>
+<h3 id="创建型模式"><a class="markdownIt-Anchor" href="#创建型模式"></a> 创建型模式</h3>
+<blockquote>
+<p>创建型模式提供了创建对象的机制， 能够提升已有代码的灵活性和可复用性。</p>
+</blockquote>
+<ul>
+<li><a href="01.%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.md">简单工厂模式 (Simple Factory)</a></li>
+<li><a href="02.%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F.md">工厂方法模式 (Factory Method)</a></li>
+<li><a href="03.%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.md">抽象工厂模式 (Abstract Factory)</a></li>
+<li><a href="04.%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F.md">建造者模式 (Builder)</a></li>
+<li><a href="05.%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F.md">原型模式 (Prototype)</a></li>
+<li><a href="06.%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.md">单例模式 (Singleton)</a></li>
+</ul>
+<h3 id="结构型模式"><a class="markdownIt-Anchor" href="#结构型模式"></a> 结构型模式</h3>
+<blockquote>
+<p>结构型模式介绍如何将对象和类组装成较大的结构， 并同时保持结构的灵活和高效。</p>
+</blockquote>
+<ul>
+<li><a href="07.%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F.md">适配器模式 (Adapter)</a></li>
+<li><a href="08.%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F.md">桥接模式 (Bridge)</a></li>
+<li><a href="09.%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F.md">组合模式 (Composite)</a></li>
+<li><a href="10.%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F.md">装饰模式 (Decorator)</a></li>
+<li><a href="11.%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.md">外观模式 (Facade)</a></li>
+<li><a href="12.%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F.md">享元模式 (Flyweight)</a></li>
+<li><a href="13.%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.md">代理模式 (Proxy)</a></li>
+</ul>
+<h3 id="行为型模式"><a class="markdownIt-Anchor" href="#行为型模式"></a> 行为型模式</h3>
+<blockquote>
+<p>行为模式负责对象间的高效沟通和职责委派。</p>
+</blockquote>
+<ul>
+<li><a href="14.%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F.md">模板方法模式 (Template Method)</a></li>
+<li><a href="15.%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F.md">命令模式 (Command)</a></li>
+<li><a href="16.%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.md">迭代器模式 (Iterator)</a></li>
+<li><a href="17.%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md">观察者模式 (Observer)</a></li>
+<li><a href="18.%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F.md">解释器模式 (Interpreter)</a></li>
+<li><a href="19.%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F.md">中介者模式 (Mediator)</a></li>
+<li><a href="20.%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F.md">职责链模式 (Chain of Responsibility)</a></li>
+<li><a href="21.%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F.md">备忘录模式 (Memento)</a></li>
+<li><a href="22.%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md">策略模式 (Strategy)</a></li>
+<li><a href="23.%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F.md">访问者模式 (Visitor)</a></li>
+<li><a href="24.%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F.md">状态模式 (State)</a></li>
+</ul>
+<h2 id="资料"><a class="markdownIt-Anchor" href="#资料"></a> 📚 资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/2243615/" target="_blank" rel="noopener">《Head First 设计模式》</a></li>
+<li><a href="https://book.douban.com/subject/2334288/" target="_blank" rel="noopener">《大话设计模式》</a></li>
+<li><a href="https://refactoringguru.cn/design-patterns/catalog" target="_blank" rel="noopener">设计模式教程</a></li>
+</ul>
+<h2 id="传送"><a class="markdownIt-Anchor" href="#传送"></a> 🚪 传送</h2>
+<p>◾ 🏠 <a href="https://github.com/dunwu/design" target="_blank" rel="noopener">DESIGN 首页</a> ◾ 🎯 <a href="https://github.com/dunwu/blog" target="_blank" rel="noopener">我的博客</a> ◾</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/21/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/21/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">微服务基本原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-21 15:35:00" itemprop="dateCreated datePublished" datetime="2020-07-21T15:35:00+08:00">2020-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式应用</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/21/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/21/微服务基本原理/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="微服务基本原理"><a class="markdownIt-Anchor" href="#微服务基本原理"></a> 微服务基本原理</h1>
+<h2 id="1-微服务简介"><a class="markdownIt-Anchor" href="#1-微服务简介"></a> 1. 微服务简介</h2>
+<h3 id="11-什么是微服务架构"><a class="markdownIt-Anchor" href="#11-什么是微服务架构"></a> 1.1. 什么是微服务架构</h3>
+<p>互联网应用架构大致的演进方向为：单体架构 -&gt; 服务化架构 -&gt; 微服务架构。</p>
+<p>微服务架构的特点：</p>
+<ul>
+<li><strong>服务拆分粒度更细</strong>：根据业务拆分。</li>
+<li><strong>独立部署</strong>：每个服务部署在物理上隔离，互不影响。</li>
+<li><strong>独立维护</strong>：根据组织架构拆分，分团队维护。</li>
+<li><strong>服务治理</strong>：服务数量变多，需要有统一的服务治理平台。</li>
+</ul>
+<h3 id="12-如何权衡微服务的利弊"><a class="markdownIt-Anchor" href="#12-如何权衡微服务的利弊"></a> 1.2. 如何权衡微服务的利弊</h3>
+<p>优点</p>
+<ul>
+<li>强模块化边界</li>
+<li>可独立部署</li>
+<li>技术多样性</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>分布式复杂度</li>
+<li>最终一致性</li>
+<li>运维复杂度</li>
+<li>测试复杂度</li>
+</ul>
+<h3 id="13-康威定律"><a class="markdownIt-Anchor" href="#13-康威定律"></a> 1.3. 康威定律</h3>
+<ul>
+<li>第一定律：组织沟通方式会通过系统设计表达出来</li>
+<li>第二定律：时间再多一件事情也不可能做的完美，但总有时间做完一件事情</li>
+<li>第三定律：线型系统和线型组织架构间有潜在的异质同态特性</li>
+<li>第四定律：大的系统组织总是比小系统更倾向于分解</li>
+</ul>
+<h3 id="14-如何拆分微服务"><a class="markdownIt-Anchor" href="#14-如何拆分微服务"></a> 1.4. 如何拆分微服务</h3>
+<p>应用微服务化架构前，要思考几个问题：</p>
+<p>什么时候进行服务化拆分？如何拆分服务？</p>
+<p>当应用复杂度、开发团队膨胀到难以维护时，就该考虑服务化拆分了。</p>
+<p>拆分服务的思考维度：</p>
+<ul>
+<li><strong>业务维度</strong>：业务和数据关系密切的应该放在一起。</li>
+<li><strong>功能维度</strong>：公共功能聚合为一个服务。</li>
+<li><strong>组织架构</strong>：根据实际组织架构，天然分为不同的团队，每个团队独立维护若干微服务。</li>
+</ul>
+<p>拆分服务的前置条件：</p>
+<p>应用微服务架构要先解决以下问题：</p>
+<ul>
+<li>服务如何定</li>
+<li>服务如何发布和订阅</li>
+<li>服务如何监控</li>
+<li>服务如何治理</li>
+<li>故障如何定位</li>
+</ul>
+<h2 id="2-微服务技术架构"><a class="markdownIt-Anchor" href="#2-微服务技术架构"></a> 2. 微服务技术架构</h2>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716195006.png" alt="img" /></p>
+<p><strong>第一层：接入层</strong></p>
+<p>外部设备访问的统一接入层。</p>
+<p><strong>第二层：聚合服务层</strong></p>
+<p>对下层的基础服务做一些聚合，剪裁的工作，适配上层不同设备的数据输出。</p>
+<p><strong>第三层：基础服务层</strong></p>
+<p>比较细粒度的微服务层，提供基础的核心服务，公共服务。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716195117.png" alt="img" /></p>
+<h2 id="3-服务注册发现"><a class="markdownIt-Anchor" href="#3-服务注册发现"></a> 3. 服务注册发现</h2>
+<p>在微服务架构下，主要有三种角色：</p>
+<ul>
+<li>服务提供者（RPC Server / Provider）</li>
+<li>服务消费者（RPC Client / Consumer）</li>
+<li>服务注册中心（Registry）</li>
+</ul>
+<p>注册中心的实现依赖以下机制：</p>
+<ul>
+<li>注册中心 API</li>
+<li>集群部署：如果注册中心是单点，无法保障高可用。</li>
+<li>元数据存储：例如 ZooKeeper 将数据以层次化的目录结构存储。</li>
+<li>服务健康检查：使用长连接或心跳探测方式检查服务健康状态。</li>
+<li>服务状态变更通知：可以基于订阅者模式实现，例如 ZooKeeper 的 Watch 机制。</li>
+<li>白名单机制</li>
+</ul>
+<p>注册中心的服务注册和发现都是基于 API 的。一般需要支持以下功能：</p>
+<ul>
+<li>服务注册</li>
+<li>服务注销</li>
+<li>接口续约（心跳）</li>
+<li>服务订阅</li>
+<li>可用服务同步</li>
+<li>服务查询</li>
+<li>服务修改</li>
+</ul>
+<h3 id="31-注册中心的工作流程"><a class="markdownIt-Anchor" href="#31-注册中心的工作流程"></a> 3.1. 注册中心的工作流程</h3>
+<p>一般来讲，注册中心的工作流程是：</p>
+<ul>
+<li>服务提供者在启动时，根据服务发布文件中配置的发布信息向注册中心注册自己的服务。</li>
+<li>服务消费者在启动时，根据消费者配置文件中配置的服务信息向注册中心订阅自己所需要的服务。</li>
+<li>注册中心返回服务提供者地址列表给服务消费者。</li>
+<li>当服务提供者发生变化，比如有节点新增或者销毁，注册中心将变更通知给服务消费者。</li>
+</ul>
+<h3 id="32-注册中心实现模式"><a class="markdownIt-Anchor" href="#32-注册中心实现模式"></a> 3.2. 注册中心实现模式</h3>
+<h4 id="321-应用内注册和发现"><a class="markdownIt-Anchor" href="#321-应用内注册和发现"></a> 3.2.1. 应用内注册和发现</h4>
+<p>采用应用内注册与发现的方式，最典型的案例要属 Netflix 开源的 Eureka，官方架构图如下。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200720194412.png" alt="img" /></p>
+<p>对着这张图，我来介绍下 Eureka 的架构，它主要由三个重要的组件组成：</p>
+<ul>
+<li>Eureka Server：注册中心的服务端，实现了服务信息注册、存储以及查询等功能。</li>
+<li>服务端的 Eureka Client：集成在服务端的注册中心 SDK，服务提供者通过调用 SDK，实现服务注册、反注册等功能。</li>
+<li>客户端的 Eureka Client：集成在客户端的注册中心 SDK，服务消费者通过调用 SDK，实现服务订阅、服务更新等功能。</li>
+</ul>
+<h4 id="322-应用外注册和发现"><a class="markdownIt-Anchor" href="#322-应用外注册和发现"></a> 3.2.2. 应用外注册和发现</h4>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200720194519.png" alt="img" /></p>
+<p>通过这张架构图，可以看出来使用 Consul 实现应用外服务注册和发现主要依靠三个重要的组件：</p>
+<ul>
+<li>Consul：注册中心的服务端，实现服务注册信息的存储，并提供注册和发现服务。</li>
+<li><a href="https://github.com/gliderlabs/registrator" target="_blank" rel="noopener">Registrator</a>：一个开源的第三方服务管理器项目，它通过监听服务部署的 Docker 实例是否存活，来负责服务提供者的注册和销毁。</li>
+<li><a href="https://github.com/hashicorp/consul-template" target="_blank" rel="noopener">Consul Template</a>：定时从注册中心服务端获取最新的服务提供者节点列表并刷新 LB 配置（比如 Nginx 的 upstream），这样服务消费者就通过访问 Nginx 就可以获取最新的服务提供者信息。</li>
+</ul>
+<h4 id="323-注册中心选型"><a class="markdownIt-Anchor" href="#323-注册中心选型"></a> 3.2.3. 注册中心选型</h4>
+<h5 id="3231-高可用性"><a class="markdownIt-Anchor" href="#3231-高可用性"></a> 3.2.3.1. 高可用性</h5>
+<p>集群部署，通过部署多个实例组成集群来保证高可用性。</p>
+<p>多 IDC 部署，即部署在不止一个机房。</p>
+<h5 id="3232-数据一致性"><a class="markdownIt-Anchor" href="#3232-数据一致性"></a> 3.2.3.2. 数据一致性</h5>
+<p>根据 CAP 理论，三者不能同时满足：</p>
+<ul>
+<li>CP 型注册中心，牺牲可用性来保证数据强一致性，最典型的例子就是 ZooKeeper，etcd，Consul 了。ZooKeeper 集群内只有一个 Leader，而且在 Leader 无法使用的时候通过 Paxos 算法选举出一个新的 Leader。这个 Leader 的目的就是保证写信息的时候只向这个 Leader 写入，Leader 会同步信息到 Followers，这个过程就可以保证数据的强一致性。但如果多个 ZooKeeper 之间网络出现问题，造成出现多个 Leader，发生脑裂的话，注册中心就不可用了。而 etcd 和 Consul 集群内都是通过 raft 协议来保证强一致性，如果出现脑裂的话， 注册中心也不可用。</li>
+<li>AP 型注册中心，牺牲一致性来保证可用性，最典型的例子就是 Eureka 了。对比下 Zookeeper，Eureka 不用选举一个 Leader，每个 Eureka 服务器单独保存服务注册地址，因此有可能出现数据信息不一致的情况。但是当网络出现问题的时候，每台服务器都可以完成独立的服务。</li>
+</ul>
+<h3 id="33-服务注册发现的问题"><a class="markdownIt-Anchor" href="#33-服务注册发现的问题"></a> 3.3. 服务注册发现的问题</h3>
+<h4 id="331-多注册中心"><a class="markdownIt-Anchor" href="#331-多注册中心"></a> 3.3.1. 多注册中心</h4>
+<p>对于服务消费者来说，要能够同时从多个注册中心订阅服务；对于服务提供者来说，要能够同时向多个注册中心注册服务。</p>
+<h4 id="332-并行订阅服务"><a class="markdownIt-Anchor" href="#332-并行订阅服务"></a> 3.3.2. 并行订阅服务</h4>
+<p>可以每订阅一个服务就单独用一个线程来处理，这样的话即使遇到个别服务节点连接超时，其他服务节点的初始化连接也不受影响，最慢也就是这个服务节点的初始化连接耗费的时间，最终所有服务节点的初始化连接耗时控制在了 30 秒以内。</p>
+<h4 id="333-批量注销服务"><a class="markdownIt-Anchor" href="#333-批量注销服务"></a> 3.3.3. 批量注销服务</h4>
+<p>需要定时去清理注册中心中的“僵尸节点”，如果支持批量注销服务，就可以一次调用就把该节点上提供的所有服务同时注销掉。</p>
+<h4 id="334-服务变更信息同步更新"><a class="markdownIt-Anchor" href="#334-服务变更信息同步更新"></a> 3.3.4. 服务变更信息同步更新</h4>
+<p>为了减少服务消费者从注册中心中拉取的服务可用节点信息的数据量，这个时候可以通过增量更新的方式，注册中心只返回变化的那部分节点信息，尤其在只有少数节点信息变更时，此举可以大大减少服务消费者从注册中心拉取的数据量，从而最大程度避免产生网络风暴。</p>
+<h3 id="34-识别服务节点是否存活"><a class="markdownIt-Anchor" href="#34-识别服务节点是否存活"></a> 3.4. 识别服务节点是否存活</h3>
+<h4 id="341-心跳开关保护机制"><a class="markdownIt-Anchor" href="#341-心跳开关保护机制"></a> 3.4.1. 心跳开关保护机制</h4>
+<p>在网络频繁抖动的情况下，注册中心中可用的节点会不断变化，这时候服务消费者会频繁收到服务提供者节点变更的信息，于是就不断地请求注册中心来拉取最新的可用服务节点信息。当有成百上千个服务消费者，同时请求注册中心获取最新的服务提供者的节点信息时，可能会把注册中心的带宽给占满，尤其是注册中心是百兆网卡的情况下。</p>
+<p>所以针对这种情况，<strong>需要一种保护机制，即使在网络频繁抖动的时候，服务消费者也不至于同时去请求注册中心获取最新的服务节点信息</strong>。</p>
+<p>我曾经就遇到过这种情况，一个可行的解决方案就是给注册中心设置一个开关，当开关打开时，即使网络频繁抖动，注册中心也不会通知所有的服务消费者有服务节点信息变更，比如只给 10% 的服务消费者返回变更，这样的话就能将注册中心的请求量减少到原来的 1/10。</p>
+<p>当然打开这个开关也是有一定代价的，它会导致服务消费者感知最新的服务节点信息延迟，原先可能在 10s 内就能感知到服务提供者节点信息的变更，现在可能会延迟到几分钟，所以在网络正常的情况下，开关并不适合打开；可以作为一个紧急措施，在网络频繁抖动的时候，才打开这个开关。</p>
+<h4 id="342-服务节点摘除保护机制"><a class="markdownIt-Anchor" href="#342-服务节点摘除保护机制"></a> 3.4.2. 服务节点摘除保护机制</h4>
+<p>服务提供者在进程启动时，会注册服务到注册中心，并每隔一段时间，汇报心跳给注册中心，以标识自己的存活状态。如果隔了一段固定时间后，服务提供者仍然没有汇报心跳给注册中心，注册中心就会认为该节点已经处于“dead”状态，于是从服务的可用节点信息中移除出去。</p>
+<p>如果遇到网络问题，大批服务提供者节点汇报给注册中心的心跳信息都可能会传达失败，注册中心就会把它们都从可用节点列表中移除出去，造成剩下的可用节点难以承受所有的调用，引起“雪崩”。但是这种情况下，可能大部分服务提供者节点是可用的，仅仅因为网络原因无法汇报心跳给注册中心就被“无情”的摘除了。</p>
+<p><strong>这个时候就需要根据实际业务的情况，设定一个阈值比例，即使遇到刚才说的这种情况，注册中心也不能摘除超过这个阈值比例的节点</strong>。</p>
+<p>这个阈值比例可以根据实际业务的冗余度来确定，我通常会把这个比例设定在 20%，就是说注册中心不能摘除超过 20% 的节点。因为大部分情况下，节点的变化不会这么频繁，只有在网络抖动或者业务明确要下线大批量节点的情况下才有可能发生。而业务明确要下线大批量节点的情况是可以预知的，这种情况下可以关闭阈值保护；而正常情况下，应该打开阈值保护，以防止网络抖动时，大批量可用的服务节点被摘除。</p>
+<h2 id="4-服务通信"><a class="markdownIt-Anchor" href="#4-服务通信"></a> 4. 服务通信</h2>
+<p>通过注册中心，服务消费者和服务提供者就可以感知彼此，但是，要实现交互还必须解决通信问题：</p>
+<ul>
+<li><strong>通信协议</strong>。即服务提供者和服务消费者之间以什么样的 <strong>协议</strong> 进行网络通信，说白了，是要解决客户端和服务端如何建立连接、管理连接以及服务端如何处理请求的问题。是采用四层 TCP、UDP 协议，还是采用七层 HTTP 协议，还是采用其他协议？例如：Dubbo 基于 TCP 通信；而 Spring Cloud 基于 HTTP REST 通信。TCP 通信方式，传输效率更高；但是 HTTP 方式天然可以提供对外服务。</li>
+<li><strong>传输方式</strong>。即服务提供者和服务消费者之间的数据传输采用哪种方式。是同步还是异步？是在单连接上传输，还是多路复用。</li>
+<li><strong>序列化和反序列化</strong>。它主要解决客户端和服务端采用哪种数据编解码的问题。常见的序列化方式包括：XML、JSON；二进制类如：<a href="https://github.com/apache/thrift" target="_blank" rel="noopener">thrift</a>、<a href="https://github.com/protocolbuffers/protobuf" target="_blank" rel="noopener">protobuf</a>、<a href="http://hessian.caucho.com/doc/hessian-overview.xtp" target="_blank" rel="noopener">hessian</a>、JDK。</li>
+</ul>
+<h3 id="41-序列化方式"><a class="markdownIt-Anchor" href="#41-序列化方式"></a> 4.1. 序列化方式</h3>
+<p>序列化方式的选型，一般基于以下考虑：</p>
+<ul>
+<li>支持数据结构类型的丰富度</li>
+<li>跨语言支持</li>
+<li>性能</li>
+</ul>
+<blockquote>
+<p>👉 参考：<a href="https://github.com/dunwu/javacore/blob/master/docs/io/java-serialization.md" target="_blank" rel="noopener">Java 序列化</a></p>
+</blockquote>
+<h3 id="42-通信协议"><a class="markdownIt-Anchor" href="#42-通信协议"></a> 4.2. 通信协议</h3>
+<p>微服务框架对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RPC</th>
+<th>REST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>耦合性</td>
+<td>强耦合</td>
+<td>松散耦合</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>Tcp</td>
+<td>Http、Http2</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td>二进制（Thrift、Protobuf、Hessian、Avro、JDK 等）</td>
+<td>Xml、Json</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>客户端</td>
+<td>对编程语言有限制</td>
+<td>跨语言支持更好（支持 Http 即可）</td>
+</tr>
+<tr>
+<td>代表技术</td>
+<td>Dubbo、Motan、Tars、gRpc、Thrift</td>
+<td>Spring Cloud</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-服务监控"><a class="markdownIt-Anchor" href="#5-服务监控"></a> 5. 服务监控</h2>
+<p>当服务消费者与服务提供者之间建立了通信，作为管理者需要通过监控手段来观察服务是否正常，调用是否成功。服务监控是很复杂的，在微服务架构下，一次用户调用会因为服务化拆分后，变成多个不同服务之间的相互调用，这也就需要对拆分后的每个服务都监控起来。</p>
+<h3 id="51-监控对象"><a class="markdownIt-Anchor" href="#51-监控对象"></a> 5.1. 监控对象</h3>
+<p>服务监控一定是通过观察数据来量化分析，所以首先要明确需要监控什么。</p>
+<p>一般来说，服务监控数据有以下分类：</p>
+<ul>
+<li><strong>业务监控</strong>：核心指标、登录、登出、下单、支付等。</li>
+<li><strong>应用监控</strong>：访问接口、访问服务、SQL、内存使用率、响应时间、TPS、QPS 等。</li>
+<li><strong>系统监控</strong>：CPU、内存、网络、磁盘等。</li>
+<li><strong>基础监控</strong>：网络流量、丢包数、错包数、连接数等。</li>
+<li><strong>客户端监控</strong>：性能、返回码、地域、运营商、版本、系统等。</li>
+</ul>
+<h3 id="52-系统监控原理"><a class="markdownIt-Anchor" href="#52-系统监控原理"></a> 5.2. 系统监控原理</h3>
+<p>一旦明确了要监控的对象，接下就是考虑如何监控。</p>
+<p><strong>监控系统主要包括四个环节：数据采集、数据传输、数据处理和数据展示</strong></p>
+<h4 id="521-数据采集"><a class="markdownIt-Anchor" href="#521-数据采集"></a> 5.2.1. 数据采集</h4>
+<p>通常有两种数据收集方式：</p>
+<ul>
+<li><strong>服务主动上报</strong>：这种处理方式通过在业务代码或者服务框架里加入数据收集代码逻辑，在每一次服务调用完成后，主动上报服务的调用信息。这种方式在链路跟踪中较为常见，主流的技术方案有：Zipkin。</li>
+<li><strong>代理收集</strong>：这种处理方式通过服务调用后把调用的详细信息记录到本地日志文件中，然后再通过代理去解析本地日志文件，然后再上报服务的调用信息。主流的技术方案有：ELK、Flume。</li>
+</ul>
+<h4 id="522-数据传输"><a class="markdownIt-Anchor" href="#522-数据传输"></a> 5.2.2. 数据传输</h4>
+<p>数据传输最常用的方式有两种：</p>
+<ul>
+<li><strong>UDP 传输</strong>：这种处理方式是数据处理单元提供服务器的请求地址，数据采集后通过 UDP 协议与服务器建立连接，然后把数据发送过去。</li>
+<li><strong>Kafka 传输</strong>：这种处理方式是数据采集后发送到指定的 Topic，然后数据处理单元再订阅对应的 Topic，就可以从 Kafka 消息队列中读取到对应的数据。由于 Kafka 有非常高的吞吐能力，所以很适合作为大数据量的缓冲池。</li>
+</ul>
+<h4 id="523-数据处理"><a class="markdownIt-Anchor" href="#523-数据处理"></a> 5.2.3. 数据处理</h4>
+<p>数据处理是对收集来的原始数据进行聚合并存储。数据聚合通常有两个维度：</p>
+<ul>
+<li><strong>接口维度聚合</strong>：这个维度是把实时收到的数据按照接口名维度实时聚合在一起，这样就可以得到每个接口的每秒请求量、平均耗时、成功率等信息。</li>
+<li><strong>机器维度聚合</strong>：这个维度是把实时收到的数据按照调用的节点维度聚合在一起，这样就可以从单机维度去查看每个接口的实时请求量、平均耗时等信息。</li>
+</ul>
+<p>聚合后的数据需要持久化到数据库中存储，所选用的数据库一般分为两种：</p>
+<ul>
+<li><strong>全文检索数据库</strong>：比如 Elasticsearch，以倒排索引的数据结构存储，需要查询的时候，根据索引来查询。</li>
+<li><strong>时序数据库</strong>：比如 OpenTSDB，以时序序列数据的方式存储，查询的时候按照时序如 1min、5min 等维度来查询。</li>
+</ul>
+<h4 id="524-数据展示"><a class="markdownIt-Anchor" href="#524-数据展示"></a> 5.2.4. 数据展示</h4>
+<p>数据展示是把处理后的数据以 Dashboard 的方式展示给用户。数据展示有多种方式，比如曲线图、饼状图、格子图展示等。</p>
+<h3 id="53-监控技术"><a class="markdownIt-Anchor" href="#53-监控技术"></a> 5.3. 监控技术</h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716204432.png" alt="img" /></p>
+<ul>
+<li>ELK 的技术栈比较成熟，应用范围也比较广，除了可用作监控系统外，还可以用作日志查询和分析。</li>
+<li>Graphite 是基于时间序列数据库存储的监控系统，并且提供了功能强大的各种聚合函数比如 sum、average、top5 等可用于监控分析，而且对外提供了 API 也可以接入其他图形化监控系统如 Grafana。</li>
+<li>TICK 的核心在于其时间序列数据库 InfluxDB 的存储功能强大，且支持类似 SQL 语言的复杂数据处理操作。</li>
+<li>Prometheus 的独特之处在于它采用了拉数据的方式，对业务影响较小，同时也采用了时间序列数据库存储，而且支持独有的 PromQL 查询语言，功能强大而且简洁。</li>
+</ul>
+<h2 id="6-服务治理"><a class="markdownIt-Anchor" href="#6-服务治理"></a> 6. 服务治理</h2>
+<p>微服务治理平台就是<strong>与服务打交道的统一入口</strong>，无论是开发人员还是运维人员，都能通过这个平台对服务进行各种操作，比如开发人员可以通过这个平台对服务进行降级操作，运维人员可以通过这个平台对服务进行上下线操作，而不需要关心这个操作背后的具体实现。</p>
+<p>微服务治理平台关键之处就在于它能够封装对微服务架构内的各个基础设施组件的调用，从而对外提供统一的服务操作 API，而且还提供了可视化的界面，以方便开发人员和运维人员操作。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716203729.png" alt="img" /></p>
+<p>服务治理的常用手段有：</p>
+<ul>
+<li>节点管理
+<ul>
+<li>注册中心主动摘除机制</li>
+<li>服务消费者摘除机制</li>
+</ul>
+</li>
+<li>负载均衡
+<ul>
+<li>轮询</li>
+<li>随机</li>
+<li>最近最少连接</li>
+<li>一致性 Hash</li>
+</ul>
+</li>
+<li>服务路由
+<ul>
+<li>业务存在灰度发布的需求</li>
+<li>多机房就近访问的需求</li>
+</ul>
+</li>
+<li>服务容错
+<ul>
+<li>FailOver：失败自动切换</li>
+<li>FailBack：失败通知</li>
+<li>FailCache：失败缓存</li>
+<li>FailFast：快速失败</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-api-网关"><a class="markdownIt-Anchor" href="#7-api-网关"></a> 7. API 网关</h2>
+<p>API 网关是一个服务器，是系统的唯一入口。从面向对象设计的角度看，它与外观模式类似。API 网关封装了系统内部架构，为每个客户端提供一个定制的 API。它可能还具有其它职责，如身份验证、监控、负载均衡、缓存、请求分片与管理、静态响应处理。<br />
+API 网关方式的核心要点是，所有的客户端和消费端都通过统一的网关接入微服务，在网关层处理所有的非业务功能。通常，网关也是提供 REST/HTTP 的访问 API。服务端通过 API-GW 注册和管理服务。</p>
+<h3 id="71-zuul"><a class="markdownIt-Anchor" href="#71-zuul"></a> 7.1. Zuul</h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716201640.png" alt="img" /></p>
+<p>在 zuul 中， 整个请求的过程是这样的，首先将请求给 zuulservlet 处理，zuulservlet 中有一个 zuulRunner 对象，该对象中初始化了 RequestContext：作为存储整个请求的一些数据，并被所有的 zuulfilter 共享。zuulRunner 中还有 FilterProcessor，FilterProcessor 作为执行所有的 zuulfilter 的管理器。FilterProcessor 从 filterloader 中获取 zuulfilter，而 zuulfilter 是被 filterFileManager 所加载，并支持 groovy 热加载，采用了轮询的方式热加载。有了这些 filter 之后，zuulservelet 首先执行的 Pre 类型的过滤器，再执行 route 类型的过滤器，最后执行的是 post 类型的过滤器，如果在执行这些过滤器有错误的时候则会执行 error 类型的过滤器。执行完这些过滤器，最终将请求的结果返回给客户端。</p>
+<h2 id="8-负载均衡"><a class="markdownIt-Anchor" href="#8-负载均衡"></a> 8. 负载均衡</h2>
+<blockquote>
+<p>参考：<a href="https://github.com/dunwu/blog/blob/master/source/_posts/theory/load-balance.md" target="_blank" rel="noopener">负载均衡基本原理</a></p>
+</blockquote>
+<h2 id="9-服务路由"><a class="markdownIt-Anchor" href="#9-服务路由"></a> 9. 服务路由</h2>
+<p><strong>服务路由就是服务消费者在发起服务调用时，必须根据特定的规则来选择服务节点，从而满足某些特定的需求</strong>。</p>
+<h3 id="91-服务路由的应用场景"><a class="markdownIt-Anchor" href="#91-服务路由的应用场景"></a> 9.1. 服务路由的应用场景</h3>
+<ul>
+<li><strong>分组调用</strong>。一般来讲，为了保证服务的高可用性，实现异地多活的需求，一个服务往往不止部署在一个数据中心，而且出于节省成本等考虑，有些业务可能不仅在私有机房部署，还会采用公有云部署，甚至采用多家公有云部署。服务节点也会按照不同的数据中心分成不同的分组，这时对于服务消费者来说，选择哪一个分组调用，就必须有相应的路由规则。</li>
+<li><strong>灰度发布</strong>。在服务上线发布的过程中，一般需要先在一小部分规模的服务节点上先发布服务，然后验证功能是否正常。如果正常的话就继续扩大发布范围；如果不正常的话，就需要排查问题，解决问题后继续发布。这个过程就叫作灰度发布，也叫金丝雀部署。</li>
+<li><strong>流量切换</strong>。在业务线上运行过程中，经常会遇到一些不可抗力因素导致业务故障，比如某个机房的光缆被挖断，或者发生着火等事故导致整个机房的服务都不可用。这个时候就需要按照某个指令，能够把原来调用这个机房服务的流量切换到其他正常的机房。</li>
+<li><strong>读写分离</strong>。对于大多数互联网业务来说都是读多写少，所以在进行服务部署的时候，可以把读写分开部署，所有写接口可以部署在一起，而读接口部署在另外的节点上。</li>
+</ul>
+<h3 id="92-服务路由的规则"><a class="markdownIt-Anchor" href="#92-服务路由的规则"></a> 9.2. 服务路由的规则</h3>
+<p>服务路由主要有两种规则：一种是条件路由，一种是脚本路由。</p>
+<h4 id="921-条件路由"><a class="markdownIt-Anchor" href="#921-条件路由"></a> 9.2.1. 条件路由</h4>
+<p>条件路由是基于条件表达式的路由规则。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">condition://0.0.0.0/dubbo.test.interfaces.TestService?category=routers&amp;dynamic=true&amp;priority=2&amp;enabled=true&amp;rule="</span> <span class="string">+</span> <span class="string">URL.encode("</span> <span class="string">host</span> <span class="string">=</span> <span class="number">10.20</span><span class="number">.153</span><span class="number">.10</span><span class="string">=&gt;</span> <span class="string">host</span> <span class="string">=</span> <span class="number">10.20</span><span class="number">.153</span><span class="number">.11</span><span class="string">")</span></span><br></pre></td></tr></table></figure>
+<p>这里面 <code>condition://</code> 代表了这是一段用条件表达式编写的路由规则，具体的规则是</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">host = <span class="number">10.20</span><span class="number">.153</span><span class="number">.10</span> =&gt; host = <span class="number">10.20</span><span class="number">.153</span><span class="number">.11</span></span><br></pre></td></tr></table></figure>
+<p>分隔符“=&gt;”前面是服务消费者的匹配条件，后面是服务提供者的过滤条件。当服务消费者节点满足匹配条件时，就对该服务消费者执行后面的过滤规则。那么上面这段表达式表达的意义就是 IP 为“10.20.153.10”的服务消费者都调用 IP 为“10.20.153.11”的服务提供者节点。</p>
+<p>如果服务消费者的匹配条件为空，就表示对所有的服务消费者应用，就像下面的表达式一样。</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">=&gt; host ！= <span class="number">10.20</span>.<span class="number">153.11</span></span><br></pre></td></tr></table></figure>
+<p>如果服务提供者的过滤条件为空，就表示禁止服务消费者访问，就像下面的表达式一样。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">host = <span class="number">10.20</span><span class="number">.153</span><span class="number">.10</span>=&gt;</span><br></pre></td></tr></table></figure>
+<p>下面我举一些 Dubbo 框架中的条件路由，来给你讲解下条件路由的具体应用场景。</p>
+<ul>
+<li>排除某个服务节点</li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">=&gt; host != <span class="number">172.22</span>.<span class="number">3.91</span></span><br></pre></td></tr></table></figure>
+<p>一旦这条路由规则被应用到线上，所有的服务消费者都不会访问 IP 为 172.22.3.91 的服务节点，这种路由规则一般应用在线上流量排除预发布机以及摘除某个故障节点的场景。</p>
+<ul>
+<li>白名单和黑名单功能</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">host != <span class="number">10.20</span><span class="number">.153</span><span class="number">.10</span>,<span class="number">10.20</span><span class="number">.153</span><span class="number">.11</span> =&gt;</span><br></pre></td></tr></table></figure>
+<p>这条路由规则意思是除了 IP 为 10.20.153.10 和 10.20.153.11 的服务消费者可以发起服务调用以外，其他服务消费者都不可以，主要用于白名单访问逻辑，比如某个后台服务只允许特定的几台机器才可以访问，这样的话可以机器控制访问权限。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">host = <span class="number">10.20</span><span class="number">.153</span><span class="number">.10</span>,<span class="number">10.20</span><span class="number">.153</span><span class="number">.11</span> =&gt;</span><br></pre></td></tr></table></figure>
+<p>同理，这条路由规则意思是除了 IP 为 10.20.153.10 和 10.20.153.11 的服务消费者不能发起服务调用以外，其他服务消费者都可以，也就是实现了黑名单功能，比如线上经常会遇到某些调用方不管是出于有意还是无意的不合理调用，影响了服务的稳定性，这时候可以通过黑名单功能暂时予以封杀。</p>
+<ul>
+<li>机房隔离</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">host = <span class="number">172.22</span><span class="number">.3</span>.* =&gt; host = <span class="number">172.22</span><span class="number">.3</span>.*</span><br></pre></td></tr></table></figure>
+<p>这条路由规则意思是 IP 网段为 172.22.3.* 的服务消费者，才可以访问同网段的服务节点，这种规则一般应用于服务部署在多个 IDC，理论上同一个 IDC 内的调用性能要比跨 IDC 调用性能要好，应用这个规则是为了实现同 IDC 就近访问。</p>
+<ul>
+<li>读写分离</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">method = find*,list*,<span class="keyword">get</span>*,<span class="keyword">is</span>* =&gt; host =<span class="number">172.22</span><span class="number">.3</span><span class="number">.94</span>,<span class="number">172.22</span><span class="number">.3</span><span class="number">.95</span></span><br><span class="line">method != find*,list*,<span class="keyword">get</span>*,<span class="keyword">is</span>* =&gt; host = <span class="number">172.22</span><span class="number">.3</span><span class="number">.97</span>,<span class="number">172.22</span><span class="number">.3</span><span class="number">.98</span></span><br></pre></td></tr></table></figure>
+<p>这条路由规则意思是 find*、get*、is* 等读方法调用 IP 为 172.22.3.94 和 172.22.3.95 的节点，除此以外的写方法调用 IP 为 172.22.3.97 和 172.22.3.98 的节点。对于大部分互联网业务来说，往往读请求要远远大于写请求，而写请求的重要性往往要远远高于读请求，所以需要把读写请求进行分离，以避免读请求异常影响到写请求，这时候就可以应用这种规则。</p>
+<h4 id="922-脚本路由"><a class="markdownIt-Anchor" href="#922-脚本路由"></a> 9.2.2. 脚本路由</h4>
+<p>脚本路由是基于脚本语言的路由规则，常用的脚本语言比如 JavaScript、Groovy、JRuby 等。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="string">"script://0.0.0.0/com.foo.BarService?category=routers&amp;dynamic=false&amp;rule="</span> + <span class="module-access"><span class="module"><span class="identifier">URL</span>.</span></span>encode(<span class="string">"（function route(invokers) &#123; ... &#125; (invokers)）"</span>)</span><br></pre></td></tr></table></figure>
+<p>这里面“script://”就代表了这是一段脚本语言编写的路由规则，具体规则定义在脚本语言的 route 方法实现里，比如下面这段用 JavaScript 编写的 route() 方法表达的意思是，只有 IP 为 10.20.153.10 的服务消费者可以发起服务调用。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">route</span><span class="params">(invokers)</span>&#123;</span></span><br><span class="line">  var result = new java.util.ArrayList(invokers.<span class="built_in">size</span>());</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">i</span> =<span class="number">0</span>; <span class="built_in">i</span> &lt; invokers.<span class="built_in">size</span>(); <span class="built_in">i</span> ++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"10.20.153.10"</span>.equals(invokers.get(<span class="built_in">i</span>).getUrl().getHost()))&#123;</span><br><span class="line">       result.add(invokers.get(<span class="built_in">i</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line"> &#125; (invokers)）;</span><br></pre></td></tr></table></figure>
+<h3 id="93-服务路由的获取方式"><a class="markdownIt-Anchor" href="#93-服务路由的获取方式"></a> 9.3. 服务路由的获取方式</h3>
+<p>服务路由的获取方式主要有三种：</p>
+<ul>
+<li>本地配置</li>
+</ul>
+<p>顾名思义就是路由规则存储在服务消费者本地上。服务消费者发起调用时，从本地固定位置读取路由规则，然后按照路由规则选取一个服务节点发起调用。</p>
+<ul>
+<li>配置中心管理</li>
+</ul>
+<p>这种方式下，所有的服务消费者都从配置中心获取路由规则，由配置中心来统一管理。</p>
+<ul>
+<li>动态下发</li>
+</ul>
+<p>这种方式下，一般是运维人员或者开发人员，通过服务治理平台修改路由规则，服务治理平台调用配置中心接口，把修改后的路由规则持久化到配置中心。因为服务消费者订阅了路由规则的变更，于是就会从配置中心获取最新的路由规则，按照最新的路由规则来执行。</p>
+<h3 id="94-内部服务调用"><a class="markdownIt-Anchor" href="#94-内部服务调用"></a> 9.4. 内部服务调用</h3>
+<p>基础服务之间的调用：结合服务注册中心以及专属的具有负载均衡功能的客户端，如 Eureka+（restTemplate+Ribbon）或者 Eureka+Feign<br />
+聚合服务调用：结合服务注册中心以及专属的具有负载均衡功能的客户端，如 Eureka+（restTemplate+Ribbon）或者 Eureka+Feign</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716202409.png" alt="img" /></p>
+<h3 id="95-外部服务调用"><a class="markdownIt-Anchor" href="#95-外部服务调用"></a> 9.5. 外部服务调用</h3>
+<p>基于 Netflix 的 zuul，做了简单了解，SpringCloud 与 zuul 集成的方式。这里先对核心流程做个简单了解，后续会有深入的应用、分析。</p>
+<p>Spring Cloud 很好的集成了 zuul，并且可以通过注解的形式来进行请求的反向路由以及 API 网关功能<br />
+Spring Cloud 集成 zuul，对与 url 映射的处理方式与 SpringMVC 对 url 的请求方式类似，都是通过 RequestMapping 来进行请求绑定的。核心类：ZuulHandlerMapping<br />
+zuul 的核心是 ZuulServlet，一个请求核心流程：HttpServletRequest –&gt;ZuulHandlerMapping –&gt;ZuulController –&gt; ZuulServlet –&gt; ZuulFilter –&gt; HttpServletResponse</p>
+<h2 id="10-配置中心"><a class="markdownIt-Anchor" href="#10-配置中心"></a> 10. 配置中心</h2>
+<p>配置中心的思路就是把服务的各种配置，如代码里配置的各种参数、服务降级的开关甚至依赖的资源等都在一个地方统一进行管理。服务启动时，可以自动从配置中心中拉取所需的配置，并且如果有配置变更的情况，同样可以自动从配置中心拉取最新的配置信息，服务无须重新发布。</p>
+<p>配置中心一般包含下面几个功能：</p>
+<ul>
+<li>配置注册功能</li>
+<li>配置反注册功能</li>
+<li>配置查看功能</li>
+<li>配置变更订阅功能</li>
+</ul>
+<h3 id="101-apollo"><a class="markdownIt-Anchor" href="#101-apollo"></a> 10.1. Apollo</h3>
+<p>携程开源的分布式配置中心，支持 Java <a href="http://xn--0tr.Net" target="_blank" rel="noopener">和.Net</a> 语言，客户端和配置中心通过 HTTP 长连接实现实时推送，并且有统一的管理界面来实现配置管理。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ELH62gpbFmGdnIjxDT7AOQyZgl2KQnz68zZFSDpHfa80ppne7gbP4ROOLJSuZT7E2uEdf1OTR9zthLNFkIZSLQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+<h3 id="102-spring-cloud-git"><a class="markdownIt-Anchor" href="#102-spring-cloud-git"></a> 10.2. Spring Cloud Git</h3>
+<p>Spring Cloud 中使用的配置中心组件，只支持 Java 语言，配置存储在 git 中，变更配置也需要通过 git 操作，如果配置中心有配置变更，需要手动刷新。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716202911.png" alt="img" /></p>
+<h2 id="11-链路追踪"><a class="markdownIt-Anchor" href="#11-链路追踪"></a> 11. 链路追踪</h2>
+<h3 id="111-链路追踪的作用"><a class="markdownIt-Anchor" href="#111-链路追踪的作用"></a> 11.1. 链路追踪的作用</h3>
+<ul>
+<li>优化系统瓶颈</li>
+<li>优化链路调用</li>
+<li>生成网络拓扑</li>
+<li>透明传输数据</li>
+</ul>
+<h3 id="112-链路追踪的原理"><a class="markdownIt-Anchor" href="#112-链路追踪的原理"></a> 11.2. 链路追踪的原理</h3>
+<p>理解链路追踪必须先了解以下概念：</p>
+<ul>
+<li><strong>traceId</strong>，用于标识某一次具体的请求 ID。当用户的请求进入系统后，会在 RPC 调用网络的第一层生成一个全局唯一的 traceId，并且会随着每一层的 RPC 调用，不断往后传递，这样的话通过 traceId 就可以把一次用户请求在系统中调用的路径串联起来。</li>
+<li><strong>spanId</strong>，用于标识一次 RPC 调用在分布式请求中的位置。当用户的请求进入系统后，处在 RPC 调用网络的第一层 A 时 spanId 初始值是 0，进入下一层 RPC 调用 B 的时候 spanId 是 0.1，继续进入下一层 RPC 调用 C 时 spanId 是 0.1.1，而与 B 处在同一层的 RPC 调用 E 的 spanId 是 0.2，这样的话通过 spanId 就可以定位某一次 RPC 请求在系统调用中所处的位置，以及它的上下游依赖分别是谁。</li>
+<li><strong>annotation</strong>，用于业务自定义埋点数据，可以是业务感兴趣的想上传到后端的数据，比如一次请求的用户 UID。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716204658.png" alt="img" /></p>
+<h3 id="113-链路追踪的实现"><a class="markdownIt-Anchor" href="#113-链路追踪的实现"></a> 11.3. 链路追踪的实现</h3>
+<p>一个服务追踪系统一般可以分为三层：</p>
+<ul>
+<li><strong>数据采集</strong>层，负责数据埋点并上报。</li>
+<li><strong>数据处理</strong>层，负责数据的存储与计算。</li>
+<li><strong>数据展示</strong>层，负责数据的图形化展示。</li>
+</ul>
+<h4 id="1131-数据采集层"><a class="markdownIt-Anchor" href="#1131-数据采集层"></a> 11.3.1. 数据采集层</h4>
+<p>一次 RPC 请求可以分为四个阶段。</p>
+<ul>
+<li>CS（Client Send）阶段 : 客户端发起请求，并生成调用的上下文。</li>
+<li>SR（Server Recieve）阶段 : 服务端接收请求，并生成上下文。</li>
+<li>SS（Server Send）阶段 : 服务端返回请求，这个阶段会将服务端上下文数据上报，下面这张图可以说明上报的数据有：traceId=123456，spanId=0.1，appKey=B，method=B.method，start=103，duration=38。</li>
+<li>CR（Client Recieve）阶段 : 客户端接收返回结果，这个阶段会将客户端上下文数据上报，上报的数据有：traceid=123456，spanId=0.1，appKey=A，method=B.method，start=103，duration=38。</li>
+</ul>
+<h4 id="1132-数据处理层"><a class="markdownIt-Anchor" href="#1132-数据处理层"></a> 11.3.2. 数据处理层</h4>
+<p>数据处理层的作用就是把数据采集层上报的数据按需计算，然后落地存储供查询使用。</p>
+<ul>
+<li>实时数据处理</li>
+</ul>
+<p>针对实时数据处理，一般采用 Storm 或者 Spark Streaming 来对链路数据进行实时聚合加工，存储一般使用 OLTP 数据仓库，比如 HBase，使用 traceId 作为 RowKey，能天然地把一整条调用链聚合在一起，提高查询效率。</p>
+<ul>
+<li>离线数据处理</li>
+</ul>
+<p>针对离线数据处理，一般通过运行 MapReduce 或者 Spark 批处理程序来对链路数据进行离线计算，存储一般使用 Hive。</p>
+<h4 id="1133-数据展示层"><a class="markdownIt-Anchor" href="#1133-数据展示层"></a> 11.3.3. 数据展示层</h4>
+<p>数据展示层的作用就是将处理后的链路信息以图形化的方式展示给用户。</p>
+<p>实际项目中主要用到两种图形展示，一种是调用链路图，一种是调用拓扑图。</p>
+<h3 id="114-链路追踪方案对比"><a class="markdownIt-Anchor" href="#114-链路追踪方案对比"></a> 11.4. 链路追踪方案对比</h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716205052.png" alt="img" /></p>
+<h2 id="12-限流熔断"><a class="markdownIt-Anchor" href="#12-限流熔断"></a> 12. 限流熔断</h2>
+<p>一般而言，集群故障的产生原因不外乎有两种：</p>
+<p>一种是代码 bug 所导致，比如说某一段 Java 代码不断地分配大对象，但没有及时回收导致 JVM OOM 退出；</p>
+<p>另一种是突发的流量冲击，超出了系统的最大承载能力，比如“双 11”这种购物活动，电商系统会在零点一瞬间涌入大量流量，超出系统的最大承载能力，一下子就把整个系统给压垮了。</p>
+<p>应付集群故障的思路，主要有两种：<strong>限流</strong>和<strong>降级</strong>。</p>
+<h3 id="121-限流"><a class="markdownIt-Anchor" href="#121-限流"></a> 12.1. 限流</h3>
+<p>限流就是限制流量。通常情况下，系统能够承载的流量根据集群规模的大小是固定的，可以称之为系统的最大容量。当真实流量超过了系统的最大容量后，就会导致系统响应变慢，服务调用出现大量超时，反映给用户的感觉就是卡顿、无响应。所以，应该根据系统的最大容量，给系统设置一个阈值，超过这个阈值的请求会被自动抛弃，这样的话可以最大限度地保证系统提供的服务正常。</p>
+<p>除此之外，通常一个微服务系统会同时提供多个服务，每个服务在同一时刻的请求量也是不同的，很可能出现的一种情况就是，系统中某个服务的请求量突增，占用了系统中大部分资源，导致其他服务没有资源可用。因此，还要针对系统中每个服务的请求量也设置一个阈值，超过这个阈值的请求也要被自动抛弃，这样的话不至于因为一个服务影响了其他所有服务。</p>
+<p>在实际项目中，可以用两个指标来衡量服务的请求量，一个是 QPS 即每秒请求量，一个是工作线程数。不过 QPS 因为不同服务的响应快慢不同，所以系统能够承载的 QPS 相差很大，因此一般选择工作线程数来作为限流的指标，给系统设置一个总的最大工作线程数以及单个服务的最大工作线程数，这样的话无论是系统的总请求量过大导致整体工作线程数量达到最大工作线程数，还是某个服务的请求量超过单个服务的最大工作线程数，都会被限流，以起到保护整个系统的作用。</p>
+<h3 id="122-降级"><a class="markdownIt-Anchor" href="#122-降级"></a> 12.2. 降级</h3>
+<p>什么是降级呢？在我看来，降级就是通过停止系统中的某些功能，来保证系统整体的可用性。降级可以说是一种被动防御的措施，为什么这么说呢？因为它一般是系统已经出现故障后所采取的一种止损措施。</p>
+<p>那么降级一般是如何实现的呢？根据我的实践来看， 一种可行的方案是通过开关来实现。</p>
+<p>具体来讲，就是在系统运行的内存中开辟一块区域，专门用于存储开关的状态，也就是开启还是关闭。并且需要监听某个端口，通过这个端口可以向系统下发命令，来改变内存中开关的状态。当开关开启时，业务的某一段逻辑就不再执行，而正常情况下，开关是关闭的状态。</p>
+<p>开关一般用在两种地方，一种是新增的业务逻辑，因为新增的业务逻辑相对来说不成熟，往往具备一定的风险，所以需要加开关来控制新业务逻辑是否执行；另一种是依赖的服务或资源，因为依赖的服务或者资源不总是可靠的，所以最好是有开关能够控制是否对依赖服务或资源发起调用，来保证即使依赖出现问题，也能通过降级来避免影响。</p>
+<p>在实际业务应用的时候，降级要按照对业务的影响程度进行分级，一般分为三级：一级降级是对业务影响最小的降级，在故障的情况下，首先执行一级降级，所以一级降级也可以设置成自动降级，不需要人为干预；二级降级是对业务有一定影响的降级，在故障的情况下，如果一级降级起不到多大作用的时候，可以人为采取措施，执行二级降级；三级降级是对业务有较大影响的降级，这种降级要么是对商业收入有重大影响，要么是对用户体验有重大影响，所以操作起来要非常谨慎，不在最后时刻一般不予采用。</p>
+<h2 id="13-devops"><a class="markdownIt-Anchor" href="#13-devops"></a> 13. DEVOPS</h2>
+<h3 id="131-容器和容器平台"><a class="markdownIt-Anchor" href="#131-容器和容器平台"></a> 13.1. 容器和容器平台</h3>
+<p>Mesos、Marathon、Kubernetes</p>
+<h2 id="14-rpc-选型"><a class="markdownIt-Anchor" href="#14-rpc-选型"></a> 14. RPC 选型</h2>
+<h3 id="141-限定语言-rpc"><a class="markdownIt-Anchor" href="#141-限定语言-rpc"></a> 14.1. 限定语言 RPC</h3>
+<p>跟语言平台绑定的开源 RPC 框架主要有下面几种。</p>
+<ul>
+<li>Dubbo：国内最早开源的 RPC 框架，由阿里巴巴公司开发并于 2011 年末对外开源，仅支持 Java 语言。</li>
+<li>Motan：微博内部使用的 RPC 框架，于 2016 年对外开源，仅支持 Java 语言。</li>
+<li>Tars：腾讯内部使用的 RPC 框架，于 2017 年对外开源，仅支持 C++ 语言。</li>
+<li>Spring Cloud：国外 Pivotal 公司 2014 年对外开源的 RPC 框架，仅支持 Java 语言，最近几年生态发展得比较好，是比较火的 RPC 框架。</li>
+</ul>
+<p>所以很明显，如果你的业务场景仅仅局限于一种语言的话，可以选择跟语言绑定的 RPC 框架中的一种；如果涉及多个语言平台之间的相互调用，就应该选择跨语言平台的 RPC 框架。</p>
+<p>仔细分析，可以看出 Spring Cloud 不仅提供了基本的 RPC 框架功能，还提供了服务注册组件、配置中心组件、负载均衡组件、断路器组件、分布式消息追踪组件等一系列组件，也难怪被技术圈的人称之为“Spring Cloud 全家桶”。如果你不想自己实现以上这些功能，那么 Spring Cloud 基本可以满足你的全部需求。而 Dubbo、Motan 基本上只提供了最基础的 RPC 框架的功能，其他微服务组件都需要自己去实现。不过由于 Spring Cloud 的 RPC 通信采用了 HTTP 协议，相比 Dubbo 和 Motan 所采用的私有协议来说，在高并发的通信场景下，性能相对要差一些，所以对性能有苛刻要求的情况下，可以考虑 Dubbo 和 Motan。</p>
+<h3 id="142-跨语言-rpc"><a class="markdownIt-Anchor" href="#142-跨语言-rpc"></a> 14.2. 跨语言 RPC</h3>
+<p>而跨语言平台的开源 RPC 框架主要有以下几种。</p>
+<ul>
+<li>gRPC：Google 于 2015 年对外开源的跨语言 RPC 框架，支持常用的 C++、Java、Python、Go、Ruby、PHP、Android Java、Objective-C 等多种语言。</li>
+<li>Thrift：最初是由 Facebook 开发的内部系统跨语言的 RPC 框架，2007 年贡献给了 Apache 基金，成为 Apache 开源项目之一，支持常用的 C++、Java、PHP、Python、Ruby、Erlang 等多种语言。</li>
+</ul>
+<p>从成熟度上来讲，Thrift 因为诞生的时间要早于 gRPC，所以使用的范围要高于 gRPC，在 HBase、Hadoop、Scribe、Cassandra 等许多开源组件中都得到了广泛地应用。而且 Thrift 支持多达 25 种语言，这要比 gRPC 支持的语言更多，所以如果遇到 gRPC 不支持的语言场景下，选择 Thrift 更合适。</p>
+<p>但 gRPC 作为后起之秀，因为采用了 HTTP/2 作为通信协议、ProtoBuf 作为数据序列化格式，在移动端设备的应用以及对传输带宽比较敏感的场景下具有很大的优势，而且开发文档丰富，根据 ProtoBuf 文件生成的代码要比 Thrift 更简洁一些，从使用难易程度上更占优势，所以如果使用的语言平台 gRPC 支持的话，建议还是采用 gRPC 比较好。</p>
+<h2 id="15-service-mesh"><a class="markdownIt-Anchor" href="#15-service-mesh"></a> 15. Service Mesh</h2>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200721154106.png" alt="img" /></p>
+<h3 id="151-service-mesh-的实现原理"><a class="markdownIt-Anchor" href="#151-service-mesh-的实现原理"></a> 15.1. Service Mesh 的实现原理</h3>
+<p>Service Mesh 实现的关键就在于两点：</p>
+<p>一个是上面提到的轻量级的网络代理也叫 SideCar，它的作用就是转发服务之间的调用；</p>
+<p>一个是基于 SideCar 的服务治理也被叫作 Control Plane，它的作用是向 SideCar 发送各种指令，以完成各种服务治理功能。下面我就来详细讲解这两点是如何实现的。</p>
+<h2 id="16-参考资料"><a class="markdownIt-Anchor" href="#16-参考资料"></a> 16. 参考资料</h2>
+<ul>
+<li><a href="https://time.geekbang.org/column/intro/100014401" target="_blank" rel="noopener">从 0 开始学微服务</a></li>
+<li><a href="https://time.geekbang.org/column/intro/100046201" target="_blank" rel="noopener">RPC 实战与核心原理</a></li>
+<li><a href="https://time.geekbang.org/course/intro/100003901" target="_blank" rel="noopener">微服务架构核心 20 讲</a></li>
+<li><a href="https://www.cnblogs.com/savorboard/p/api-gateway.html" target="_blank" rel="noopener">谈谈微服务中的 API 网关（API Gateway）</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/16/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%BC%E5%90%88%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/16/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%BC%E5%90%88%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">关系型数据库综合知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-16 11:14:07" itemprop="dateCreated datePublished" datetime="2020-07-16T11:14:07+08:00">2020-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">关系型数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/16/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%BC%E5%90%88%E7%9F%A5%E8%AF%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/16/关系型数据库综合知识/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>216</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="关系型数据库综合知识"><a class="markdownIt-Anchor" href="#关系型数据库综合知识"></a> 关系型数据库综合知识</h1>
+<h2 id="内容"><a class="markdownIt-Anchor" href="#内容"></a> 📖 内容</h2>
+<h3 id="关系型数据库面试题"><a class="markdownIt-Anchor" href="#关系型数据库面试题"></a> <a href="01.%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95.md">关系型数据库面试题 💯</a></h3>
+<h3 id="sql-cheat-sheet"><a class="markdownIt-Anchor" href="#sql-cheat-sheet"></a> <a href="02.SqlCheatSheet.md">SQL Cheat Sheet</a></h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200115160512.png" alt="img" /></p>
+<h3 id="分布式存储基本原理"><a class="markdownIt-Anchor" href="#分布式存储基本原理"></a> <a href="https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-storage.md" target="_blank" rel="noopener">分布式存储基本原理</a></h3>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200716110854.png" alt="img" /></p>
+<h3 id="分布式事务基本原理"><a class="markdownIt-Anchor" href="#分布式事务基本原理"></a> <a href="https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-transaction.md" target="_blank" rel="noopener">分布式事务基本原理</a></h3>
+<h2 id="资料"><a class="markdownIt-Anchor" href="#资料"></a> 📚 资料</h2>
+<ul>
+<li><strong>官方</strong>
+<ul>
+<li><a href="https://www.mysql.com/" target="_blank" rel="noopener">Mysql 官网</a></li>
+<li><a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">Mysql 官方文档</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql.html" target="_blank" rel="noopener">Mysql 官方文档之命令行客户端</a></li>
+</ul>
+</li>
+<li><strong>书籍</strong>
+<ul>
+<li><a href="https://item.jd.com/11220393.html" target="_blank" rel="noopener">《高性能 MySQL》</a> - Mysql 经典</li>
+<li><a href="https://item.jd.com/11232698.html" target="_blank" rel="noopener">《SQL 必知必会》</a> - SQL 入门</li>
+</ul>
+</li>
+<li><strong>教程</strong>
+<ul>
+<li><a href="http://www.runoob.com/mymysql-tutorial.html" target="_blank" rel="noopener">runoob.com MySQL 教程</a> - 入门级 SQL 教程</li>
+<li><a href="https://github.com/jaywcjlove/mysql-tutorial" target="_blank" rel="noopener">mysql-tutorial</a></li>
+</ul>
+</li>
+<li><strong>更多资源</strong>
+<ul>
+<li><a href="https://github.com/jobbole/awesome-mysql-cn" target="_blank" rel="noopener">awesome-mysql</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="传送"><a class="markdownIt-Anchor" href="#传送"></a> 🚪 传送</h2>
+<p>◾ 🏠 <a href="https://github.com/dunwu/db-tutorial" target="_blank" rel="noopener">DB-TUTORIAL 首页</a> ◾ 🎯 <a href="https://github.com/dunwu/blog" target="_blank" rel="noopener">我的博客</a> ◾</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/16/mysql-%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/16/mysql-%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="post-title-link" itemprop="url">MySQL 工作流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-16 11:14:07" itemprop="dateCreated datePublished" datetime="2020-07-16T11:14:07+08:00">2020-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">关系型数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/16/mysql-%E5%B7%A5%E4%BD%9C%E6%B5%81/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/16/mysql-工作流/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="mysql-工作流"><a class="markdownIt-Anchor" href="#mysql-工作流"></a> MySQL 工作流</h1>
+<h2 id="1-基础架构"><a class="markdownIt-Anchor" href="#1-基础架构"></a> 1. 基础架构</h2>
+<p>大体来说，MySQL 可以分为 Server 层和存储引擎层两部分。</p>
+<p><strong>Server 层包括连接器、查询缓存、分析器、优化器、执行器等</strong>，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
+<p><strong>存储引擎层负责数据的存储和提取</strong>。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始成为了默认存储引擎。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200227201908.jpg" alt="img" /></p>
+<h2 id="2-查询过程"><a class="markdownIt-Anchor" href="#2-查询过程"></a> 2. 查询过程</h2>
+<p>SQL 语句在 MySQL 中是如何执行的？</p>
+<p>MySQL 整个查询执行过程，总的来说分为 6 个步骤：</p>
+<ol>
+<li>客户端和 MySQL 服务器建立连接；客户端向 MySQL 服务器发送一条查询请求。</li>
+<li>MySQL 服务器首先检查查询缓存，如果命中缓存，则立刻返回结果。否则进入下一阶段。</li>
+<li>MySQL 服务器进行 SQL 分析：语法分析、词法分析。</li>
+<li>MySQL 服务器用优化器生成对应的执行计划。</li>
+<li>MySQL 服务器根据执行计划，调用存储引擎的 API 来执行查询。</li>
+<li>MySQL 服务器将结果返回给客户端，同时缓存查询结果。</li>
+</ol>
+<h3 id="21-一连接"><a class="markdownIt-Anchor" href="#21-一连接"></a> 2.1. （一）连接</h3>
+<p>使用 MySQL 第一步自然是要连接数据库。</p>
+<p>MySQL 客户端/服务端通信是<strong>半双工模式</strong>：即任一时刻，要么是服务端向客户端发送数据，要么是客户端向服务器发送数据。客户端用一个单独的数据包将查询请求发送给服务器，所以当查询语句很长的时候，需要设置<code>max_allowed_packet</code>参数。但是需要注意的是，如果查询实在是太大，服务端会拒绝接收更多数据并抛出异常。</p>
+<p>MySQL 客户端连接命令：<code>mysql -h&lt;主机&gt; -P&lt;端口&gt; -u&lt;用户名&gt; -p&lt;密码&gt;</code>。如果没有显式指定密码，会要求输入密码才能访问。</p>
+<p>连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在 <code>show processlist</code> 命令中看到它。客户端如果太长时间没动静，连接器就会自动将它断开。<strong>客户端连接维持时间是由参数 <code>wait_timeout</code> 控制的，默认值是 8 小时</strong>。如果在连接被断开之后，客户端再次发送请求的话，就会收到一个错误提醒： <code>Lost connection to MySQL server during query</code>。这时候如果你要继续，就需要重连，然后再执行请求了。</p>
+<p>建立连接的过程通常是比较复杂的，建议在使用中要尽量减少建立连接的动作，也就是尽量使用长连接。为了在程序中提高数据库连接的服用了，一般会使用数据库连接池来维护管理。</p>
+<p>但是全部使用长连接后，你可能会发现，有些时候 MySQL 占用内存涨得特别快，这是因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的。这些资源会在连接断开的时候才释放。所以如果长连接累积下来，可能导致内存占用太大，被系统强行杀掉（OOM），从现象看就是 MySQL 异常重启了。</p>
+<p>怎么解决这个问题呢？你可以考虑以下两种方案。</p>
+<ul>
+<li><strong>定期断开长连接</strong>。使用一段时间，或者程序里面判断执行过一个占用内存的大查询后，断开连接，之后要查询再重连。</li>
+<li>如果你用的是 MySQL 5.7 或更新版本，可以在每次执行一个比较大的操作后，通过执行 <code>mysql_reset_connection</code> 来重新初始化连接资源。这个过程不需要重连和重新做权限验证，但是会将连接恢复到刚刚创建完时的状态。</li>
+</ul>
+<h3 id="22-二查询缓存"><a class="markdownIt-Anchor" href="#22-二查询缓存"></a> 2.2. （二）查询缓存</h3>
+<blockquote>
+<p><strong>不建议使用数据库缓存，因为往往弊大于利</strong>。</p>
+</blockquote>
+<p>解析一个查询语句前，如果查询缓存是打开的，那么 MySQL 会检查这个查询语句是否命中查询缓存中的数据。如果当前查询恰好命中查询缓存，在检查一次用户权限后直接返回缓存中的结果。这种情况下，查询不会被解析，也不会生成执行计划，更不会执行。</p>
+<p>MySQL 将缓存存放在一个引用表（不要理解成<code>table</code>，可以认为是类似于<code>HashMap</code>的数据结构），通过一个哈希值索引，这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息计算得来。所以两个查询在任何字符上的不同（例如：空格、注释），都会导致缓存不会命中。</p>
+<p><strong>如果查询中包含任何用户自定义函数、存储函数、用户变量、临时表、mysql 库中的系统表，其查询结果都不会被缓存</strong>。比如函数<code>NOW()</code>或者<code>CURRENT_DATE()</code>会因为不同的查询时间，返回不同的查询结果，再比如包含<code>CURRENT_USER</code>或者<code>CONNECION_ID()</code>的查询语句会因为不同的用户而返回不同的结果，将这样的查询结果缓存起来没有任何的意义。</p>
+<p><strong>不建议使用数据库缓存，因为往往弊大于利</strong>。查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。因此很可能你费劲地把结果存起来，还没使用呢，就被一个更新全清空了。对于更新压力大的数据库来说，查询缓存的命中率会非常低。除非你的业务就是有一张静态表，很长时间才会更新一次。比如，一个系统配置表，那这张表上的查询才适合使用查询缓存。</p>
+<p>好在 MySQL 也提供了这种“按需使用”的方式。你可以将参数 <code>query_cache_type</code> 设置成 <code>DEMAND</code>，这样对于默认的 SQL 语句都不使用查询缓存。而对于你确定要使用查询缓存的语句，可以用 <code>SQL_CACHE</code> 显式指定，像下面这个语句一样：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">SQL_CACHE</span> * <span class="keyword">from</span> T <span class="keyword">where</span> <span class="keyword">ID</span>=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：MySQL 8.0 版本直接将查询缓存的整块功能删掉了。</p>
+</blockquote>
+<h3 id="23-三语法分析"><a class="markdownIt-Anchor" href="#23-三语法分析"></a> 2.3. （三）语法分析</h3>
+<p>如果没有命中查询缓存，就要开始真正执行语句了。首先，MySQL 需要知道你要做什么，因此需要对 SQL 语句做解析。MySQL 通过关键字对 SQL 语句进行解析，并生成一颗对应的语法解析树。这个过程中，分析器主要通过语法规则来验证和解析。比如 SQL 中是否使用了错误的关键字或者关键字的顺序是否正确等等。预处理则会根据 MySQL 规则进一步检查解析树是否合法。比如检查要查询的数据表和数据列是否存在等等。</p>
+<ul>
+<li>分析器先会先做“<strong>词法分析</strong>”。你输入的是由多个字符串和空格组成的一条 SQL 语句，MySQL 需要识别出里面的字符串分别是什么，代表什么。MySQL 从你输入的&quot;select&quot;这个关键字识别出来，这是一个查询语句。它也要把字符串“T”识别成“表名 T”，把字符串“ID”识别成“列 ID”。</li>
+<li>接下来，要做“<strong>语法分析</strong>”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个 SQL 语句是否满足 MySQL 语法。如果你的语句不对，就会收到“You have an error in your SQL syntax”的错误提醒，比如下面这个语句 select 少打了开头的字母“s”。</li>
+</ul>
+<h3 id="24-四查询优化"><a class="markdownIt-Anchor" href="#24-四查询优化"></a> 2.4. （四）查询优化</h3>
+<p>经过了分析器，MySQL 就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。</p>
+<p>经过前面的步骤生成的语法树被认为是合法的了，并且由优化器将其转化成执行计划。多数情况下，一条查询可以有很多种执行方式，最后都返回相应的结果。优化器的作用就是找到这其中最好的执行计划。</p>
+<p>MySQL 使用基于成本的优化器，它尝试预测一个查询使用某种执行计划时的成本，并选择其中成本最小的一个。在 MySQL 可以通过查询当前会话的 <code>last_query_cost</code> 的值来得到其计算当前查询的成本。</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">mysql&gt; select * from t_message limit <span class="number">10</span>;</span><br><span class="line">...省略结果集</span><br><span class="line"></span><br><span class="line">mysql&gt; show status like <span class="string">'last_query_cost'</span>;</span><br><span class="line">+-----------------+-------------+</span><br><span class="line"><span class="params">| Variable_name   |</span> Value       <span class="params">|</span></span><br><span class="line"><span class="params">+-----------------+-------------+</span></span><br><span class="line"><span class="params">|</span> Last_query_cost <span class="params">| 6391.799000 |</span></span><br><span class="line">+-----------------+-------------+</span><br></pre></td></tr></table></figure>
+<p>示例中的结果表示优化器认为大概需要做 6391 个数据页的随机查找才能完成上面的查询。这个结果是根据一些列的统计信息计算得来的，这些统计信息包括：每张表或者索引的页面个数、索引的基数、索引和数据行的长度、索引的分布情况等等。</p>
+<p>有非常多的原因会导致 MySQL 选择错误的执行计划，比如统计信息不准确、不会考虑不受其控制的操作成本（用户自定义函数、存储过程）、MySQL 认为的最优跟我们想的不一样（我们希望执行时间尽可能短，但 MySQL 值选择它认为成本小的，但成本小并不意味着执行时间短）等等。</p>
+<p>MySQL 的查询优化器是一个非常复杂的部件，它使用了非常多的优化策略来生成一个最优的执行计划：</p>
+<ul>
+<li>重新定义表的关联顺序（多张表关联查询时，并不一定按照 SQL 中指定的顺序进行，但有一些技巧可以指定关联顺序）</li>
+<li>优化<code>MIN()</code>和<code>MAX()</code>函数（找某列的最小值，如果该列有索引，只需要查找 B+Tree 索引最左端，反之则可以找到最大值，具体原理见下文）</li>
+<li>提前终止查询（比如：使用 Limit 时，查找到满足数量的结果集后会立即终止查询）</li>
+<li>优化排序（在老版本 MySQL 会使用两次传输排序，即先读取行指针和需要排序的字段在内存中对其排序，然后再根据排序结果去读取数据行，而新版本采用的是单次传输排序，也就是一次读取所有的数据行，然后根据给定的列排序。对于 I/O 密集型应用，效率会高很多）</li>
+</ul>
+<p>随着 MySQL 的不断发展，优化器使用的优化策略也在不断的进化，这里仅仅介绍几个非常常用且容易理解的优化策略，其他的优化策略，大家自行查阅吧。</p>
+<h3 id="25-五查询执行引擎"><a class="markdownIt-Anchor" href="#25-五查询执行引擎"></a> 2.5. （五）查询执行引擎</h3>
+<p>在完成解析和优化阶段以后，MySQL 会生成对应的执行计划，查询执行引擎根据执行计划给出的指令逐步执行得出结果。整个执行过程的大部分操作均是通过调用存储引擎实现的接口来完成，这些接口被称为<code>handler API</code>。查询过程中的每一张表由一个<code>handler</code>实例表示。实际上，MySQL 在查询优化阶段就为每一张表创建了一个<code>handler</code>实例，优化器可以根据这些实例的接口来获取表的相关信息，包括表的所有列名、索引统计信息等。存储引擎接口提供了非常丰富的功能，但其底层仅有几十个接口，这些接口像搭积木一样完成了一次查询的大部分操作。</p>
+<h3 id="26-六返回结果"><a class="markdownIt-Anchor" href="#26-六返回结果"></a> 2.6. （六）返回结果</h3>
+<p>查询过程的最后一个阶段就是将结果返回给客户端。即使查询不到数据，MySQL 仍然会返回这个查询的相关信息，比如该查询影响到的行数以及执行时间等等。</p>
+<p>如果查询缓存被打开且这个查询可以被缓存，MySQL 也会将结果存放到缓存中。</p>
+<p>结果集返回客户端是一个增量且逐步返回的过程。有可能 MySQL 在生成第一条结果时，就开始向客户端逐步返回结果集了。这样服务端就无须存储太多结果而消耗过多内存，也可以让客户端第一时间获得返回结果。需要注意的是，结果集中的每一行都会以一个满足 ① 中所描述的通信协议的数据包发送，再通过 TCP 协议进行传输，在传输过程中，可能对 MySQL 的数据包进行缓存然后批量发送。</p>
+<h2 id="3-更新过程"><a class="markdownIt-Anchor" href="#3-更新过程"></a> 3. 更新过程</h2>
+<p>MySQL 更新过程和 MySQL 查询过程类似，也会将流程走一遍。不一样的是：<strong>更新流程还涉及两个重要的日志模块，：redo log（重做日志）和 binlog（归档日志）</strong>。</p>
+<h3 id="31-redo-log"><a class="markdownIt-Anchor" href="#31-redo-log"></a> 3.1. redo log</h3>
+<p><strong>redo log 是 InnoDB 引擎特有的日志</strong>。<strong>redo log 即重做日志</strong>。redo log 是物理日志，记录的是“在某个数据页上做了什么修改”。</p>
+<p><strong>redo log 是基于 WAL 技术</strong>。WAL 的全称是 <strong>Write-Ahead Logging</strong>，它的关键点就是<strong>先写日志，再写磁盘</strong>。具体来说，当有一条记录需要更新的时候，InnoDB 引擎就会先把记录写到 redo log 里，并更新内存，这个时候更新就算完成了。同时，InnoDB 引擎会在适当的时候，将这个操作记录更新到磁盘里面，而这个更新往往是在系统比较空闲的时候做。</p>
+<p>InnoDB 的 redo log 是固定大小的，比如可以配置为一组 4 个文件，每个文件的大小是 1GB，那么这块“粉板”总共就可以记录 4GB 的操作。从头开始写，写到末尾就又回到开头循环写。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200630180342.png" alt="img" /></p>
+<p>有了 redo log，InnoDB 就可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为<strong>crash-safe</strong>。</p>
+<h3 id="32-bin-log"><a class="markdownIt-Anchor" href="#32-bin-log"></a> 3.2. bin log</h3>
+<p><strong>bin log 即归档日志</strong>。binlog 是逻辑日志，记录的是这个语句的原始逻辑。</p>
+<p>binlog 是可以追加写入的，即写到一定大小后会切换到下一个，并不会覆盖以前的日志。</p>
+<p><strong>binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用</strong>。</p>
+<p><code>sync_binlog</code> 这个参数设置成 1 的时候，表示每次事务的 binlog 都持久化到磁盘。这个参数我也建议你设置成 1，这样可以保证 MySQL 异常重启之后 binlog 不丢失。</p>
+<h3 id="33-redo-log-vs-bin-log"><a class="markdownIt-Anchor" href="#33-redo-log-vs-bin-log"></a> 3.3. redo log vs. bin log</h3>
+<p>这两种日志有以下三点不同。</p>
+<ul>
+<li>redo log 是 InnoDB 引擎特有的；binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用。</li>
+<li>redo log 是物理日志，记录的是“在某个数据页上做了什么修改”；binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如“给 ID=2 这一行的 c 字段加 1 ”。</li>
+<li>redo log 是循环写的，空间固定会用完；binlog 是可以追加写入的。“追加写”是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。</li>
+</ul>
+<p>有了对这两个日志的概念性理解，我们再来看执行器和 InnoDB 引擎在执行这个简单的 update 语句时的内部流程。</p>
+<ol>
+<li>执行器先找引擎取 ID=2 这一行。ID 是主键，引擎直接用树搜索找到这一行。如果 ID=2 这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</li>
+<li>执行器拿到引擎给的行数据，把这个值加上 1，比如原来是 N，现在就是 N+1，得到新的一行数据，再调用引擎接口写入这行新数据。</li>
+<li>引擎将这行新数据更新到内存中，同时将这个更新操作记录到 redo log 里面，此时 redo log 处于 prepare 状态。然后告知执行器执行完成了，随时可以提交事务。</li>
+<li>执行器生成这个操作的 binlog，并把 binlog 写入磁盘。</li>
+<li>执行器调用引擎的提交事务接口，引擎把刚刚写入的 redo log 改成提交（commit）状态，更新完成。</li>
+</ol>
+<p>这里我给出这个 update 语句的执行流程图，图中浅色框表示是在 InnoDB 内部执行的，深色框表示是在执行器中执行的。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200714133806.png" alt="img" /></p>
+<h3 id="34-两阶段提交"><a class="markdownIt-Anchor" href="#34-两阶段提交"></a> 3.4. 两阶段提交</h3>
+<p>redo log 的写入拆成了两个步骤：prepare 和 commit，这就是&quot;两阶段提交&quot;。为什么日志需要“两阶段提交”。</p>
+<p>由于 redo log 和 binlog 是两个独立的逻辑，如果不用两阶段提交，要么就是先写完 redo log 再写 binlog，或者采用反过来的顺序。我们看看这两种方式会有什么问题。</p>
+<ul>
+<li><strong>先写 redo log 后写 binlog</strong>。假设在 redo log 写完，binlog 还没有写完的时候，MySQL 进程异常重启。由于我们前面说过的，redo log 写完之后，系统即使崩溃，仍然能够把数据恢复回来，所以恢复后这一行 c 的值是 1。<br />
+但是由于 binlog 没写完就 crash 了，这时候 binlog 里面就没有记录这个语句。因此，之后备份日志的时候，存起来的 binlog 里面就没有这条语句。<br />
+然后你会发现，如果需要用这个 binlog 来恢复临时库的话，由于这个语句的 binlog 丢失，这个临时库就会少了这一次更新，恢复出来的这一行 c 的值就是 0，与原库的值不同。</li>
+<li><strong>先写 binlog 后写 redo log</strong>。如果在 binlog 写完之后 crash，由于 redo log 还没写，崩溃恢复以后这个事务无效，所以这一行 c 的值是 0。但是 binlog 里面已经记录了“把 c 从 0 改成 1”这个日志。所以，在之后用 binlog 来恢复的时候就多了一个事务出来，恢复出来的这一行 c 的值就是 1，与原库的值不同。</li>
+</ul>
+<p>可以看到，如果不使用“两阶段提交”，那么数据库的状态就有可能和用它的日志恢复出来的库的状态不一致。</p>
+<h2 id="4-参考资料"><a class="markdownIt-Anchor" href="#4-参考资料"></a> 4. 参考资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/23008813/" target="_blank" rel="noopener">《高性能 MySQL》</a></li>
+<li><a href="https://time.geekbang.org/column/intro/139" target="_blank" rel="noopener">MySQL 实战 45 讲</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/16/mysql-%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/16/mysql-%E7%B4%A2%E5%BC%95/" class="post-title-link" itemprop="url">Mysql 索引</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-16 11:14:07" itemprop="dateCreated datePublished" datetime="2020-07-16T11:14:07+08:00">2020-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">关系型数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/16/mysql-%E7%B4%A2%E5%BC%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/16/mysql-索引/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="mysql-索引"><a class="markdownIt-Anchor" href="#mysql-索引"></a> Mysql 索引</h1>
+<blockquote>
+<p>索引是提高 MySQL 查询性能的一个重要途径，但过多的索引可能会导致过高的磁盘使用率以及过高的内存占用，从而影响应用程序的整体性能。应当尽量避免事后才想起添加索引，因为事后可能需要监控大量的 SQL 才能定位到问题所在，而且添加索引的时间肯定是远大于初始添加索引所需要的时间，可见索引的添加也是非常有技术含量的。</p>
+<p>接下来将向你展示一系列创建高性能索引的策略，以及每条策略其背后的工作原理。但在此之前，先了解与索引相关的一些算法和数据结构，将有助于更好的理解后文的内容。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200715172009.png" alt="img" /></p>
+<h2 id="1-索引简介"><a class="markdownIt-Anchor" href="#1-索引简介"></a> 1. 索引简介</h2>
+<p><strong>索引是数据库为了提高查找效率的一种数据结构</strong>。</p>
+<p>索引对于良好的性能非常关键，在数据量小且负载较低时，不恰当的索引对于性能的影响可能还不明显；但随着数据量逐渐增大，性能则会急剧下降。因此，索引优化应该是查询性能优化的最有效手段。</p>
+<h3 id="11-索引的优缺点"><a class="markdownIt-Anchor" href="#11-索引的优缺点"></a> 1.1. 索引的优缺点</h3>
+<p>B 树是最常见的索引，按照顺序存储数据，所以 Mysql 可以用来做 <code>ORDER BY</code> 和 <code>GROUP BY</code> 操作。因为数据是有序的，所以 B 树也就会将相关的列值都存储在一起。最后，因为索引中存储了实际的列值，所以某些查询只使用索引就能够完成全部查询。</p>
+<p>✔ 索引的优点：</p>
+<ul>
+<li><strong>索引大大减少了服务器需要扫描的数据量</strong>，从而加快检索速度。</li>
+<li><strong>索引可以帮助服务器避免排序和临时表</strong>。</li>
+<li><strong>索引可以将随机 I/O 变为顺序 I/O</strong>。</li>
+<li>支持行级锁的数据库，如 InnoDB 会在访问行的时候加锁。<strong>使用索引可以减少访问的行数，从而减少锁的竞争，提高并发</strong>。</li>
+<li>唯一索引可以确保每一行数据的唯一性，通过使用索引，可以在查询的过程中使用优化隐藏器，提高系统的性能。</li>
+</ul>
+<p>❌ 索引的缺点：</p>
+<ul>
+<li><strong>创建和维护索引要耗费时间</strong>，这会随着数据量的增加而增加。</li>
+<li><strong>索引需要占用额外的物理空间</strong>，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立组合索引那么需要的空间就会更大。</li>
+<li><strong>写操作（<code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code>）时很可能需要更新索引，导致数据库的写操作性能降低</strong>。</li>
+</ul>
+<h3 id="12-何时使用索引"><a class="markdownIt-Anchor" href="#12-何时使用索引"></a> 1.2. 何时使用索引</h3>
+<blockquote>
+<p>索引能够轻易将查询性能提升几个数量级。</p>
+</blockquote>
+<p>✔ 什么情况<strong>适用</strong>索引：</p>
+<ul>
+<li><strong>频繁读操作（ <code>SELECT</code> ）</strong></li>
+<li><strong>表的数据量比较大</strong>。</li>
+<li><strong>列名经常出现在 <code>WHERE</code> 或连接（<code>JOIN</code>）条件中</strong>。</li>
+</ul>
+<p>❌ 什么情况<strong>不适用</strong>索引：</p>
+<ul>
+<li><strong>频繁写操作</strong>（ <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> ），也就意味着需要更新索引。</li>
+<li><strong>列名不经常出现在 <code>WHERE</code> 或连接（<code>JOIN</code>）条件中</strong>，也就意味着索引会经常无法命中，没有意义，还增加空间开销。</li>
+<li><strong>非常小的表</strong>，对于非常小的表，大部分情况下简单的全表扫描更高效。</li>
+<li><strong>特大型的表</strong>，建立和使用索引的代价将随之增长。可以考虑使用分区技术或 Nosql。</li>
+</ul>
+<h2 id="2-索引的数据结构"><a class="markdownIt-Anchor" href="#2-索引的数据结构"></a> 2. 索引的数据结构</h2>
+<p>在 Mysql 中，索引是在存储引擎层而不是服务器层实现的。所以，并没有统一的索引标准；不同存储引擎的索引的数据结构也不相同。</p>
+<h3 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h3>
+<p>数组是用连续的内存空间来存储数据，并且支持随机访问。</p>
+<p>有序数组可以使用二分查找法，其时间复杂度为 <code>O(log n)</code>，无论是等值查询还是范围查询，都非常高效。</p>
+<p>但数组有两个重要限制：</p>
+<ul>
+<li>数组的空间大小固定，如果要扩容只能采用复制数组的方式。</li>
+<li>插入、删除时间复杂度为 <code>O(n)</code>。</li>
+</ul>
+<p>这意味着，如果使用数组作为索引，如果要保证数组有序，其更新操作代价高昂。</p>
+<h3 id="21-哈希索引"><a class="markdownIt-Anchor" href="#21-哈希索引"></a> 2.1. 哈希索引</h3>
+<p>哈希表是一种以键 - 值（key-value）对形式存储数据的结构，我们只要输入待查找的值即 key，就可以找到其对应的值即 Value。</p>
+<p><strong>哈希表</strong> 使用 <strong>哈希函数</strong> 组织数据，以支持快速插入和搜索的数据结构。哈希表的本质是一个数组，其思路是：使用 Hash 函数将 Key 转换为数组下标，利用数组的随机访问特性，使得我们能在 <code>O(1)</code> 的时间代价内完成检索。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20220320201844.png" alt="img" /></p>
+<p>有两种不同类型的哈希表：<strong>哈希集合</strong> 和 <strong>哈希映射</strong>。</p>
+<ul>
+<li><strong>哈希集合</strong> 是集合数据结构的实现之一，用于存储非重复值。</li>
+<li><strong>哈希映射</strong> 是映射 数据结构的实现之一，用于存储键值对。</li>
+</ul>
+<p>哈希索引基于哈希表实现，<strong>只适用于等值查询</strong>。对于每一行数据，哈希索引都会将所有的索引列计算一个哈希码（<code>hashcode</code>），哈希码是一个较小的值。哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。</p>
+<p>在 Mysql 中，只有 Memory 存储引擎显示支持哈希索引。</p>
+<p>✔ 哈希索引的<strong>优点</strong>：</p>
+<ul>
+<li>因为索引数据结构紧凑，所以<strong>查询速度非常快</strong>。</li>
+</ul>
+<p>❌ 哈希索引的<strong>缺点</strong>：</p>
+<ul>
+<li>哈希索引值包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行。不过，访问内存中的行的速度很快，所以大部分情况下这一点对性能影响不大。</li>
+<li><strong>哈希索引数据不是按照索引值顺序存储的</strong>，所以<strong>无法用于排序</strong>。</li>
+<li>哈希索引<strong>不支持部分索引匹配查找</strong>，因为哈希索引时使用索引列的全部内容来进行哈希计算的。如，在数据列 (A,B) 上建立哈希索引，如果查询只有数据列 A，无法使用该索引。</li>
+<li>哈希索引<strong>只支持等值比较查询</strong>，包括 <code>=</code>、<code>IN()</code>、<code>&lt;=&gt;</code>；不支持任何范围查询，如 <code>WHERE price &gt; 100</code>。</li>
+<li>哈希索引有<strong>可能出现哈希冲突</strong>
+<ul>
+<li>出现哈希冲突时，必须遍历链表中所有的行指针，逐行比较，直到找到符合条件的行。</li>
+<li>如果哈希冲突多的话，维护索引的代价会很高。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>因为种种限制，所以哈希索引只适用于特定的场合。而一旦使用哈希索引，则它带来的性能提升会非常显著。</p>
+</blockquote>
+<h3 id="22-b-树索引"><a class="markdownIt-Anchor" href="#22-b-树索引"></a> 2.2. B 树索引</h3>
+<p>通常我们所说的索引是指<code>B-Tree</code>索引，它是目前关系型数据库中查找数据最为常用和有效的索引，大多数存储引擎都支持这种索引。使用<code>B-Tree</code>这个术语，是因为 MySQL 在<code>CREATE TABLE</code>或其它语句中使用了这个关键字，但实际上不同的存储引擎可能使用不同的数据结构，比如 InnoDB 就是使用的<code>B+Tree</code>。</p>
+<p><code>B+Tree</code>中的 B 是指<code>balance</code>，意为平衡。需要注意的是，B+树索引并不能找到一个给定键值的具体行，它找到的只是被查找数据行所在的页，接着数据库会把页读入到内存，再在内存中进行查找，最后得到要查找的数据。</p>
+<h4 id="二叉搜索树"><a class="markdownIt-Anchor" href="#二叉搜索树"></a> 二叉搜索树</h4>
+<p>二叉搜索树的特点是：每个节点的左儿子小于父节点，父节点又小于右儿子。其查询时间复杂度是 $$O(log(N))$$。</p>
+<p>当然为了维持 $$O(log(N))$$ 的查询复杂度，你就需要保持这棵树是平衡二叉树。为了做这个保证，更新的时间复杂度也是 $$O(log(N))$$。</p>
+<p>随着数据库中数据的增加，索引本身大小随之增加，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘 I/O 消耗，相对于内存存取，I/O 存取的消耗要高几个数量级。可以想象一下一棵几百万节点的二叉树的深度是多少？如果将这么大深度的一颗二叉树放磁盘上，每读取一个节点，需要一次磁盘的 I/O 读取，整个查找的耗时显然是不能够接受的。那么如何减少查找过程中的 I/O 存取次数？</p>
+<p>一种行之有效的解决方法是减少树的深度，将<strong>二叉树变为 N 叉树</strong>（多路搜索树），而 <strong>B+ 树就是一种多路搜索树</strong>。</p>
+<h4 id="b-树"><a class="markdownIt-Anchor" href="#b-树"></a> B+ 树</h4>
+<p>B+ 树索引适用于<strong>全键值查找</strong>、<strong>键值范围查找</strong>和<strong>键前缀查找</strong>，其中键前缀查找只适用于最左前缀查找。</p>
+<p>理解<code>B+Tree</code>时，只需要理解其最重要的两个特征即可：</p>
+<ul>
+<li>第一，所有的关键字（可以理解为数据）都存储在叶子节点，非叶子节点并不存储真正的数据，所有记录节点都是按键值大小顺序存放在同一层叶子节点上。</li>
+<li>其次，所有的叶子节点由指针连接。如下图为简化了的<code>B+Tree</code>。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200304235424.jpg" alt="img" /></p>
+<p>根据叶子节点的内容，索引类型分为主键索引和非主键索引。</p>
+<ul>
+<li><strong>聚簇索引（clustered）</strong>：又称为主键索引，其叶子节点存的是整行数据。因为无法同时把数据行存放在两个不同的地方，所以<strong>一个表只能有一个聚簇索引</strong>。<strong>InnoDB 的聚簇索引实际是在同一个结构中保存了 B 树的索引和数据行</strong>。</li>
+<li>非主键索引的叶子节点内容是主键的值。在 InnoDB 里，非主键索引也被称为<strong>二级索引（secondary）</strong>。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置的指针。可以有多个，小于 249 个。</li>
+</ul>
+<p><strong>聚簇表示数据行和相邻的键值紧凑地存储在一起，因为数据紧凑，所以访问快</strong>。因为无法同时把数据行存放在两个不同的地方，所以<strong>一个表只能有一个聚簇索引</strong>。</p>
+<p><strong>聚簇索引和非聚簇索引的查询有什么区别</strong></p>
+<ul>
+<li>如果语句是 <code>select * from T where ID=500</code>，即聚簇索引查询方式，则只需要搜索 ID 这棵 B+ 树；</li>
+<li>如果语句是 <code>select * from T where k=5</code>，即非聚簇索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为<strong>回表</strong>。</li>
+</ul>
+<p>也就是说，<strong>基于非聚簇索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
+<p><strong>显然，主键长度越小，非聚簇索引的叶子节点就越小，非聚簇索引占用的空间也就越小。</strong></p>
+<p>自增主键是指自增列上定义的主键，在建表语句中一般是这么定义的： NOT NULL PRIMARY KEY AUTO_INCREMENT。从性能和存储空间方面考量，自增主键往往是更合理的选择。有没有什么场景适合用业务字段直接做主键的呢？还是有的。比如，有些业务的场景需求是这样的：</p>
+<ul>
+<li>只有一个索引；</li>
+<li>该索引必须是唯一索引。</li>
+</ul>
+<p>由于没有其他索引，所以也就不用考虑其他索引的叶子节点大小的问题。</p>
+<p>这时候我们就要优先考虑上一段提到的“尽量使用主键查询”原则，直接将这个索引设置为主键，可以避免每次查询需要搜索两棵树。</p>
+<h3 id="23-全文索引"><a class="markdownIt-Anchor" href="#23-全文索引"></a> 2.3. 全文索引</h3>
+<p>MyISAM 存储引擎支持全文索引，用于查找文本中的关键词，而不是直接比较是否相等。查找条件使用 MATCH AGAINST，而不是普通的 WHERE。</p>
+<p>全文索引一般使用倒排索引实现，它记录着关键词到其所在文档的映射。</p>
+<p>InnoDB 存储引擎在 MySQL 5.6.4 版本中也开始支持全文索引。</p>
+<h3 id="24-空间数据索引"><a class="markdownIt-Anchor" href="#24-空间数据索引"></a> 2.4. 空间数据索引</h3>
+<p>MyISAM 存储引擎支持空间数据索引（R-Tree），可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查询。</p>
+<p>必须使用 GIS 相关的函数来维护数据。</p>
+<h2 id="3-索引的类型"><a class="markdownIt-Anchor" href="#3-索引的类型"></a> 3. 索引的类型</h2>
+<p>主流的关系型数据库一般都支持以下索引类型：</p>
+<h3 id="31-主键索引primary"><a class="markdownIt-Anchor" href="#31-主键索引primary"></a> 3.1. 主键索引（<code>PRIMARY</code>）</h3>
+<p>主键索引：一种特殊的唯一索引，不允许有空值。一个表只能有一个主键（在 InnoDB 中本质上即聚簇索引），一般是在建表的时候同时创建主键索引。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> (</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    ...</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="32-唯一索引unique"><a class="markdownIt-Anchor" href="#32-唯一索引unique"></a> 3.2. 唯一索引（<code>UNIQUE</code>）</h3>
+<p>唯一索引：<strong>索引列的值必须唯一，但允许有空值</strong>。如果是组合索引，则列值的组合必须唯一。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> (</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">UNIQUE</span> indexName (title(<span class="keyword">length</span>))</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="33-普通索引index"><a class="markdownIt-Anchor" href="#33-普通索引index"></a> 3.3. 普通索引（<code>INDEX</code>）</h3>
+<p>普通索引：最基本的索引，没有任何限制。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> (</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">INDEX</span> index_name (title(<span class="keyword">length</span>))</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="34-全文索引fulltext"><a class="markdownIt-Anchor" href="#34-全文索引fulltext"></a> 3.4. 全文索引（<code>FULLTEXT</code>）</h3>
+<p>全文索引：主要用来查找文本中的关键字，而不是直接与索引中的值相比较。</p>
+<p>全文索引跟其它索引大不相同，它更像是一个搜索引擎，而不是简单的 WHERE 语句的参数匹配。全文索引配合 <code>match against</code> 操作使用，而不是一般的 WHERE 语句加 LIKE。它可以在 <code>CREATE TABLE</code>，<code>ALTER TABLE</code> ，<code>CREATE INDEX</code> 使用，不过目前只有 <code>char</code>、<code>varchar</code>，<code>text</code> 列上可以创建全文索引。值得一提的是，在数据量较大时候，现将数据放入一个没有全局索引的表中，然后再用 <code>CREATE INDEX</code> 创建全文索引，要比先为一张表建立全文索引然后再将数据写入的速度快很多。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> (</span><br><span class="line">    <span class="string">`content`</span> <span class="built_in">text</span> <span class="built_in">CHARACTER</span> <span class="literal">NULL</span>,</span><br><span class="line">    ...</span><br><span class="line">    FULLTEXT (<span class="keyword">content</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="35-联合索引"><a class="markdownIt-Anchor" href="#35-联合索引"></a> 3.5. 联合索引</h3>
+<p>组合索引：多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用组合索引时遵循最左前缀集合。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table`</span> (</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">INDEX</span> index_name (title(<span class="keyword">length</span>), title(<span class="keyword">length</span>), ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="4-索引的策略"><a class="markdownIt-Anchor" href="#4-索引的策略"></a> 4. 索引的策略</h2>
+<p>假设有以下表：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`t`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`city`</span> <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`addr`</span> <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`city`</span> (<span class="string">`city`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="41-索引基本原则"><a class="markdownIt-Anchor" href="#41-索引基本原则"></a> 4.1. 索引基本原则</h3>
+<ul>
+<li><strong>索引不是越多越好，不要为所有列都创建索引</strong>。要考虑到索引的维护代价、空间占用和查询时回表的代价。索引一定是按需创建的，并且要尽可能确保足够轻量。一旦创建了多字段的联合索引，我们要考虑尽可能利用索引本身完成数据查询，减少回表的成本。</li>
+<li>要<strong>尽量避免冗余和重复索引</strong>。</li>
+<li>要<strong>考虑删除未使用的索引</strong>。</li>
+<li><strong>尽量的扩展索引，不要新建索引</strong>。</li>
+<li><strong>频繁作为 <code>WHERE</code> 过滤条件的列应该考虑添加索引</strong>。</li>
+</ul>
+<h3 id="42-独立的列"><a class="markdownIt-Anchor" href="#42-独立的列"></a> 4.2. 独立的列</h3>
+<p><strong>“独立的列” 是指索引列不能是表达式的一部分，也不能是函数的参数</strong>。</p>
+<p><strong>对索引字段做函数操作，可能会破坏索引值的有序性，因此优化器就决定放弃走树搜索功能。</strong></p>
+<p>如果查询中的列不是独立的列，则数据库不会使用索引。</p>
+<p>❌ 错误示例：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> actor_id <span class="keyword">FROM</span> actor <span class="keyword">WHERE</span> actor_id + <span class="number">1</span> = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">WHERE</span> <span class="keyword">TO_DAYS</span>(<span class="keyword">current_date</span>) - <span class="keyword">TO_DAYS</span>(date_col) &lt;= <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="43-覆盖索引"><a class="markdownIt-Anchor" href="#43-覆盖索引"></a> 4.3. 覆盖索引</h3>
+<p><strong>覆盖索引是指，索引上的信息足够满足查询请求，不需要回表查询数据。</strong></p>
+<p>【示例】范围查询</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="keyword">index</span> k(k))</span><br><span class="line"><span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>, <span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'ee'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> T <span class="keyword">where</span> k <span class="keyword">between</span> <span class="number">3</span> <span class="keyword">and</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>需要执行几次树的搜索操作，会扫描多少行？</p>
+<ol>
+<li>在 k 索引树上找到 k=3 的记录，取得 ID = 300；</li>
+<li>再到 ID 索引树查到 ID=300 对应的 R3；</li>
+<li>在 k 索引树取下一个值 k=5，取得 ID=500；</li>
+<li>再回到 ID 索引树查到 ID=500 对应的 R4；</li>
+<li>在 k 索引树取下一个值 k=6，不满足条件，循环结束。</li>
+</ol>
+<p>在这个过程中，<strong>回到主键索引树搜索的过程，我们称为回表</strong>。可以看到，这个查询过程读了 k 索引树的 3 条记录（步骤 1、3 和 5），回表了两次（步骤 2 和 4）。</p>
+<p>如果执行的语句是 select ID from T where k between 3 and 5，这时只需要查 ID 的值，而 ID 的值已经在 k 索引树上了，因此可以直接提供查询结果，不需要回表。索引包含所有需要查询的字段的值，称为覆盖索引。</p>
+<p><strong>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。</strong></p>
+<h3 id="44-使用索引来排序"><a class="markdownIt-Anchor" href="#44-使用索引来排序"></a> 4.4. 使用索引来排序</h3>
+<p>Mysql 有两种方式可以生成排序结果：通过排序操作；或者按索引顺序扫描。</p>
+<p><strong>索引最好既满足排序，又用于查找行</strong>。这样，就可以通过命中覆盖索引直接将结果查出来，也就不再需要排序了。</p>
+<p>这样整个查询语句的执行流程就变成了：</p>
+<ol>
+<li>从索引 (city,name,age) 找到第一个满足 city='杭州’条件的记录，取出其中的 city、name 和 age 这三个字段的值，作为结果集的一部分直接返回；</li>
+<li>从索引 (city,name,age) 取下一个记录，同样取出这三个字段的值，作为结果集的一部分直接返回；</li>
+<li>重复执行步骤 2，直到查到第 1000 条记录，或者是不满足 city='杭州’条件时循环结束。</li>
+</ol>
+<h3 id="45-前缀索引"><a class="markdownIt-Anchor" href="#45-前缀索引"></a> 4.5. 前缀索引</h3>
+<p>有时候需要索引很长的字符列，这会让索引变得大且慢。</p>
+<p>这时，可以使用前缀索引，即只索引开始的部分字符，这样可以<strong>大大节约索引空间</strong>，从而<strong>提高索引效率</strong>。但这样也<strong>会降低索引的选择性</strong>。对于 <code>BLOB</code>/<code>TEXT</code>/<code>VARCHAR</code> 这种文本类型的列，必须使用前缀索引，因为数据库往往不允许索引这些列的完整长度。</p>
+<p><strong>索引的选择性</strong>是指：不重复的索引值和数据表记录总数的比值。最大值为 1，此时每个记录都有唯一的索引与其对应。选择性越高，查询效率也越高。如果存在多条命中前缀索引的情况，就需要依次扫描，直到最终找到正确记录。</p>
+<p><strong>使用前缀索引，定义好长度，就可以做到既节省空间，又不用额外增加太多的查询成本。</strong></p>
+<p>那么，如何确定前缀索引合适的长度呢？</p>
+<p>可以使用下面这个语句，算出这个列上有多少个不同的值：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> email) <span class="keyword">as</span> L <span class="keyword">from</span> SUser;</span><br></pre></td></tr></table></figure>
+<p>然后，依次选取不同长度的前缀来看这个值，比如我们要看一下 4~7 个字节的前缀索引，可以用这个语句：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">  <span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(email,<span class="number">4</span>)）<span class="keyword">as</span> L4,</span><br><span class="line">  <span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(email,<span class="number">5</span>)）<span class="keyword">as</span> L5,</span><br><span class="line">  <span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(email,<span class="number">6</span>)）<span class="keyword">as</span> L6,</span><br><span class="line">  <span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(email,<span class="number">7</span>)）<span class="keyword">as</span> L7,</span><br><span class="line"><span class="keyword">from</span> SUser;</span><br></pre></td></tr></table></figure>
+<p>当然，<strong>使用前缀索引很可能会损失区分度</strong>，所以你需要预先设定一个可以接受的损失比例，比如 5%。然后，在返回的 L4~L7 中，找出不小于 L * 95% 的值，假设这里 L6、L7 都满足，你就可以选择前缀长度为 6。</p>
+<p>此外，<strong><code>order by</code> 无法使用前缀索引，无法把前缀索引用作覆盖索引</strong>。</p>
+<h3 id="46-最左前缀匹配原则"><a class="markdownIt-Anchor" href="#46-最左前缀匹配原则"></a> 4.6. 最左前缀匹配原则</h3>
+<p>不只是索引的全部定义，只要满足最左前缀，就可以利用索引来加速检索。这个最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符。</p>
+<p>MySQL 会一直向右匹配直到遇到范围查询 <code>(&gt;,&lt;,BETWEEN,LIKE)</code> 就停止匹配。</p>
+<ul>
+<li>索引可以简单如一个列(a)，也可以复杂如多个列(a, b, c, d)，即<strong>联合索引</strong>。</li>
+<li>如果是联合索引，那么 key 也由多个列组成，同时，索引只能用于查找 key 是否<strong>存在（相等）</strong>，遇到范围查询(&gt;、&lt;、between、like 左匹配)等就<strong>不能进一步匹配</strong>了，后续退化为线性查找。</li>
+<li>因此，<strong>列的排列顺序决定了可命中索引的列数</strong>。</li>
+</ul>
+<p><strong>不要为每个列都创建独立索引</strong>。</p>
+<p><strong>将选择性高的列或基数大的列优先排在多列索引最前列</strong>。但有时，也需要考虑 <code>WHERE</code> 子句中的排序、分组和范围条件等因素，这些因素也会对查询性能造成较大影响。</p>
+<p>例如：<code>a = 1 and b = 2 and c &gt; 3 and d = 4</code>，如果建立（a,b,c,d）顺序的索引，d 是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 的顺序可以任意调整。</p>
+<p>让选择性最强的索引列放在前面，索引的选择性是指：不重复的索引值和记录总数的比值。最大值为 1，此时每个记录都有唯一的索引与其对应。选择性越高，查询效率也越高。</p>
+<p>例如下面显示的结果中 customer_id 的选择性比 staff_id 更高，因此最好把 customer_id 列放在多列索引的前面。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> staff_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> staff_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> customer_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> customer_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> payment;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   staff_id_selectivity: 0.0001</span><br><span class="line">customer_id_selectivity: 0.0373</span><br><span class="line">               COUNT(*): 16049</span><br></pre></td></tr></table></figure>
+<h3 id="47-和-in-可以乱序"><a class="markdownIt-Anchor" href="#47-和-in-可以乱序"></a> 4.7. = 和 in 可以乱序</h3>
+<p><strong>不需要考虑 <code>=</code>、<code>IN</code> 等的顺序</strong>，Mysql 会自动优化这些条件的顺序，以匹配尽可能多的索引列。</p>
+<p>【示例】如有索引 (a, b, c, d)，查询条件 <code>c &gt; 3 and b = 2 and a = 1 and d &lt; 4</code> 与 <code>a = 1 and c &gt; 3 and b = 2 and d &lt; 4</code> 等顺序都是可以的，MySQL 会自动优化为 a = 1 and b = 2 and c &gt; 3 and d &lt; 4，依次命中 a、b、c、d。</p>
+<h2 id="5-索引最佳实践"><a class="markdownIt-Anchor" href="#5-索引最佳实践"></a> 5. 索引最佳实践</h2>
+<p>创建了索引，并非一定有效。比如不满足前缀索引、最左前缀匹配原则、查询条件涉及函数计算等情况都无法使用索引。此外，即使 SQL 本身符合索引的使用条件，MySQL 也会通过评估各种查询方式的代价，来决定是否走索引，以及走哪个索引。</p>
+<p>因此，在尝试通过索引进行 SQL 性能优化的时候，务必通过执行计划（<code>EXPLAIN</code>）或实际的效果来确认索引是否能有效改善性能问题，否则增加了索引不但没解决性能问题，还增加了数据库增删改的负担。如果对 EXPLAIN 给出的执行计划有疑问的话，你还可以利用 <code>optimizer_trace</code> 查看详细的执行计划做进一步分析。</p>
+<h2 id="6-参考资料"><a class="markdownIt-Anchor" href="#6-参考资料"></a> 6. 参考资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/23008813/" target="_blank" rel="noopener">《高性能 MySQL》</a></li>
+<li><a href="https://juejin.im/post/5b55b842f265da0f9e589e79" target="_blank" rel="noopener">数据库两大神器【索引和锁】</a></li>
+<li><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL 索引背后的数据结构及算法原理</a></li>
+<li><a href="https://time.geekbang.org/column/intro/139" target="_blank" rel="noopener">MySQL 实战 45 讲</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/13/redis-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/13/redis-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Redis 面试总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-13 17:03:42" itemprop="dateCreated datePublished" datetime="2020-07-13T17:03:42+08:00">2020-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/KV%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">KV数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/KV%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/13/redis-%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/13/redis-面试总结/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="redis-面试总结"><a class="markdownIt-Anchor" href="#redis-面试总结"></a> Redis 面试总结</h1>
+<h2 id="redis-数据类型"><a class="markdownIt-Anchor" href="#redis-数据类型"></a> Redis 数据类型</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 有哪些数据类型？</li>
+<li>Redis 的数据类型分别适用于什么样的场景？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 数据类型和应用</em></strong></p>
+<p>数据类型的特性和应用细节点较多，详情可以参考：<a href="https://github.com/dunwu/db-tutorial/blob/master/docs/nosql/redis/redis-datatype.md" target="_blank" rel="noopener">Redis 数据类型</a></p>
+</blockquote>
+<p>（1）Redis 支持五种基本数据类型：</p>
+<ul>
+<li>String：常用于 KV 缓存</li>
+<li>Hash：存储结构化数据，如：产品信息、用户信息等。</li>
+<li>List：存储列表，如：粉丝列表、文章评论列表等。可以通过 lrange 命令进行分页查询。</li>
+<li>Set：存储去重列表，如：粉丝列表等。可以基于 set 玩儿交集、并集、差集的操作。例如：求两个人的共同好友列表。</li>
+<li>Sorted Set：存储含评分的去重列表，如：各种排行榜。</li>
+</ul>
+<p>（2）除此以外，还有 Bitmaps、HyperLogLogs、GEO、Streams 等高级数据类型。</p>
+<h2 id="redis-内存淘汰"><a class="markdownIt-Anchor" href="#redis-内存淘汰"></a> Redis 内存淘汰</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 有哪些内存淘汰策略？</li>
+<li>这些淘汰策略分别适用于什么场景？</li>
+<li>Redis 有哪些删除失效 key 的方法？</li>
+<li>如何设置 Redis 中键的过期时间？</li>
+<li>如果让你实现一个 LRU 算法，怎么做？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<p>（1）Redis 过期策略是：<strong>定期删除+惰性删除</strong>。</p>
+<ul>
+<li>消极方法（passive way），在主键被访问时如果发现它已经失效，那么就删除它。</li>
+<li>主动方法（active way），定期从设置了失效时间的主键中选择一部分失效的主键删除。</li>
+</ul>
+<p>（2）Redis 内存淘汰策略：</p>
+<ul>
+<li><strong><code>noeviction</code></strong> - 当内存使用达到阈值的时候，所有引起申请内存的命令会报错。这是 Redis 默认的策略。</li>
+<li><strong><code>allkeys-lru</code></strong> - 在主键空间中，优先移除最近未使用的 key。</li>
+<li><strong><code>allkeys-random</code></strong> - 在主键空间中，随机移除某个 key。</li>
+<li><strong><code>volatile-lru</code></strong> - 在设置了过期时间的键空间中，优先移除最近未使用的 key。</li>
+<li><strong><code>volatile-random</code></strong> - 在设置了过期时间的键空间中，随机移除某个 key。</li>
+<li><strong><code>volatile-ttl</code></strong> - 在设置了过期时间的键空间中，具有更早过期时间的 key 优先移除。</li>
+</ul>
+<p>（3）如何选择内存淘汰策略：</p>
+<ul>
+<li>如果数据呈现幂等分布，也就是一部分数据访问频率高，一部分数据访问频率低，则使用 <code>allkeys-lru</code>。</li>
+<li>如果数据呈现平等分布，也就是所有的数据访问频率都相同，则使用 <code>allkeys-random</code>。</li>
+<li><code>volatile-lru</code> 策略和 <code>volatile-random</code> 策略适合我们将一个 Redis 实例既应用于缓存和又应用于持久化存储的时候，然而我们也可以通过使用两个 Redis 实例来达到相同的效果。</li>
+<li>将 key 设置过期时间实际上会消耗更多的内存，因此我们建议使用 <code>allkeys-lru</code> 策略从而更有效率的使用内存。</li>
+</ul>
+<p>（4）LRU 算法实现思路：可以继承 LinkedHashMap，并覆写 removeEldestEntry 方法来实现一个最简单的 LRUCache</p>
+<h2 id="redis-持久化"><a class="markdownIt-Anchor" href="#redis-持久化"></a> Redis 持久化</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 有几种持久化方式？</li>
+<li>Redis 的不同持久化方式的特性和原理是什么？</li>
+<li>RDB 和 AOF 各有什么优缺点？分别适用于什么样的场景？</li>
+<li>Redis 执行持久化时，可以处理请求吗？</li>
+<li>AOF 有几种同步频率？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 持久化</em></strong></p>
+<p>详情可以参考：<a href="04.Redis%E6%8C%81%E4%B9%85%E5%8C%96.md">Redis 持久化</a></p>
+</blockquote>
+<p>（1）Redis 支持两种持久化方式：RDB 和 AOF。</p>
+<p>（2）RDB 即某一时刻的二进制数据快照。</p>
+<p>Redis 会周期性生成 RDB 文件。</p>
+<p>生成 RDB 流程：Redis fork 一个子进程，负责生成 RDB；生成 RDB 采用 Copy On Write 模式，此时，如果收到写请求，会在原副本上操作，不影响工作。</p>
+<p>RDB 只能恢复生成快照时刻的数据，之后的数据无法恢复。生成 RDB 的资源开销高昂。RDB 适合做冷备。</p>
+<p>（3）AOF 会将写命令不断追加到 AOF 文本日志末尾。</p>
+<p>AOF 丢数据比 RDB 少，但文件会比 RDB 文件大很多。</p>
+<p>一般，AOF 设置 <code>appendfsync</code> 同步频率为 <strong><code>everysec</code></strong> 即可。</p>
+<p>（4）RDB or AOF</p>
+<p>建议同时使用 RDB 和 AOF。用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</p>
+<h2 id="redis-事务"><a class="markdownIt-Anchor" href="#redis-事务"></a> Redis 事务</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 的并发竞争问题是什么？如何解决这个问题？</li>
+<li>Redis 支持事务吗？</li>
+<li>Redis 事务是严格意义的事务吗？Redis 为什么不支持回滚。</li>
+<li>Redis 事务如何工作？</li>
+<li>了解 Redis 事务中的 CAS 行为吗？</li>
+</ul>
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 的事务特性、原理</em></strong></p>
+<p>详情参考：<a href="02.Redis%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97.md#%E5%85%ADredis-%E4%BA%8B%E5%8A%A1">Redis 应用指南之 事务</a></p>
+</blockquote>
+<p><strong>Redis 提供的不是严格的事务，Redis 只保证串行执行命令，并且能保证全部执行，但是执行命令失败时并不会回滚，而是会继续执行下去</strong>。</p>
+<p>Redis 不支持回滚的理由：</p>
+<ul>
+<li>Redis 命令只会因为错误的语法而失败，或是命令用在了错误类型的键上面。</li>
+<li>因为不需要对回滚进行支持，所以 Redis 的内部可以保持简单且快速。</li>
+</ul>
+<p><code>MULTI</code> 、 <code>EXEC</code> 、 <code>DISCARD</code> 和 <code>WATCH</code> 是 Redis 事务相关的命令。</p>
+<p>Redis 有天然解决这个并发竞争问题的类 CAS 乐观锁方案：每次要<strong>写之前，先判断</strong>一下当前这个 value 的时间戳是否比缓存里的 value 的时间戳要新。如果是的话，那么可以写，否则，就不能用旧的数据覆盖新的数据。</p>
+<h2 id="redis-管道"><a class="markdownIt-Anchor" href="#redis-管道"></a> Redis 管道</h2>
+<p>【问题】</p>
+<ul>
+<li>除了事务，还有其他批量执行 Redis 命令的方式吗？</li>
+</ul>
+<p>【解答】</p>
+<p>Redis 是一种基于 C/S 模型以及请求/响应协议的 TCP 服务。Redis 支持管道技术。管道技术允许请求以异步方式发送，即旧请求的应答还未返回的情况下，允许发送新请求。这种方式可以大大提高传输效率。使用管道发送命令时，Redis Server 会将部分请求放到缓存队列中（占用内存），执行完毕后一次性发送结果。如果需要发送大量的命令，会占用大量的内存，因此应该按照合理数量分批次的处理。</p>
+<h2 id="redis-高并发"><a class="markdownIt-Anchor" href="#redis-高并发"></a> Redis 高并发</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 是单线程模型，为何吞吐量还很高？</li>
+<li>Redis 的 IO 多路复用原理是什么？</li>
+<li>Redis 集群如何分片和寻址？</li>
+<li>Redis 集群如何扩展？</li>
+<li>Redis 集群如何保证数据一致？</li>
+<li>Redis 集群如何规划？你们公司的生产环境上如何部署 Redis 集群？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 集群</em></strong></p>
+<p>详情可以参考：<a href="07.Redis%E9%9B%86%E7%BE%A4.md">Redis 集群</a></p>
+</blockquote>
+<p>（1）单线程</p>
+<p>Redis 为单进程单线程模式，采用队列模式将并发访问变为串行访问。Redis 单机吞吐量也很高，能达到几万 QPS。</p>
+<p>Redis 单线程模型，依然有很高的并发吞吐，原因在于：</p>
+<ul>
+<li>Redis 读写都是内存操作。</li>
+<li>Redis 基于<strong>非阻塞的 IO 多路复用机制</strong>，同时监听多个 socket，将产生事件的 socket 压入内存队列中，事件分派器根据 socket 上的事件类型来选择对应的事件处理器进行处理。</li>
+<li>单线程，避免了线程创建、销毁、上下文切换的开销，并且避免了资源竞争。</li>
+</ul>
+<p>（2）扩展并发吞吐量、存储容量</p>
+<p>Redis 的高性能（扩展并发吞吐量、存储容量）通过主从架构来实现。</p>
+<p>Redis 集群采用主从模型，提供复制和故障转移功能，来保证 Redis 集群的高可用。通常情况，一主多从模式已经可以满足大部分项目的需要。根据实际的并发量，可以通过增加节点来扩展并发吞吐。</p>
+<p>一主多从模式下，主节点负责写操作（单机几万 QPS），从节点负责查询操作（单机十万 QPS）。</p>
+<p>进一步，如果需要缓存大量数据，就需要分区（sharding）。Redis 集群通过划分虚拟 hash 槽来分片，每个主节点负责一定范围的 hash 槽。当需要扩展集群节点时，重新分配 hash 槽即可，redis-trib 会自动迁移变更 hash 槽中所属的 key。</p>
+<p>（3）Redis 集群数据一致性</p>
+<p>Redis 集群基于复制特性实现节点间的数据一致性。</p>
+<h2 id="redis-复制"><a class="markdownIt-Anchor" href="#redis-复制"></a> Redis 复制</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 复制的工作原理？Redis 旧版复制和新版复制有何不同？</li>
+<li>Redis 主从节点间如何复制数据？</li>
+<li>Redis 的数据一致性是强一致性吗？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 复制</em></strong></p>
+<p>详情可以参考：<a href="05.Redis%E5%A4%8D%E5%88%B6.md">Redis 复制</a></p>
+</blockquote>
+<p>（1）旧版复制基于 <code>SYNC</code> 命令实现。分为同步（sync）和命令传播（command propagate）两个操作。这种方式存在缺陷：不能高效处理断线重连后的复制情况。</p>
+<p>（2）新版复制基于 <code>PSYNC</code> 命令实现。同步操作分为了两块：</p>
+<ul>
+<li><strong><code>完整重同步（full resychronization）</code></strong> 用于初次复制；</li>
+<li><strong><code>部分重同步（partial resychronization）</code></strong> 用于断线后重复制。
+<ul>
+<li>主从服务器的<strong>复制偏移量（replication offset）</strong></li>
+<li>主服务器的<strong>复制积压缓冲区（replication backlog）</strong></li>
+<li><strong>服务器的运行 ID</strong></li>
+</ul>
+</li>
+</ul>
+<p>（3）Redis 集群主从节点复制的工作流程：</p>
+<ul>
+<li>步骤 1. 设置主从服务器</li>
+<li>步骤 2. 主从服务器建立 TCP 连接。</li>
+<li>步骤 3. 发送 PING 检查通信状态。</li>
+<li>步骤 4. 身份验证。</li>
+<li>步骤 5. 发送端口信息。</li>
+<li>步骤 6. 同步。</li>
+<li>步骤 7. 命令传播。</li>
+</ul>
+<h2 id="redis-哨兵"><a class="markdownIt-Anchor" href="#redis-哨兵"></a> Redis 哨兵</h2>
+<p>【问题】</p>
+<ul>
+<li>Redis 如何实现高可用？</li>
+<li>Redis 哨兵的功能？</li>
+<li>Redis 哨兵的原理？</li>
+<li>Redis 哨兵如何选举 Leader？</li>
+<li>Redis 如何实现故障转移？</li>
+</ul>
+<hr />
+<p>【解答】</p>
+<blockquote>
+<p><strong><em>Redis 哨兵</em></strong></p>
+<p>详情可以参考：<a href="06.Redis%E5%93%A8%E5%85%B5.md">Redis 哨兵</a></p>
+</blockquote>
+<p>（1）Redis 的高可用是通过哨兵来实现（Raft 协议的 Redis 实现）。Sentinel（哨兵）可以监听主服务器，并在主服务器进入下线状态时，自动从从服务器中选举出新的主服务器。</p>
+<p>由一个或多个 Sentinel 实例组成的 Sentinel 系统可以监视任意多个主服务器，以及这些主服务器的所有从服务器，并在被监视的主服务器进入下线状态时，自动将下线主服务器的某个从服务器升级为新的主服务器，然后由新的主服务器代替已下线的主服务器继续处理命令请求。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20200131135847.png" alt="img" /></p>
+<h2 id="redis-vs-memcached"><a class="markdownIt-Anchor" href="#redis-vs-memcached"></a> Redis vs. Memcached</h2>
+<p>【问题】</p>
+<p>Redis 和 Memcached 有什么区别？</p>
+<p>分布式缓存技术选型，选 Redis 还是 Memcached，为什么？</p>
+<p>Redis 和 Memcached 各自的线程模型是怎样的？</p>
+<p>为什么单线程的 Redis 性能却不输于多线程的 Memcached？</p>
+<p>【解答】</p>
+<p>Redis 不仅仅支持简单的 k/v 类型的数据，同时还提供 list，set，zset，hash 等数据结构的存储。memcache 支持简单的数据类型，String。</p>
+<p>Redis 支持数据的备份，即 master-slave 模式的数据备份。</p>
+<p>Redis 支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而 Memecache 把数据全部存在内存之中</p>
+<p>redis 的速度比 memcached 快很多</p>
+<p>Memcached 是多线程，非阻塞 IO 复用的网络模型；Redis 使用单线程的 IO 复用模型。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/4/18/162d7773080d4570?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="Redis与Memcached的区别与比较" /></p>
+<p>如果想要更详细了解的话，可以查看慕课网上的这篇手记（非常推荐） <strong>：《脚踏两只船的困惑 - Memcached 与 Redis》</strong>：<a href="https://www.imooc.com/article/23549" target="_blank" rel="noopener">www.imooc.com/article/23549</a></p>
+<p><strong>终极策略：</strong> 使用 Redis 的 String 类型做的事，都可以用 Memcached 替换，以此换取更好的性能提升； 除此以外，优先考虑 Redis；</p>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<ul>
+<li><a href="https://juejin.im/post/5ad6e4066fb9a028d82c4b66" target="_blank" rel="noopener">面试中关于 Redis 的问题看这篇就够了</a></li>
+<li><a href="https://github.com/doocs/advanced-java#%E7%BC%93%E5%AD%98" target="_blank" rel="noopener">advanced-java</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2020/07/13/mysql-%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/07/13/mysql-%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Mysql 应用指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-13 10:08:37" itemprop="dateCreated datePublished" datetime="2020-07-13T10:08:37+08:00">2020-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">关系型数据库</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2020/07/13/mysql-%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/13/mysql-应用指南/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="mysql-应用指南"><a class="markdownIt-Anchor" href="#mysql-应用指南"></a> Mysql 应用指南</h1>
+<h2 id="1-sql-执行过程"><a class="markdownIt-Anchor" href="#1-sql-执行过程"></a> 1. SQL 执行过程</h2>
+<p>学习 Mysql，最好是先从宏观上了解 Mysql 工作原理。</p>
+<blockquote>
+<p>参考：<a href="docs/sql/mysql/mysql-index.md">Mysql 工作流</a></p>
+</blockquote>
+<h2 id="2-存储引擎"><a class="markdownIt-Anchor" href="#2-存储引擎"></a> 2. 存储引擎</h2>
+<p>在文件系统中，Mysql 将每个数据库（也可以成为 schema）保存为数据目录下的一个子目录。创建表示，Mysql 会在数据库子目录下创建一个和表同名的 <code>.frm</code> 文件保存表的定义。因为 Mysql 使用文件系统的目录和文件来保存数据库和表的定义，大小写敏感性和具体平台密切相关。Windows 中大小写不敏感；类 Unix 中大小写敏感。<strong>不同的存储引擎保存数据和索引的方式是不同的，但表的定义则是在 Mysql 服务层统一处理的。</strong></p>
+<h3 id="21-选择存储引擎"><a class="markdownIt-Anchor" href="#21-选择存储引擎"></a> 2.1. 选择存储引擎</h3>
+<h4 id="mysql-内置的存储引擎"><a class="markdownIt-Anchor" href="#mysql-内置的存储引擎"></a> Mysql 内置的存储引擎</h4>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SHOW ENGINES;</span></span><br><span class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |</span><br><span class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |</span><br><span class="line">| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |</span><br><span class="line">| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |</span><br><span class="line">| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |</span><br><span class="line">| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |</span><br><span class="line">| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |</span><br><span class="line">| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |</span><br><span class="line">| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |</span><br><span class="line">| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |</span><br><span class="line">+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>InnoDB</strong> - Mysql 的默认事务型存储引擎，并且提供了行级锁和外键的约束。性能不错且支持自动崩溃恢复。</li>
+<li><strong>MyISAM</strong> - Mysql 5.1 版本前的默认存储引擎。特性丰富但不支持事务，也不支持行级锁和外键，也没有崩溃恢复功能。</li>
+<li><strong>CSV</strong> - 可以将 CSV 文件作为 Mysql 的表来处理，但这种表不支持索引。</li>
+<li><strong>Memory</strong> - 适合快速访问数据，且数据不会被修改，重启丢失也没有关系。</li>
+<li><strong>NDB</strong> - 用于 Mysql 集群场景。</li>
+</ul>
+<h4 id="如何选择合适的存储引擎"><a class="markdownIt-Anchor" href="#如何选择合适的存储引擎"></a> 如何选择合适的存储引擎</h4>
+<p>大多数情况下，InnoDB 都是正确的选择，除非需要用到 InnoDB 不具备的特性。</p>
+<p>如果应用需要选择 InnoDB 以外的存储引擎，可以考虑以下因素：</p>
+<ul>
+<li>事务：如果需要支持事务，InnoDB 是首选。如果不需要支持事务，且主要是 SELECT 和 INSERT 操作，MyISAM 是不错的选择。所以，如果 Mysql 部署方式为主备模式，并进行读写分离。那么可以这么做：主节点只支持写操作，默认引擎为 InnoDB；备节点只支持读操作，默认引擎为 MyISAM。</li>
+<li>并发：MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。所以，InnoDB 并发性能更高。</li>
+<li>外键：InnoDB 支持外键。</li>
+<li>备份：InnoDB 支持在线热备份。</li>
+<li>崩溃恢复：MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。</li>
+<li>其它特性：MyISAM 支持压缩表和空间数据索引。</li>
+</ul>
+<h4 id="转换表的存储引擎"><a class="markdownIt-Anchor" href="#转换表的存储引擎"></a> 转换表的存储引擎</h4>
+<p>下面的语句可以将 mytable 表的引擎修改为 InnoDB</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> mytable <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span></span><br></pre></td></tr></table></figure>
+<h3 id="22-myisam"><a class="markdownIt-Anchor" href="#22-myisam"></a> 2.2. MyISAM</h3>
+<p>MyISAM 设计简单，数据以紧密格式存储。对于只读数据，或者表比较小、可以容忍修复操作，则依然可以使用 MyISAM。</p>
+<p>MyISAM 引擎使用 B+Tree 作为索引结构，<strong>叶节点的 data 域存放的是数据记录的地址</strong>。</p>
+<p>MyISAM 提供了大量的特性，包括：全文索引、压缩表、空间函数等。但是，MyISAM 不支持事务和行级锁。并且 MyISAM 不支持崩溃后的安全恢复。</p>
+<h3 id="23-innodb"><a class="markdownIt-Anchor" href="#23-innodb"></a> 2.3. InnoDB</h3>
+<p>InnoDB 是 MySQL 默认的事务型存储引擎，只有在需要 InnoDB 不支持的特性时，才考虑使用其它存储引擎。</p>
+<p>然 InnoDB 也使用 B+Tree 作为索引结构，但具体实现方式却与 MyISAM 截然不同。MyISAM 索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而<strong>在 InnoDB 中，表数据文件本身就是按 B+Tree 组织的一个索引结构</strong>，这棵树的叶节点 data 域保存了完整的数据记录。这个<strong>索引的 key 是数据表的主键</strong>，因此<strong>InnoDB 表数据文件本身就是主索引</strong>。</p>
+<p>InnoDB 采用 MVCC 来支持高并发，并且实现了四个标准的隔离级别。其默认级别是可重复读（REPEATABLE READ），并且通过间隙锁（next-key locking）防止幻读。</p>
+<p>InnoDB 是基于聚簇索引建立的，与其他存储引擎有很大不同。在索引中保存了数据，从而避免直接读取磁盘，因此对查询性能有很大的提升。</p>
+<p>内部做了很多优化，包括从磁盘读取数据时采用的可预测性读、能够加快读操作并且自动创建的自适应哈希索引、能够加速插入操作的插入缓冲区等。</p>
+<p>支持真正的在线热备份。其它存储引擎不支持在线热备份，要获取一致性视图需要停止对所有表的写入，而在读写混合场景中，停止写入可能也意味着停止读取。</p>
+<h2 id="3-数据类型"><a class="markdownIt-Anchor" href="#3-数据类型"></a> 3. 数据类型</h2>
+<h3 id="31-整型"><a class="markdownIt-Anchor" href="#31-整型"></a> 3.1. 整型</h3>
+<p><code>TINYINT</code>, <code>SMALLINT</code>, <code>MEDIUMINT</code>, <code>INT</code>, <code>BIGINT</code> 分别使用 <code>8</code>, <code>16</code>, <code>24</code>, <code>32</code>, <code>64</code> 位存储空间，一般情况下越小的列越好。</p>
+<p><strong><code>UNSIGNED</code> 表示不允许负值，大致可以使正数的上限提高一倍</strong>。</p>
+<p><code>INT(11)</code> 中的数字只是规定了交互工具显示字符的个数，对于存储和计算来说是没有意义的。</p>
+<h3 id="32-浮点型"><a class="markdownIt-Anchor" href="#32-浮点型"></a> 3.2. 浮点型</h3>
+<p><code>FLOAT</code> 和 <code>DOUBLE</code> 为浮点类型。</p>
+<p><code>DECIMAL</code> 类型主要用于精确计算，代价较高，应该尽量只在对小数进行精确计算时才使用 <code>DECIMAL</code> ——例如存储财务数据。数据量比较大的时候，可以使用 <code>BIGINT</code> 代替 <code>DECIMAL</code>。</p>
+<p><code>FLOAT</code>、<code>DOUBLE</code> 和 <code>DECIMAL</code> 都可以指定列宽，例如 <code>DECIMAL(18, 9)</code> 表示总共 18 位，取 9 位存储小数部分，剩下 9 位存储整数部分。</p>
+<h3 id="33-字符串"><a class="markdownIt-Anchor" href="#33-字符串"></a> 3.3. 字符串</h3>
+<p>主要有 <code>CHAR</code> 和 <code>VARCHAR</code> 两种类型，一种是定长的，一种是变长的。</p>
+<p><strong><code>VARCHAR</code> 这种变长类型能够节省空间，因为只需要存储必要的内容。但是在执行 UPDATE 时可能会使行变得比原来长</strong>。当超出一个页所能容纳的大小时，就要执行额外的操作。MyISAM 会将行拆成不同的片段存储，而 InnoDB 则需要分裂页来使行放进页内。</p>
+<p><code>VARCHAR</code> 会保留字符串末尾的空格，而 <code>CHAR</code> 会删除。</p>
+<h3 id="34-时间和日期"><a class="markdownIt-Anchor" href="#34-时间和日期"></a> 3.4. 时间和日期</h3>
+<p>MySQL 提供了两种相似的日期时间类型：<code>DATATIME</code> 和 <code>TIMESTAMP</code>。</p>
+<h4 id="datatime"><a class="markdownIt-Anchor" href="#datatime"></a> DATATIME</h4>
+<p>能够保存从 1001 年到 9999 年的日期和时间，精度为秒，使用 8 字节的存储空间。</p>
+<p>它与时区无关。</p>
+<p>默认情况下，MySQL 以一种可排序的、无歧义的格式显示 DATATIME 值，例如“2008-01-16 22:37:08”，这是 ANSI 标准定义的日期和时间表示方法。</p>
+<h4 id="timestamp"><a class="markdownIt-Anchor" href="#timestamp"></a> TIMESTAMP</h4>
+<p>和 UNIX 时间戳相同，保存从 1970 年 1 月 1 日午夜（格林威治时间）以来的秒数，使用 4 个字节，只能表示从 1970 年 到 2038 年。</p>
+<p>它和时区有关，也就是说一个时间戳在不同的时区所代表的具体时间是不同的。</p>
+<p>MySQL 提供了 FROM_UNIXTIME() 函数把 UNIX 时间戳转换为日期，并提供了 UNIX_TIMESTAMP() 函数把日期转换为 UNIX 时间戳。</p>
+<p>默认情况下，如果插入时没有指定 TIMESTAMP 列的值，会将这个值设置为当前时间。</p>
+<p>应该尽量使用 TIMESTAMP，因为它比 DATETIME 空间效率更高。</p>
+<h3 id="35-blob-和-text"><a class="markdownIt-Anchor" href="#35-blob-和-text"></a> 3.5. BLOB 和 TEXT</h3>
+<p><code>BLOB</code> 和 <code>TEXT</code> 都是为了存储大的数据而设计，前者存储二进制数据，后者存储字符串数据。</p>
+<p>不能对 <code>BLOB</code> 和 <code>TEXT</code> 类型的全部内容进行排序、索引。</p>
+<h3 id="36-枚举类型"><a class="markdownIt-Anchor" href="#36-枚举类型"></a> 3.6. 枚举类型</h3>
+<p>大多数情况下没有使用枚举类型的必要，其中一个缺点是：枚举的字符串列表是固定的，添加和删除字符串（枚举选项）必须使用<code>ALTER TABLE</code>（如果只只是在列表末尾追加元素，不需要重建表）。</p>
+<h3 id="37-类型的选择"><a class="markdownIt-Anchor" href="#37-类型的选择"></a> 3.7. 类型的选择</h3>
+<ul>
+<li>
+<p>整数类型通常是标识列最好的选择，因为它们很快并且可以使用 <code>AUTO_INCREMENT</code>。</p>
+</li>
+<li>
+<p><code>ENUM</code> 和 <code>SET</code> 类型通常是一个糟糕的选择，应尽量避免。</p>
+</li>
+<li>
+<p>应该尽量避免用字符串类型作为标识列，因为它们很消耗空间，并且通常比数字类型慢。对于 <code>MD5</code>、<code>SHA</code>、<code>UUID</code> 这类随机字符串，由于比较随机，所以可能分布在很大的空间内，导致 <code>INSERT</code> 以及一些 <code>SELECT</code> 语句变得很慢。</p>
+<ul>
+<li>如果存储 UUID ，应该移除 <code>-</code> 符号；更好的做法是，用 <code>UNHEX()</code> 函数转换 UUID 值为 16 字节的数字，并存储在一个 <code>BINARY(16)</code> 的列中，检索时，可以通过 <code>HEX()</code> 函数来格式化为 16 进制格式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-索引"><a class="markdownIt-Anchor" href="#4-索引"></a> 4. 索引</h2>
+<blockquote>
+<p>详见：<a href="05.Mysql%E7%B4%A2%E5%BC%95.md">Mysql 索引</a></p>
+</blockquote>
+<h2 id="5-锁"><a class="markdownIt-Anchor" href="#5-锁"></a> 5. 锁</h2>
+<blockquote>
+<p>详见：<a href="04.Mysql%E9%94%81.md">Mysql 锁</a></p>
+</blockquote>
+<h2 id="6-事务"><a class="markdownIt-Anchor" href="#6-事务"></a> 6. 事务</h2>
+<blockquote>
+<p>详见：<a href="03.Mysql%E4%BA%8B%E5%8A%A1.md">Mysql 事务</a></p>
+</blockquote>
+<h2 id="7-性能优化"><a class="markdownIt-Anchor" href="#7-性能优化"></a> 7. 性能优化</h2>
+<blockquote>
+<p>详见：<a href="06.Mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md">Mysql 性能优化</a></p>
+</blockquote>
+<h2 id="8-复制"><a class="markdownIt-Anchor" href="#8-复制"></a> 8. 复制</h2>
+<h3 id="81-主从复制"><a class="markdownIt-Anchor" href="#81-主从复制"></a> 8.1. 主从复制</h3>
+<p>Mysql 支持两种复制：基于行的复制和基于语句的复制。</p>
+<p>这两种方式都是在主库上记录二进制日志，然后在从库重放日志的方式来实现异步的数据复制。这意味着：复制过程存在时延，这段时间内，主从数据可能不一致。</p>
+<p>主要涉及三个线程：binlog 线程、I/O 线程和 SQL 线程。</p>
+<ul>
+<li><strong>binlog 线程</strong> ：负责将主服务器上的数据更改写入二进制文件（binlog）中。</li>
+<li><strong>I/O 线程</strong> ：负责从主服务器上读取二进制日志文件，并写入从服务器的中继日志中。</li>
+<li><strong>SQL 线程</strong> ：负责读取中继日志并重放其中的 SQL 语句。</li>
+</ul>
+<div align="center">
+<img src="https://raw.githubusercontent.com/dunwu/images/dev/cs/database/mysql/master-slave.png" />
+</div>
+<h3 id="82-读写分离"><a class="markdownIt-Anchor" href="#82-读写分离"></a> 8.2. 读写分离</h3>
+<p>主服务器用来处理写操作以及实时性要求比较高的读操作，而从服务器用来处理读操作。</p>
+<p>读写分离常用代理方式来实现，代理服务器接收应用层传来的读写请求，然后决定转发到哪个服务器。</p>
+<p>MySQL 读写分离能提高性能的原因在于：</p>
+<ul>
+<li>主从服务器负责各自的读和写，极大程度缓解了锁的争用；</li>
+<li>从服务器可以配置 MyISAM 引擎，提升查询性能以及节约系统开销；</li>
+<li>增加冗余，提高可用性。</li>
+</ul>
+<div align="center">
+<img src="https://raw.githubusercontent.com/dunwu/images/dev/cs/database/mysql/master-slave-proxy.png" />
+</div>
+------
+<p>（分割线）以下为高级特性，也是关系型数据库通用方案</p>
+<h2 id="9-分布式事务"><a class="markdownIt-Anchor" href="#9-分布式事务"></a> 9. 分布式事务</h2>
+<blockquote>
+<p>参考：<a href="https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-transaction.md" target="_blank" rel="noopener">分布式事务基本原理</a></p>
+</blockquote>
+<h2 id="10-分库分表"><a class="markdownIt-Anchor" href="#10-分库分表"></a> 10. 分库分表</h2>
+<blockquote>
+<p>参考：<a href="https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-storage.md" target="_blank" rel="noopener">分布式存储基本原理</a></p>
+</blockquote>
+<h2 id="11-参考资料"><a class="markdownIt-Anchor" href="#11-参考资料"></a> 11. 参考资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/23008813/" target="_blank" rel="noopener">《高性能 MySQL》</a></li>
+<li><a href="https://www.jfox.info/20-tiao-mysql-xing-nen-you-hua-de-zui-jia-jing-yan.html" target="_blank" rel="noopener">20+ 条 MySQL 性能优化的最佳经验</a></li>
+<li><a href="https://stackoverflow.com/questions/788829/how-to-create-unique-row-id-in-sharded-databases" target="_blank" rel="noopener">How to create unique row ID in sharded databases?</a></li>
+<li><a href="http://geekswithblogs.net/shaunxu/archive/2012/01/07/sql-azure-federation-ndash-introduction.aspx" target="_blank" rel="noopener">SQL Azure Federation – Introduction</a></li>
+</ul>
+<h2 id="12-传送门"><a class="markdownIt-Anchor" href="#12-传送门"></a> 12. 传送门</h2>
+<p>◾ 🏠 <a href="https://github.com/dunwu/db-tutorial" target="_blank" rel="noopener">DB-TUTORIAL 首页</a> ◾ 🎯 <a href="https://github.com/dunwu/blog" target="_blank" rel="noopener">我的博客</a> ◾</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/blog/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Zhang Peng"
+    src="/blog/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zhang Peng</p>
+  <div class="site-description" itemprop="description">Dunwu's Blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dunwu" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;dunwu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:forbreak@163.com" title="E-Mail &amp;rarr; mailto:forbreak@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Peng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">976k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:48</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-ajay4qmfci.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+</body>
+</html>

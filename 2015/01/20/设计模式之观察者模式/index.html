@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon.ico">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="设计模式之观察者模式  1. 意图 观察者模式（Observer）是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。  2. 适用场景  当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式。 当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用。   3. 结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之观察者模式">
+<meta property="og:url" content="https://dunwu.github.io/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Dunwu">
+<meta property="og:description" content="设计模式之观察者模式  1. 意图 观察者模式（Observer）是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。  2. 适用场景  当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式。 当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用。   3. 结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dunwu/images/dev/snap/20210519174232.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dunwu/images/dev/snap/20210519175224.png">
+<meta property="article:published_time" content="2015-01-20T08:09:00.000Z">
+<meta property="article:modified_time" content="2022-04-14T08:45:53.618Z">
+<meta property="article:author" content="Zhang Peng">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dunwu/images/dev/snap/20210519174232.png">
+
+<link rel="canonical" href="https://dunwu.github.io/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>设计模式之观察者模式 | Dunwu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Dunwu" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dunwu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">大道至简，知易行难</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">102</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">173</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dunwu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dunwu.github.io/blog/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Peng">
+      <meta itemprop="description" content="Dunwu's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dunwu">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          设计模式之观察者模式<a href="https://github.com/dunwu/blog/blob/master/source/_posts/%E8%AE%BE%E8%AE%A1/02.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/17.%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-01-20 16:09:00" itemprop="dateCreated datePublished" datetime="2015-01-20T16:09:00+08:00">2015-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 16:45:53" itemprop="dateModified" datetime="2022-04-14T16:45:53+08:00">2022-04-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/20/设计模式之观察者模式/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="设计模式之观察者模式"><a class="markdownIt-Anchor" href="#设计模式之观察者模式"></a> 设计模式之观察者模式</h1>
+<h2 id="1-意图"><a class="markdownIt-Anchor" href="#1-意图"></a> 1. 意图</h2>
+<p><strong>观察者模式</strong>（Observer）是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。</p>
+<h2 id="2-适用场景"><a class="markdownIt-Anchor" href="#2-适用场景"></a> 2. 适用场景</h2>
+<ul>
+<li>当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式。</li>
+<li>当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用。</li>
+</ul>
+<h2 id="3-结构"><a class="markdownIt-Anchor" href="#3-结构"></a> 3. 结构</h2>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20210519174232.png" alt="img" /></p>
+<h3 id="31-结构说明"><a class="markdownIt-Anchor" href="#31-结构说明"></a> 3.1. 结构说明</h3>
+<ol>
+<li><strong>发布者</strong> （Publisher） 会向其他对象发送值得关注的事件。 事件会在发布者自身状态改变或执行特定行为后发生。 发布者中包含一个允许新订阅者加入和当前订阅者离开列表的订阅构架。</li>
+<li>当新事件发生时， 发送者会遍历订阅列表并调用每个订阅者对象的通知方法。 该方法是在订阅者接口中声明的。</li>
+<li><strong>订阅者</strong> （Subscriber） 接口声明了通知接口。 在绝大多数情况下， 该接口仅包含一个 <code>update</code>更新方法。 该方法可以拥有多个参数， 使发布者能在更新时传递事件的详细信息。</li>
+<li><strong>具体订阅者</strong> （Concrete Subscribers） 可以执行一些操作来回应发布者的通知。 所有具体订阅者类都实现了同样的接口， 因此发布者不需要与具体类相耦合。</li>
+<li>订阅者通常需要一些上下文信息来正确地处理更新。 因此， 发布者通常会将一些上下文数据作为通知方法的参数进行传递。 发布者也可将自身作为参数进行传递， 使订阅者直接获取所需的数据。</li>
+<li><strong>客户端</strong> （Client） 会分别创建发布者和订阅者对象， 然后为订阅者注册发布者更新。</li>
+</ol>
+<h3 id="32-结构代码范式"><a class="markdownIt-Anchor" href="#32-结构代码范式"></a> 3.2. 结构代码范式</h3>
+<p><strong>Subject</strong> : 主题类，保存所有订阅此主题的观察者，观察者的 <strong>数量是任意的</strong>。定义 <strong>添加观察者</strong> <strong>(Attach)</strong> 和 <strong>删除观察者 (Detach)</strong> 的接口。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">protected</span> String state;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getState</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Notify</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Subject</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attach</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Detach</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Observer</strong> : 观察者类，定义<strong>更新接口 (Update)</strong>，当收到 Subject 的通知时，Observer 需要同步更新信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">protected</span> Subject subject;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Observer</span><span class="params">(String name, Subject subject)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ConcreteSubject</strong> : 具体主题类，存储对于这个主题感兴趣的所有观察者。当内部状态发生变化时，应<strong>通知所有登记的观察者(Notify)</strong>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteSubject</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Notify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"======= "</span> + <span class="keyword">this</span>.name + <span class="string">"主题发布新消息 ======="</span>);</span><br><span class="line">        <span class="keyword">for</span> (Observer observer : observers) &#123;</span><br><span class="line">            observer.Update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ConcreteObserver</strong> : 具体观察者类，实现 Observer 的<strong>更新接口 (Update)</strong>，以便和 Subject 同步状态信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">extends</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteObserver</span><span class="params">(String name, Subject subject)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, subject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        state = subject.getState();</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">"收到当前状态："</span> + state);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ConcreteSubject subject = <span class="keyword">new</span> ConcreteSubject(<span class="string">"天气"</span>);</span><br><span class="line">        ConcreteObserver observer1 = <span class="keyword">new</span> ConcreteObserver(<span class="string">"张三"</span>, subject);</span><br><span class="line">        ConcreteObserver observer2 = <span class="keyword">new</span> ConcreteObserver(<span class="string">"李四"</span>, subject);</span><br><span class="line">        ConcreteObserver observer3 = <span class="keyword">new</span> ConcreteObserver(<span class="string">"王五"</span>, subject);</span><br><span class="line"></span><br><span class="line">        subject.Attach(observer1);</span><br><span class="line">        subject.Attach(observer2);</span><br><span class="line">        subject.Attach(observer3);</span><br><span class="line">        subject.setState(<span class="string">"今天下雨"</span>);</span><br><span class="line">        subject.Notify();</span><br><span class="line"></span><br><span class="line">        subject.Detach(observer2);</span><br><span class="line">        subject.setState(<span class="string">"明天天晴"</span>);</span><br><span class="line">        subject.Notify();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="comment">======= 天气主题发布新消息 =======</span></span><br><span class="line">张三收到当前状态：今天下雨</span><br><span class="line">李四收到当前状态：今天下雨</span><br><span class="line">王五收到当前状态：今天下雨</span><br><span class="line"><span class="comment">======= 天气主题发布新消息 =======</span></span><br><span class="line">张三收到当前状态：明天天晴</span><br><span class="line">王五收到当前状态：明天天晴</span><br></pre></td></tr></table></figure>
+<h2 id="4-伪代码"><a class="markdownIt-Anchor" href="#4-伪代码"></a> 4. 伪代码</h2>
+<p>在本例中， <strong>观察者</strong>模式允许文本编辑器对象将自身的状态改变通知给其他服务对象。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20210519175224.png" alt="img" /></p>
+<p>订阅者列表是动态生成的： 对象可在运行时根据程序需要开始或停止监听通知。</p>
+<p>在本实现中， 编辑器类自身并不维护订阅列表。 它将工作委派给专门从事此工作的一个特殊帮手对象。 你还可将该对象升级为中心化的事件分发器， 允许任何对象成为发布者。</p>
+<p>只要发布者通过同样的接口与所有订阅者进行交互， 那么在程序中新增订阅者时就无需修改已有发布者类的代码。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 发布者基类包含订阅管理代码和通知方法。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventManager</span> <span class="title">is</span></span></span><br><span class="line">    private field listeners: hash map of event types and listeners</span><br><span class="line"></span><br><span class="line">    <span class="function">method <span class="title">subscribe</span><span class="params">(eventType, listener)</span> is</span></span><br><span class="line"><span class="function">        listeners.<span class="title">add</span><span class="params">(eventType, listener)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    method <span class="title">unsubscribe</span><span class="params">(eventType, listener)</span> is</span></span><br><span class="line"><span class="function">        listeners.<span class="title">remove</span><span class="params">(eventType, listener)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    method <span class="title">notify</span><span class="params">(eventType, data)</span> is</span></span><br><span class="line"><span class="function">        <span class="title">foreach</span> <span class="params">(listener in listeners.of(eventType)</span>) <span class="keyword">do</span></span></span><br><span class="line"><span class="function">            listener.<span class="title">update</span><span class="params">(data)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 具体发布者包含一些订阅者感兴趣的实际业务逻辑。我们可以从发布者基类中扩</span></span></span><br><span class="line"><span class="function"><span class="comment">// 展出该类，但在实际情况下并不总能做到，因为具体发布者可能已经是子类了。</span></span></span><br><span class="line"><span class="function"><span class="comment">// 在这种情况下，你可用组合来修补订阅逻辑，就像我们在这里做的一样。</span></span></span><br><span class="line"><span class="function">class Editor is</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> field events: EventManager</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> field file: File</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    constructor <span class="title">Editor</span><span class="params">()</span> is</span></span><br><span class="line"><span class="function">        events </span>= <span class="keyword">new</span> EventManager()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 业务逻辑的方法可将变化通知给订阅者。</span></span><br><span class="line">    <span class="function">method <span class="title">openFile</span><span class="params">(path)</span> is</span></span><br><span class="line"><span class="function">        <span class="keyword">this</span>.file </span>= <span class="keyword">new</span> File(path)</span><br><span class="line">        events.notify(<span class="string">"open"</span>, file.name)</span><br><span class="line"></span><br><span class="line">    <span class="function">method <span class="title">saveFile</span><span class="params">()</span> is</span></span><br><span class="line"><span class="function">        file.<span class="title">write</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        events.<span class="title">notify</span><span class="params">(<span class="string">"save"</span>, file.name)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="comment">// ...</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 这里是订阅者接口。如果你的编程语言支持函数类型，则可用一组函数来代替整</span></span></span><br><span class="line"><span class="function"><span class="comment">// 个订阅者的层次结构。</span></span></span><br><span class="line"><span class="function">interface EventListener is</span></span><br><span class="line"><span class="function">    method <span class="title">update</span><span class="params">(filename)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 具体订阅者会对其注册的发布者所发出的更新消息做出响应。</span></span></span><br><span class="line"><span class="function">class LoggingListener implements EventListener is</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> field log: File</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> field message</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    constructor <span class="title">LoggingListener</span><span class="params">(log_filename, message)</span> is</span></span><br><span class="line"><span class="function">        <span class="keyword">this</span>.log </span>= <span class="keyword">new</span> File(log_filename)</span><br><span class="line">        <span class="keyword">this</span>.message = message</span><br><span class="line"></span><br><span class="line">    <span class="function">method <span class="title">update</span><span class="params">(filename)</span> is</span></span><br><span class="line"><span class="function">        log.<span class="title">write</span><span class="params">(replace(<span class="string">'%s'</span>,filename,message)</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">class EmailAlertsListener implements EventListener is</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> field email: string</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    constructor <span class="title">EmailAlertsListener</span><span class="params">(email, message)</span> is</span></span><br><span class="line"><span class="function">        <span class="keyword">this</span>.email </span>= email</span><br><span class="line">        <span class="keyword">this</span>.message = message</span><br><span class="line"></span><br><span class="line">    <span class="function">method <span class="title">update</span><span class="params">(filename)</span> is</span></span><br><span class="line"><span class="function">        system.<span class="title">email</span><span class="params">(email, replace(<span class="string">'%s'</span>,filename,message)</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 应用程序可在运行时配置发布者和订阅者。</span></span></span><br><span class="line"><span class="function">class Application is</span></span><br><span class="line"><span class="function">    method <span class="title">config</span><span class="params">()</span> is</span></span><br><span class="line"><span class="function">        editor </span>= <span class="keyword">new</span> Editor()</span><br><span class="line"></span><br><span class="line">        logger = <span class="keyword">new</span> LoggingListener(</span><br><span class="line">            <span class="string">"/path/to/log.txt"</span>,</span><br><span class="line">            <span class="string">"有人打开了文件：%s"</span>);</span><br><span class="line">        editor.events.subscribe(<span class="string">"open"</span>, logger)</span><br><span class="line"></span><br><span class="line">        emailAlerts = <span class="keyword">new</span> EmailAlertsListener(</span><br><span class="line">            <span class="string">"admin@example.com"</span>,</span><br><span class="line">            <span class="string">"有人更改了文件：%s"</span>)</span><br><span class="line">        editor.events.subscribe(<span class="string">"save"</span>, emailAlerts)</span><br></pre></td></tr></table></figure>
+<h2 id="5-与其他模式的关系"><a class="markdownIt-Anchor" href="#5-与其他模式的关系"></a> 5. 与其他模式的关系</h2>
+<ul>
+<li><a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility" target="_blank" rel="noopener">责任链模式</a>、 <a href="https://refactoringguru.cn/design-patterns/command" target="_blank" rel="noopener">命令模式</a>、 <a href="https://refactoringguru.cn/design-patterns/mediator" target="_blank" rel="noopener">中介者模式</a>和<a href="https://refactoringguru.cn/design-patterns/observer" target="_blank" rel="noopener">观察者模式</a>用于处理请求发送者和接收者之间的不同连接方式：
+<ul>
+<li><em>责任链</em>按照顺序将请求动态传递给一系列的潜在接收者， 直至其中一名接收者对请求进行处理。</li>
+<li><em>命令</em>在发送者和请求者之间建立单向连接。</li>
+<li><em>中介者</em>清除了发送者和请求者之间的直接连接， 强制它们通过一个中介对象进行间接沟通。</li>
+<li><em>观察者</em>允许接收者动态地订阅或取消接收请求。</li>
+</ul>
+</li>
+<li><a href="https://refactoringguru.cn/design-patterns/mediator" target="_blank" rel="noopener">中介者</a>和<a href="https://refactoringguru.cn/design-patterns/observer" target="_blank" rel="noopener">观察者</a>之间的区别往往很难记住。 在大部分情况下， 你可以使用其中一种模式， 而有时可以同时使用。 让我们来看看如何做到这一点。
+<ul>
+<li><em>中介者</em>的主要目标是消除一系列系统组件之间的相互依赖。 这些组件将依赖于同一个中介者对象。 <em>观察者</em>的目标是在对象之间建立动态的单向连接， 使得部分对象可作为其他对象的附属发挥作用。</li>
+<li>有一种流行的中介者模式实现方式依赖于<em>观察者</em>。 中介者对象担当发布者的角色， 其他组件则作为订阅者， 可以订阅中介者的事件或取消订阅。 当<em>中介者</em>以这种方式实现时， 它可能看上去与<em>观察者</em>非常相似。</li>
+<li>当你感到疑惑时， 记住可以采用其他方式来实现中介者。 例如， 你可永久性地将所有组件链接到同一个中介者对象。 这种实现方式和<em>观察者</em>并不相同， 但这仍是一种中介者模式。</li>
+<li>假设有一个程序， 其所有的组件都变成了发布者， 它们之间可以相互建立动态连接。 这样程序中就没有中心化的中介者对象， 而只有一些分布式的观察者。</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-案例"><a class="markdownIt-Anchor" href="#6-案例"></a> 6. 案例</h2>
+<p><strong>使用示例：</strong> 观察者模式在 Java 代码中很常见， 特别是在 GUI 组件中。 它提供了在不与其他对象所属类耦合的情况下对其事件做出反应的方式。</p>
+<p>这里是核心 Java 程序库中该模式的一些示例：</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Observer.html" target="_blank" rel="noopener"><code>java.util.Observer</code></a>/<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Observable.html" target="_blank" rel="noopener"> <code>java.util.Observable</code></a> （极少在真实世界中使用）</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/util/EventListener.html" target="_blank" rel="noopener"><code>java.util.EventListener</code></a>的所有实现 （几乎广泛存在于 Swing 组件中）</li>
+<li><a href="http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSessionBindingListener.html" target="_blank" rel="noopener"><code>javax.servlet.http.HttpSessionBindingListener</code></a></li>
+<li><a href="http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSessionAttributeListener.html" target="_blank" rel="noopener"><code>javax.servlet.http.HttpSessionAttributeListener</code></a></li>
+<li><a href="http://docs.oracle.com/javaee/7/api/javax/faces/event/PhaseListener.html" target="_blank" rel="noopener"><code>javax.faces.event.PhaseListener</code></a></li>
+</ul>
+<p><strong>识别方法：</strong> 该模式可以通过将对象存储在列表中的订阅方法， 和对于面向该列表中对象的更新方法的调用来识别。</p>
+<h2 id="7-参考资料"><a class="markdownIt-Anchor" href="#7-参考资料"></a> 7. 参考资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/2243615/" target="_blank" rel="noopener">《Head First 设计模式》</a></li>
+<li><a href="https://book.douban.com/subject/2334288/" target="_blank" rel="noopener">《大话设计模式》</a></li>
+<li><a href="https://refactoringguru.cn/design-patterns/catalog" target="_blank" rel="noopener">设计模式教程</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zhang Peng
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dunwu.github.io/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="设计模式之观察者模式">https://dunwu.github.io/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E8%AE%BE%E8%AE%A1/" rel="tag"># 设计</a>
+              <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/blog/2015/01/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式之命令模式">
+                  <i class="fa fa-chevron-left"></i> 设计模式之命令模式
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式之解释器模式">
+                  设计模式之解释器模式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式之观察者模式"><span class="nav-text"> 设计模式之观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-意图"><span class="nav-text"> 1. 意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-适用场景"><span class="nav-text"> 2. 适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-结构"><span class="nav-text"> 3. 结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-结构说明"><span class="nav-text"> 3.1. 结构说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-结构代码范式"><span class="nav-text"> 3.2. 结构代码范式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-伪代码"><span class="nav-text"> 4. 伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-与其他模式的关系"><span class="nav-text"> 5. 与其他模式的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-案例"><span class="nav-text"> 6. 案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-参考资料"><span class="nav-text"> 7. 参考资料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Zhang Peng"
+    src="/blog/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zhang Peng</p>
+  <div class="site-description" itemprop="description">Dunwu's Blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dunwu" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;dunwu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:forbreak@163.com" title="E-Mail &amp;rarr; mailto:forbreak@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/blog/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Peng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">976k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:48</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-ajay4qmfci.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://dunwu.github.io/blog/2015/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/",
+            identifier: "2015/01/20/设计模式之观察者模式/",
+            title: "设计模式之观察者模式"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-ajay4qmfci.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+</body>
+</html>
